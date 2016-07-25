@@ -13,10 +13,14 @@ var adminFunc = {
         }
     },
     setPageInfo: function (req, res, module) {
+
         return {
             siteInfo: this.siteInfos(module),
-            layout: "manager/public/adminLayout"
+            layout: 'manager/public/adminLayout'
         }
+    },
+    RedirectURL:function (req,res) {
+        res.redirect('/manager/testPage');
     }
 };
 
