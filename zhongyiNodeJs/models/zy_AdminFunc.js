@@ -16,7 +16,7 @@ var adminFunc = {
 
         return {
             siteInfo: this.siteInfos(module),
-            layout: 'manager/public/adminLayout'
+            layout: 'manager/public/zy_AdminLayout'
         }
     },
     RedirectURL:function (req,res) {
