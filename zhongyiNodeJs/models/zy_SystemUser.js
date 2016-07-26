@@ -12,6 +12,10 @@ var zy_SystemUserSchema= new Schema({
     userSex:String,
     userTel:String,
     userEmail:String,
+    group:{
+        type:String,
+        ref:"zy_SystemRoleGroup"
+    },
     createDate:{type:Date,default:Date.now}
 });
 
