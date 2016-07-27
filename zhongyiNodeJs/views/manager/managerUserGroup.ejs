@@ -32,6 +32,7 @@
 
 <div class="row" ng-controller="userGroupController">
     <div class="col-sm-12">
+        <input type="button" value="按钮" ng-click="addSystemRole()"/>
         <div class="ibox float-e-margins">
             <div class="ibox-title">
 
@@ -86,7 +87,7 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
+                        <tr ng-repeat="group in data">
                             <td>
                                 <input type="checkbox" checked class="i-checks" name="input[]">
                             </td>

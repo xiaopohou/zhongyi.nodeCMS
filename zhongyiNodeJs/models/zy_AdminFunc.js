@@ -1,15 +1,15 @@
 /**
  * Created by duzhong on 16/7/22.
  */
-var siteConfig = require('./zy_Common');
-
+var siteConfig = require('../config/zy_Config');
+var SystemRoleGroup= require('../models/zy_SystemRoleGroup');
 var adminFunc = {
 
     siteInfos: function (description) {
         return {
-            title: siteConfig.SITENAME,
+            title: siteConfig.zy_sitename,
             desc: description,
-            author: siteConfig.AUTHORNAME
+            author: siteConfig.zy_authorName
         }
     },
     setPageInfo: function (req, res, module) {
@@ -21,6 +21,14 @@ var adminFunc = {
     },
     RedirectURL:function (req,res) {
         res.redirect('/manager/testPage');
+    },
+    getTargetObjectByUrl:function (url) {
+        var targetModel;
+        if(url==siteConfig.zy_userSystemRoleGroupList[0])
+        {
+            targetModel=SystemRoleGroup;
+        }
+        return targetModel;
     }
 };
 

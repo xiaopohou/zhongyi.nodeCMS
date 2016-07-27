@@ -1,6 +1,7 @@
 //初始化分页控件基本信息
 function initPagination($scope, $http) {
     initPageInfo($scope);
+    getPageInfos($scope,$http,'/admin/manager/getDocumentList','normalList')
 
 }
 //注册事件
@@ -38,7 +39,7 @@ function getPageInfos($scope, $http, url, reqType) {
         $scope.limit=Number($scope.limitNum);
         getPageInfos($scope, $http, url);
     }
-    $http.get(url+"?limit="+$scope.limit+"&currentPage="+$scope.currentPage+"&searchKey=xxxxx").success(function (result) {
+    $http.get(url+"?limit="+$scope.limit+"&currentPage="+$scope.currentPage+"&searchKey=XXOO").success(function (result) {
         if(reqType=="normalList"){
             $scope.data=result.docs;
         }else

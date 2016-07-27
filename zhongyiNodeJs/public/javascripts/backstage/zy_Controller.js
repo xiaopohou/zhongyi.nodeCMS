@@ -6,6 +6,10 @@ userGroupModule.controller('userGroupController', ['$scope', '$http', function (
     //初始化分页信息
     initPagination($scope, $http);
 
+    $scope.addSystemRole=function () {
+        console.log('xxxxx');
+    }
+
     $scope.deleteOne = function () {
         console.log('我被调用了');
     }
