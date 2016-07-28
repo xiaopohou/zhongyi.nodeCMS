@@ -44,6 +44,17 @@ var DBHelper = {
                 });
             }
         });
+    },
+    insertModel:function (req,res,model) {
+        var newObj=new model(req.body);
+        newObj.save(function (err) {
+            if(err)
+            {
+                res.end(err);
+            }else {
+                res.end('success');
+            }
+        });
     }
 };
 
