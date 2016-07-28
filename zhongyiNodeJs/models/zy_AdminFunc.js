@@ -2,14 +2,15 @@
  * Created by duzhong on 16/7/22.
  */
 var siteConfig = require('../config/zy_Config');
-var SystemRoleGroup= require('../models/zy_SystemRoleGroup');
+var SystemRoleGroupModel= require('../models/zy_SystemRoleGroup');
 var adminFunc = {
 
     siteInfos: function (description) {
         return {
             title: siteConfig.zy_sitename,
             desc: description,
-            author: siteConfig.zy_authorName
+            author: siteConfig.zy_authorName,
+            version:siteConfig.zy_appVerson
         }
     },
     setPageInfo: function (req, res, module) {
@@ -26,7 +27,7 @@ var adminFunc = {
         var targetModel;
         if(url==siteConfig.zy_userSystemRoleGroupList[0])
         {
-            targetModel=SystemRoleGroup;
+            targetModel=SystemRoleGroupModel;
         }
         return targetModel;
     }

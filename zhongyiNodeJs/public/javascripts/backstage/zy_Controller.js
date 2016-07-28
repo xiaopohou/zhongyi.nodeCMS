@@ -3,16 +3,9 @@ var userGroupModule = angular.module("userGroupModule", []);
 
 userGroupModule.controller('userGroupController', ['$scope', '$http', function ($scope, $http) {
     $scope.formData = {};
+
     //初始化分页信息
     initPagination($scope, $http);
-
-    $scope.addSystemRole=function () {
-
-
-
-        console.log('我被调用了');
-    }
-
 
     $scope.deleteOne = function () {
         console.log('我被调用了');
@@ -26,13 +19,15 @@ userGroupModule.controller("addUserGroup",['$scope','$http',function ($scope,$ht
 
     $scope.submitForm=function (isValid) {
         console.log('我被调用了2');
-       var url='/admin/manager/SystemRole/add';
-       angularHttpPost($http,isValid,url,$scope.formData,function (data) {
-           console.log('我被调用了3');
-           console.log('data is:'+data);
-           window.location.href='/admin/manager/managerUserGroup'
-       });
-   }
+        var url='/admin/manager/SystemRole/add';
+        console.log('scope.formData is '+$scope.formData);
+
+        angularHttpPost($http,isValid,url,$scope.formData,function (data) {
+            console.log('我被调用了3');
+            console.log('data is:'+data);
+            window.location.href='/admin/manager/managerUserGroup'
+        });
+    }
     console.log('我被调用了4');
 }]);
 

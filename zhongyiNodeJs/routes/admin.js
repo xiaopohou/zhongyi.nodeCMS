@@ -1,4 +1,5 @@
 var express = require('express');
+var url = require('url');
 var router = express.Router();
 
 
@@ -6,11 +7,11 @@ var siteConfig = require('../config/zy_Config');
 var adminFunc = require('../models/zy_AdminFunc');
 var SystemRoleGroup = require('../models/zy_SystemRoleGroup');
 var DBHelper = require('../models/zyDBHelper/zy_Dbopt');
+
 //管理主页面
 router.get('/', function (req, res) {
     res.render('manager/index_v7');
 });
-
 
 //后台欢迎页面
 router.get('/manager', function (req, res) {
@@ -30,9 +31,7 @@ router.get('/manager/managerUserGroup', function (req, res) {
 
 //添加用户组
 router.get('/manager/SystemRoleAdd', function (req, res) {
-
     console.log('开始--');
-
     res.render('manager/addSystemRole');
 
     console.log('结束--');
@@ -40,7 +39,7 @@ router.get('/manager/SystemRoleAdd', function (req, res) {
 
 //提交数据
 router.post('/manager/:defaultUrl/add', function (req, res) {
-
+    //console.log('defaultUrl is :');
     addSystemGroup(req,res);
 
 });
@@ -51,13 +50,13 @@ function addSystemGroup (req,res) {
     var _name=req.body.name;
     var _desc=req.body.description;
 
-    console.log(_name+_desc);
     DBHelper.insertModel(req,res,SystemRoleGroup);
 }
 
 router.get('/manager/getDocumentList/:defaultUrl', function (req, res) {
-    //判断处理模型对象,供mongo操作表
-    var targetObj = getTargetObjectByUrl(req.params.defaultUrl);
+
+    var targetObj = adminFunc.getTargetObjectByUrl(req.params.defaultUrl);
+
     var params = url.parse(req.url, true);
     var searchWords = params.query.searchKey;
     var wheres = [];
@@ -67,6 +66,7 @@ router.get('/manager/getDocumentList/:defaultUrl', function (req, res) {
             wheres.push({'name': {$regex: regkey}});
         }
     }
+
     DBHelper.queryDocumentsByConditions(req, res, targetObj, wheres);
 });
 //角色管理

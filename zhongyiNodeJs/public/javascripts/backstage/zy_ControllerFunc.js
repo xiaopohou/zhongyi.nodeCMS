@@ -1,11 +1,16 @@
 //初始化分页控件基本信息
 function initPagination($scope, $http) {
+
     initPageInfo($scope);
-    getPageInfos($scope,$http,'/admin/manager/getDocumentList','normalList')
+
+
+    //todo:此处userSystemRoleGroupManager 暂时写死,这个应该是一个动态参数,以后再改
+    getPageInfos($scope,$http,'/admin/manager/getDocumentList/'+'userSystemRoleGroupManager'+'/','normalList')
 
 }
 //注册事件
 function getPageInfos($scope, $http, url, reqType) {
+
     //注册分页动作,计算当前currentPage
     $scope.loadPage=function (page) {
         $scope.currentPage=page;
@@ -39,7 +44,12 @@ function getPageInfos($scope, $http, url, reqType) {
         $scope.limit=Number($scope.limitNum);
         getPageInfos($scope, $http, url);
     }
-    $http.get(url+"?limit="+$scope.limit+"&currentPage="+$scope.currentPage+"&searchKey=XXOO").success(function (result) {
+    //todo:
+
+    var _url=url+"?limit="+$scope.limit+"&currentPage="+$scope.currentPage+"&searchKey=XXOO";
+
+    console.log('_url is '+_url);
+    $http.get(_url).success(function (result) {
         if(reqType=="normalList"){
             $scope.data=result.docs;
         }else

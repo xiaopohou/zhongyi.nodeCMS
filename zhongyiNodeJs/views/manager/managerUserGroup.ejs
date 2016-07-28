@@ -1,7 +1,5 @@
 <!DOCTYPE html>
 <html>
-
-
 <!-- Mirrored from www.zi-han.net/theme/hplus/table_jqgrid.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 20 Jan 2016 14:20:02 GMT -->
 <head>
 
@@ -101,11 +99,11 @@
                             <td>
                                 <input type="checkbox" checked class="i-checks" name="input[]">
                             </td>
-                            <td>米莫说｜MiMO Show</td>
-                            <td><span class="pie">0.52/1.561</span>
+                            <td>{{group.name}}</td>
+                            <td><span class="pie">{{group.description}}</span>
                             </td>
 
-                            <td>2014.11.11</td>
+                            <td>{{group.createDate}}</td>
                             <td>
                                 <button class="btn btn-primary btn-xs">编辑</button>
                                 <button class="btn btn-primary btn-xs" ng-click="deleteOne()">删除</button>

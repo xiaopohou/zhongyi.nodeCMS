@@ -6,10 +6,9 @@ module.exports={
     zy_mongo_root:"",
     zy_mongo_pass:"",
     zy_mongo_port:"27017",
-    zy_sitename:"老赵NodeJSCMS",
-    zy_authorName:"老赵",
-    zy_appVerson:"0.0.1",
-
+    zy_sitename:"zhongNodeCMS",
+    zy_authorName:"老赵[VIP]",
+    zy_appVerson:"V.0.0.1",
     zy_userSystemRoleGroupList:['userSystemRoleGroupManager','系统角色组管理'],
     zy_userSystemUserList:['userSystemUserManager','系统用户管理']
 
