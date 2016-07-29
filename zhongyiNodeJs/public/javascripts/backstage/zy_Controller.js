@@ -16,15 +16,15 @@ userGroupModule.controller('userGroupController', ['$scope', '$http', function (
 userGroupModule.controller("addUserGroup",['$scope','$http',function ($scope,$http) {
     console.log('我被调用了1');
     $scope.formData={};
-
+    $scope.formData.state=false;
     $scope.submitForm=function (isValid) {
-        console.log('我被调用了2');
+        //console.log('我被调用了2');
         var url='/admin/manager/SystemRole/add';
-        console.log('scope.formData is '+$scope.formData);
+        //console.log('scope.formData is '+$scope.formData);
 
         angularHttpPost($http,isValid,url,$scope.formData,function (data) {
-            console.log('我被调用了3');
-            console.log('data is:'+data);
+            // console.log('我被调用了3');
+            // console.log('data is:'+data);
             window.location.href='/admin/manager/managerUserGroup'
         });
     }

@@ -30,6 +30,9 @@ var adminFunc = {
             targetModel=SystemRoleGroupModel;
         }
         return targetModel;
+    },
+    renderPageWithCondition:function (req,res,targetUrl) {
+        res.render(targetUrl);
     }
 };
 

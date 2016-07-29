@@ -89,7 +89,7 @@
                             <th></th>
                             <th>名称</th>
                             <th>描述</th>
-
+                            <th>状态</th>
                             <th>创建日期</th>
                             <th>操作</th>
                         </tr>
@@ -102,11 +102,13 @@
                             <td>{{group.name}}</td>
                             <td><span class="pie">{{group.description}}</span>
                             </td>
-
+                            <td><span class="pie">{{group.state}}</span>
+                            </td>
                             <td>{{group.createDate}}</td>
                             <td>
-                                <button class="btn btn-primary btn-xs">编辑</button>
-                                <button class="btn btn-primary btn-xs" ng-click="deleteOne()">删除</button>
+                                <a class="btn btn-primary btn-xs" href="/admin/manager/SystemRole/{{group._id}}">编辑</a>
+                                <a class="btn btn-primary btn-xs" href="/admin/manager/SystemRole/{{group._id}}">删除</a>
+
                             </td>
                         </tr>
 

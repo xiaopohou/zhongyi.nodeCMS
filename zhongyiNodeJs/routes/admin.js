@@ -31,12 +31,16 @@ router.get('/manager/managerUserGroup', function (req, res) {
 
 //添加用户组
 router.get('/manager/SystemRoleAdd', function (req, res) {
-    console.log('开始--');
+
     res.render('manager/addSystemRole');
 
-    console.log('结束--');
-});
 
+});
+router.get('/manager/SystemRole/:defaultParam',function (req,res) {
+   //  req.params.defaultParam
+    adminFunc.renderPageWithCondition(req,res,'manager/addSystemRole');
+
+});
 //提交数据
 router.post('/manager/:defaultUrl/add', function (req, res) {
     //console.log('defaultUrl is :');
