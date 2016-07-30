@@ -3,7 +3,7 @@ var url = require('url');
 var router = express.Router();
 
 
-var siteConfig = require('../config/zy_Config');
+var siteConfig = require('../public/config/zy_Config');
 var adminFunc = require('../models/zy_AdminFunc');
 var SystemRoleGroup = require('../models/zy_SystemRoleGroup');
 var DBHelper = require('../models/zyDBHelper/zy_Dbopt');
@@ -31,23 +31,59 @@ router.get('/manager/managerUserGroup', function (req, res) {
 
 //添加用户组
 router.get('/manager/SystemRoleAdd', function (req, res) {
-
     res.render('manager/addSystemRole');
-
-
 });
+//编辑用户组
 router.get('/manager/SystemRole/:defaultParam',function (req,res) {
    //  req.params.defaultParam
+
     adminFunc.renderPageWithCondition(req,res,'manager/addSystemRole');
 
 });
+
 //提交数据
 router.post('/manager/:defaultUrl/add', function (req, res) {
-    //console.log('defaultUrl is :');
+
     addSystemGroup(req,res);
 
 });
+//通用修改
+router.post('/manager/:defaultUrl/modify',function (req,res) {
+    var currentPage=req.params.defualtUrl;
+    var currentPage2=req.query.defaultUrl;
 
+    console.log('state is :'+req.body.state);
+
+
+    var params=url.parse(req.url,true);
+    var targetObject=adminFunc.getTargetObjectByUrl('userSystemRoleGroupManager');
+    if(targetObject==SystemRoleGroup){
+
+    }
+    DBHelper.updateOndeById(targetObject,req,res);
+});
+//通用获取对象方法
+router.get('/manager/:defaultUrl/item',function (req,res) {
+    //todo:req.params. 可以获取url中占位参数,但是不能获取到?后的参数
+    //todo:req.query. req.params 恰恰相反
+
+    var currentPage=req.params.defaultUrl;
+    var targetObject=adminFunc.getTargetObjectByUrl(currentPage);
+    var targetId=req.query.id;
+
+
+    var params=url.parse(req.url,true);
+    var id=params.query.id;
+    if(targetObject==SystemRoleGroup){
+        SystemRoleGroup.getOneItem(res,targetId,function (result) {
+
+            console.log('______>>>>>>'+result);
+            return res.json(result);
+        });
+    }else {
+        DBHelper.findOne(targetObject,req,res);
+    }
+});
 //添加角色组
 function addSystemGroup (req,res) {
     var error;

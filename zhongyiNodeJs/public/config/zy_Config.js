@@ -10,6 +10,7 @@ module.exports={
     zy_authorName:"老赵[VIP]",
     zy_appVerson:"V.0.0.1",
     zy_userSystemRoleGroupList:['userSystemRoleGroupManager','系统角色组管理'],
-    zy_userSystemUserList:['userSystemUserManager','系统用户管理']
-
+    zy_userSystemUserList:['userSystemUserManager','系统用户管理'],
+    zy_system_illegal_param:'无效参数',
+    zy_system_noPower:'无权限'
 };

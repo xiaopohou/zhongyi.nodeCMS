@@ -1,7 +1,7 @@
 /**
  * Created by duzhong on 16/7/22.
  */
-var siteConfig = require('../config/zy_Config');
+var siteConfig = require('../public/config/zy_Config');
 var SystemRoleGroupModel= require('../models/zy_SystemRoleGroup');
 var adminFunc = {
 
@@ -32,6 +32,7 @@ var adminFunc = {
         return targetModel;
     },
     renderPageWithCondition:function (req,res,targetUrl) {
+        console.log('______xxx'+targetUrl);
         res.render(targetUrl);
     }
 };

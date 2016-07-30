@@ -1,7 +1,8 @@
 var url = require('url');
 var mongoose = require('mongoose');
+var shortid = require('shortid');
 var SystemRoleGroup = require('../zy_SystemRoleGroup');
-var config = require('../../config/zy_Config');
+var config = require('../../public/config/zy_Config');
 
 var db = mongoose.connect(config.zy_mongo_address);
 
@@ -58,6 +59,41 @@ var DBHelper = {
                 res.end('success');
             }
         });
+    },
+    findOne: function (obj, req, res) {
+        var params = url.parse(req.url, true);
+        var targetId = params.query.targetId;
+        if (shortid.isValid(targetId)) {
+            obj.findOne({'_id': targetId}, function (err, result) {
+                if (err) {
+                    res.next(err);
+                } else {
+                    console.log('查找对象成功');
+                    return res.json(result);
+                }
+            })
+        } else {
+            res.end(config.zy_system_illegal_param);
+        }
+
+    },
+    updateOndeById: function (obj, req, res) {
+        var params = url.parse(req.url, true);
+        var targetId = params.query.id;
+        if (shortid.isValid(targetId)) {
+            var conditions = {_id: targetId};
+            var update = {$set: req.body};
+            obj.update(conditions, update, function (err, result) {
+                if (err) {
+                    res.end(err);
+                } else {
+                    console.log('修改成功了');
+                    res.end('success');
+                }
+            })
+        } else {
+            res.end(config.zy_system_illegal_param);
+        }
     }
 };
 
