@@ -17,12 +17,16 @@ userGroupModule.factory('getItemService', ['$http', function ($http) {
 userGroupModule.controller('userGroupController', ['$scope', '$http', function ($scope, $http) {
     $scope.formData = {};
 
+
+    $scope.selectType=[
+        {key: '1111', value: '0'},
+        {key: '1222', value: '1'}
+    ];
+    $scope.formData.type='0';
     //初始化分页信息
     initPagination($scope, $http);
 
-    $scope.deleteOne = function () {
-        console.log('我被调用了');
-    }
+    initCurrentPageEvent($scope,$http,'确定要删除吗?');
 }]);
 
 //add/edit
@@ -30,20 +34,22 @@ userGroupModule.controller("addUserGroup", ['$scope', '$http', 'getItemService',
 
 
     $scope.formData = {};
-
-    console.log('前台值变了'+$scope.formData.state+'    name is '+$scope.formData.name);
-
+    $scope.selectType = [
+        {key: '1111', value: '0'},
+        {key: '1222', value: '1'}
+    ];
+    $scope.formData.type='0';
 
     $scope.targetId = window.location.href.split('/')[6];
+
     if ($scope.targetId) {
+
         //先把对象初始化
         getItemService.itemInfo('userSystemRoleGroupManager', $scope.targetId).success(function (result) {
             console.log('result is ' + result);
             $scope.formData = result;
-            // $scope.formData.name = result.name;
-            // $scope.formData.state = result.state;
-            // $score.formData.description = result.description;
         });
+
     }
 
     $scope.submitForm = function (isValid) {
@@ -58,6 +64,17 @@ userGroupModule.controller("addUserGroup", ['$scope', '$http', 'getItemService',
     }
 
 }]);
+
+function initCurrentPageEvent($scope,$http,info) {
+    $scope.deleteOne = function (id) {
+        if(confirm(info)){
+            angularHttpGet($http,'/admin/manager/userSystemRoleGroupManager/delete?id='+id,function (result) {
+                console.log('result is :'+result);
+                initPagination($scope, $http);
+            });
+        }
+    }
+}
 
 //angularJs https Post方法封装
 function angularHttpPost($http, isValid, url, formData, callBack) {
@@ -82,6 +99,16 @@ function angularHttpPost($http, isValid, url, formData, callBack) {
     }
 }
 
+function  angularHttpGet($http,url,callBack) {
+    $http.get(url).success(function (result) {
+        if(result=='success'){
+            callBack(result);
+        }else
+        {
+            alert('删除失败');
+        }
+    });
+}
 
 //主页管理
 var indexModule = angular.module("indexModule", []);

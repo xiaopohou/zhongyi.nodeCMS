@@ -47,7 +47,7 @@ router.post('/manager/:defaultUrl/add', function (req, res) {
     addSystemGroup(req,res);
 
 });
-//通用修改
+//修改
 router.post('/manager/:defaultUrl/modify',function (req,res) {
     var currentPage=req.params.defualtUrl;
     var currentPage2=req.query.defaultUrl;
@@ -62,7 +62,21 @@ router.post('/manager/:defaultUrl/modify',function (req,res) {
     }
     DBHelper.updateOndeById(targetObject,req,res);
 });
-//通用获取对象方法
+
+//删除
+router.get('/manager/:defaultUrl/delete',function (req,res) {
+
+    console.log('-------------------->'+req.query.id);
+
+    var currentPage=req.params.defaultUrl;
+    var targetId=req.query.id;
+    var targetObject=adminFunc.getTargetObjectByUrl(currentPage);
+
+    DBHelper.deleteOneById(targetObject,req,res);
+
+});
+
+//获取对象方法
 router.get('/manager/:defaultUrl/item',function (req,res) {
     //todo:req.params. 可以获取url中占位参数,但是不能获取到?后的参数
     //todo:req.query. req.params 恰恰相反

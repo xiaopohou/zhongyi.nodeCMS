@@ -1,5 +1,5 @@
-# zhongyi.nodeCMS v.0.2
-####项目描述：提供对zhongyi.app的服务端调用提供API数据响应服务，前期主要考虑到项目功能需要，目前是1.0.1版本，后期对此版本功能进行按需升级；
+# zhongyi.nodeCMS v.0.0.2
+####项目描述：提供对zhongyi.app的服务端调用提供API数据响应服务，前期主要考虑到项目功能需要，后期对此版本功能进行按需升级；
 ##整体功能：
  ![Image text](https://github.com/xiaopohou/zhongyi.nodeCMS/blob/master/zhongyiNodeJs/im/map.png)
 ##1、系统管理
@@ -13,8 +13,8 @@
 ###2.2 分类管理
 
 ###此项目已集成第三方组件
-###1、Angular 1.4
-###2、Mongodb
+###1、Angular 1.5.8
+###2、Mongodb 3.2.7
 ###3、UEditor
 ###4、Bootstrap
 

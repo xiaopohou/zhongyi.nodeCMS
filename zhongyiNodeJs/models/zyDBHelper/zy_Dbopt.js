@@ -94,6 +94,22 @@ var DBHelper = {
         } else {
             res.end(config.zy_system_illegal_param);
         }
+    },
+    deleteOneById:function (obj,req,res) {
+
+        var targetId=req.query.id;
+        if(shortid.isValid(targetId))
+        {
+            obj.remove({_id:targetId},function (err,result) {
+                if(err){
+                    res.end('delete:'+err);
+                }else{
+                    res.end('success');
+                }
+            });
+        }else{
+            res.end(config.zy_system_illegal_param);
+        }
     }
 };
 

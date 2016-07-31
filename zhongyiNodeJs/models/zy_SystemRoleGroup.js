@@ -13,7 +13,8 @@ var SystemRoleGroupSchema = new Schema({
         'default': shortid.generate
     },
     name: String,
-    state: String,
+    state: {type:String,default:"1"},
+    type:{type:String,default:"1"},
     description: String,
     createDate: {type: Date, default: Date.now},
     updateDate:{type:Date,default:Date.now}
