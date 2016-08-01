@@ -97,13 +97,13 @@
                                 <input type="checkbox" checked class="i-checks" name="input[]">
                             </td>
                             <td>{{group.userName}}</td>
-                            <td><span class="pie">{{group.userName}}</span>
+                            <td><span class="pie">{{group.nickName}}</span>
                             </td>
-                            <td><span class="pie">{{group.userName}}</span>
+                            <td><span class="pie">{{group.userSex}}</span>
                             </td>
-                            <td>{{group.userName}}</td>
+                            <td>{{group.createDate|date:"yyyy-MM-dd hh:mm:ss"}}</td>
                             <td>
-                                <a class="btn btn-primary btn-xs" href="/admin/manager/SystemRole/{{group._id}}">编辑</a>
+                                <a class="btn btn-primary btn-xs" href="/admin/manager/userSystemUserManager/{{group._id}}">编辑</a>
                                 <a class="btn btn-primary btn-xs" ng-click="deleteOne(group._id)">删除</a>
 
                             </td>

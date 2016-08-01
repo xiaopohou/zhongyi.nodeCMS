@@ -64,7 +64,7 @@ var DBHelper = {
     },
     findOne: function (obj, req, res) {
         var params = url.parse(req.url, true);
-        var targetId = params.query.targetId;
+        var targetId = params.query.id;
         if (shortid.isValid(targetId)) {
             obj.findOne({'_id': targetId}, function (err, result) {
                 if (err) {

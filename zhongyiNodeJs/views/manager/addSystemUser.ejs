@@ -56,7 +56,7 @@
                         <label class="col-sm-3 control-label">性别</label>
 
                         <div class="col-sm-8">
-                            <select  ng-model="formData.userSex" ng-options="item.id as item.value for item in Sexs"></select>
+                            <select  ng-model="formData.userSex" ng-options="item.value as item.name for item in sexs"></select>
                         </div>
                     </div>
                     <div class="form-group">

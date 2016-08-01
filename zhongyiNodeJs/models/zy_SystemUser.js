@@ -3,8 +3,13 @@
  */
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
-
+var shortid=require('shortid');
 var zy_SystemUserSchema= new Schema({
+    _id:{
+        type:String,
+        unique:true,
+        default:shortid.generate
+    },
     userName:String,
     userPass:String,
     nickName:String,

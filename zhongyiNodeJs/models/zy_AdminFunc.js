@@ -37,7 +37,6 @@ var adminFunc = {
         return targetModel;
     },
     renderPageWithCondition:function (req,res,targetUrl) {
-        console.log('______xxx'+targetUrl);
         res.render(targetUrl);
     }
 };

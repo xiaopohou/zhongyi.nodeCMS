@@ -5,6 +5,7 @@ var userGroupModule = angular.module("userGroupModule", []);
 userGroupModule.factory('getItemService', ['$http', function ($http) {
     var getItemRequest = function (currentPage, targetId) {
         var _path = "/admin/manager/" + currentPage + "/item/?id=" + targetId;
+
         return $http.get(_path);
     };
     return {
@@ -43,17 +44,12 @@ userGroupModule.controller("addUserGroup", ['$scope', '$http', 'getItemService',
     $scope.targetId = window.location.href.split('/')[6];
 
     if ($scope.targetId) {
-
         //先把对象初始化
         getItemService.itemInfo('userSystemRoleGroupManager', $scope.targetId).success(function (result) {
-            console.log('result is ' + result);
             $scope.formData = result;
         });
-
     }
-
     $scope.submitForm = function (isValid) {
-
         var url = '/admin/manager/SystemRole/add';
         if ($scope.targetId) {
             url = '/admin/manager/SystemRole/modify?id=' + $scope.targetId;
@@ -62,7 +58,6 @@ userGroupModule.controller("addUserGroup", ['$scope', '$http', 'getItemService',
             window.location.href = '/admin/manager/managerUserGroup'
         });
     }
-
 }]);
 
 function initCurrentPageEvent($scope, $http, info) {
@@ -100,11 +95,12 @@ function angularHttpPost($http, isValid, url, formData, callBack) {
 }
 
 function angularHttpGet($http, url, callBack) {
+
     $http.get(url).success(function (result) {
         if (result == 'success') {
             callBack(result);
         } else {
-            alert('删除失败');
+            alert('获取数据失败');
         }
     });
 }
@@ -121,6 +117,23 @@ indexModule.controller('indexController', ['$scope', '$http', function ($scope, 
 
 //------------------------------UserModule----用户管理----------------------------------
 var userModule= angular.module('userModule',[]);
+
+userModule.factory('getItemServiceForUser', ['$http', function ($http) {
+    var getItemRequest = function (currentPage, targetId) {
+
+        var _path = "/admin/manager/" + currentPage + "/item/?id=" + targetId;
+
+        console.log('_path is :'+_path);
+
+        return $http.get(_path);
+    };
+    return {
+        itemInfo: function (currentPage, targetId) {
+            return getItemRequest(currentPage, targetId);
+        }
+    }
+}]);
+
 //用户列表页
 userModule.controller('systemUserList',['$scope','$http',function ($scope,$http) {
     $scope.formData={};
@@ -128,13 +141,45 @@ userModule.controller('systemUserList',['$scope','$http',function ($scope,$http)
 
 }]);
 //用户添加页
-userModule.controller('systemUserAdd',['$scope','$http',function ($scope,$http) {
+userModule.controller('systemUserAdd',['$scope','$http','getItemServiceForUser',function ($scope,$http,getItemServiceForUser) {
     $scope.formData={};
     $scope.sexs=[
-        {id:1,value:"1"},
-        {id:2,value:"2"}
+        {name:"男",value:"1"},
+        {name:"女",value:"2"}
     ];
-    $scope.submitForm=function (isValid) {
-        
+    $scope.formData.userSex="2";
+
+    //检查是否有参数标志参数传入
+    $scope.targetId=window.location.href.split('/')[6];
+
+
+
+    if($scope.targetId){
+        angularHttpGet($http,'/admin/manager/userSystemUserManager/item/?id='+$scope.targetId,function (result) {
+            $scope.formData=result;
+        })
+
+        //先把对象初始化
+        // getItemServiceForUser.itemInfo('userSystemUserManager', $scope.targetId).success(function (result) {
+        //     $scope.formData = result;
+        // });
+
     }
+    else
+    {
+
+    }
+    // $scope.submitForm=function (isValid) {
+    //     var url='/admin/manager/userSystemUserManager/add';
+    //     if($scope.targetId){
+    //         url='/admin/manager/userSystemUserManager/modify/?id='+$scope.targetId;
+    //     }
+    //     angularHttpPost($http,isValid,url,$scope.formData,function (result) {
+    //         if(result=='success'){
+    //             window.location.href='/admin/manager/managerUser'
+    //         }else {
+    //             console.log('修改,添加错误');
+    //         }
+    //     })
+    // }
 }]);
