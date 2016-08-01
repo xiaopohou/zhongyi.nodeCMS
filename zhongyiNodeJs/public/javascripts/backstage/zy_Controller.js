@@ -153,33 +153,27 @@ userModule.controller('systemUserAdd',['$scope','$http','getItemServiceForUser',
     $scope.targetId=window.location.href.split('/')[6];
 
 
-
     if($scope.targetId){
-        angularHttpGet($http,'/admin/manager/userSystemUserManager/item/?id='+$scope.targetId,function (result) {
-            $scope.formData=result;
-        })
-
         //先把对象初始化
-        // getItemServiceForUser.itemInfo('userSystemUserManager', $scope.targetId).success(function (result) {
-        //     $scope.formData = result;
-        // });
+        getItemServiceForUser.itemInfo('userSystemUserManager', $scope.targetId).success(function (result) {
+            $scope.formData = result;
+        });
 
+    }else{
+        console.log('---------------------------------------------xxxxxxxxxxxxxxxxxxx------yyyyyyy');
     }
-    else
-    {
+    $scope.submitForm=function (isValid) {
+        var url='/admin/manager/userSystemUserManager/add';
+        if($scope.targetId){
 
+            url='/admin/manager/userSystemUserManager/modify/?id='+$scope.targetId;
+        }
+        angularHttpPost($http,isValid,url,$scope.formData,function (result) {
+            if(result=='success'){
+                window.location.href='/admin/manager/managerUser'
+            }else {
+                console.log('修改,添加错误');
+            }
+        })
     }
-    // $scope.submitForm=function (isValid) {
-    //     var url='/admin/manager/userSystemUserManager/add';
-    //     if($scope.targetId){
-    //         url='/admin/manager/userSystemUserManager/modify/?id='+$scope.targetId;
-    //     }
-    //     angularHttpPost($http,isValid,url,$scope.formData,function (result) {
-    //         if(result=='success'){
-    //             window.location.href='/admin/manager/managerUser'
-    //         }else {
-    //             console.log('修改,添加错误');
-    //         }
-    //     })
-    // }
 }]);

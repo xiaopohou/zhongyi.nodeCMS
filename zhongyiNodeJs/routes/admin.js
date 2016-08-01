@@ -29,10 +29,17 @@ router.get('/manager', function (req, res) {
 router.get('/manager/managerUser', function (req, res) {
     res.render('manager/managerUser');
 });
-//编辑用户
-router.get('/manager/userSystemUserManager/:id', function (req, res) {
+
+//添加用户
+router.get('/manager/SystemUserAdd', function (req, res) {
     res.render('manager/addSystemUser')
 });
+
+//编辑用户
+router.get('/manager/SystemUser/:id', function (req, res) {
+    res.render('manager/addSystemUser')
+});
+
 
 //用户组管理
 router.get('/manager/managerUserGroup', function (req, res) {
@@ -63,7 +70,7 @@ router.post('/manager/:defaultUrl/add', function (req, res) {
 //修改
 router.post('/manager/:defaultUrl/modify', function (req, res) {
     var targetUrl = req.params.defualtUrl;
-    var params = url.parse(req.url, true);
+
     var targetObject = adminFunc.getTargetObjectByUrl(targetUrl);
     DBHelper.updateOndeById(targetObject, req, res);
 });
@@ -71,7 +78,7 @@ router.post('/manager/:defaultUrl/modify', function (req, res) {
 //删除
 router.get('/manager/:defaultUrl/delete', function (req, res) {
 
-    console.log('-------------------->' + req.query.id);
+
 
     var targetUrl = req.params.defaultUrl;
     var targetId = req.query.id;
@@ -93,7 +100,7 @@ router.get('/manager/:defaultUrl/item', function (req, res) {
 
     var currentPage = req.params.defaultUrl;
 
-    console.log('--------------defaultUrl----------------------->'+currentPage);
+
 
 
 

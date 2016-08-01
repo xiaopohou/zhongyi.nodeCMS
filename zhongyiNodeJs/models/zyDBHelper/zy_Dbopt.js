@@ -84,6 +84,7 @@ var DBHelper = {
         var targetId = params.query.id;
         if (shortid.isValid(targetId)) {
             var conditions = {_id: targetId};
+            req.body.updateDate = new Date();
             var update = {$set: req.body};
             obj.update(conditions, update, function (err, result) {
                 if (err) {

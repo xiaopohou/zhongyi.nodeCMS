@@ -106,7 +106,7 @@ function initCurrentPageEventForManagerUser($scope,$http) {
      getPageInfos($scope,$http,'/admin/manager/getDocumentList/userSystemUserManager/','normalList')
     //添加事件
     $scope.addUser=function () {
-        window.location.href='/admin/manager/addSystemUser/add'
+        window.location.href='/admin/manager/SystemUserAdd'
     }
 
 }
