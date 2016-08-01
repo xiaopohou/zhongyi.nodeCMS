@@ -8,11 +8,12 @@ var db = mongoose.connect(config.zy_mongo_address);
 
 var DBHelper = {
     queryDocumentsByConditions: function (req, res, model, where) {
-        console.log('req.body is :1111');
+
         var params = url.parse(req.url, true);
-        var currentPage = params.query.currentPage;
-        var limit = params.query.limit;
+        var currentPage = Number(params.query.currentPage);
+        var limit = Number(params.query.limit);
         var startNum = (currentPage - 1) * limit + 1;
+
         var pageInfo;
         var query;
         //追加查询条件
@@ -25,10 +26,11 @@ var DBHelper = {
         }
         query.sort({'createDate': -1});
 
-        //构造表组合
+        //todo:根据业务需要动态构造表组合
         // if(model==ZY_SystemRoleGroup){
         //
         // }
+
         query.exec(function (err, docs) {
             if (err) {
                 console.log('数据库操作报错:' + err);
@@ -37,7 +39,7 @@ var DBHelper = {
                     "totalItems": docs.length,
                     "currentPage": currentPage,
                     "limit": limit,
-                    "startNum": Number(startNum)
+                    "startNum": startNum
                 };
 
                 return res.json({

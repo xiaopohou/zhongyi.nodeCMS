@@ -19,6 +19,11 @@ router.get('/manager', function (req, res) {
 });
 
 
+//聚合页
+// router.get('/manager/managerUser', function (req, res) {
+//     res.render('manager/managerUser');
+// });
+
 //用户管理
 router.get('/manager/managerUser', function (req, res) {
     res.render('manager/managerUser');
@@ -123,7 +128,11 @@ router.get('/manager/getDocumentList/:defaultUrl', function (req, res) {
 
     DBHelper.queryDocumentsByConditions(req, res, targetObj, wheres);
 });
-//角色管理
+
+//用户管理
+router.get('/manager/:targetUrl/add',function (req,res) {
+    res.render('manager/'+req.params.targetUrl);
+});
 //分类管理
 //资讯管理
 module.exports = router;

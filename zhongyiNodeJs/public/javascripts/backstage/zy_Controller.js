@@ -1,4 +1,4 @@
-//用户组管理
+//------------------------------userGroupModule----用户组管理----------------------------------
 var userGroupModule = angular.module("userGroupModule", []);
 
 
@@ -18,15 +18,15 @@ userGroupModule.controller('userGroupController', ['$scope', '$http', function (
     $scope.formData = {};
 
 
-    $scope.selectType=[
+    $scope.selectType = [
         {key: '1111', value: '0'},
         {key: '1222', value: '1'}
     ];
-    $scope.formData.type='0';
+    $scope.formData.type = '0';
     //初始化分页信息
     initPagination($scope, $http);
 
-    initCurrentPageEvent($scope,$http,'确定要删除吗?');
+    initCurrentPageEvent($scope, $http, '确定要删除吗?');
 }]);
 
 //add/edit
@@ -38,7 +38,7 @@ userGroupModule.controller("addUserGroup", ['$scope', '$http', 'getItemService',
         {key: '1111', value: '0'},
         {key: '1222', value: '1'}
     ];
-    $scope.formData.type='0';
+    $scope.formData.type = '0';
 
     $scope.targetId = window.location.href.split('/')[6];
 
@@ -65,11 +65,11 @@ userGroupModule.controller("addUserGroup", ['$scope', '$http', 'getItemService',
 
 }]);
 
-function initCurrentPageEvent($scope,$http,info) {
+function initCurrentPageEvent($scope, $http, info) {
     $scope.deleteOne = function (id) {
-        if(confirm(info)){
-            angularHttpGet($http,'/admin/manager/userSystemRoleGroupManager/delete?id='+id,function (result) {
-                console.log('result is :'+result);
+        if (confirm(info)) {
+            angularHttpGet($http, '/admin/manager/userSystemRoleGroupManager/delete?id=' + id, function (result) {
+                console.log('result is :' + result);
                 initPagination($scope, $http);
             });
         }
@@ -99,25 +99,42 @@ function angularHttpPost($http, isValid, url, formData, callBack) {
     }
 }
 
-function  angularHttpGet($http,url,callBack) {
+function angularHttpGet($http, url, callBack) {
     $http.get(url).success(function (result) {
-        if(result=='success'){
+        if (result == 'success') {
             callBack(result);
-        }else
-        {
+        } else {
             alert('删除失败');
         }
     });
 }
 
-//主页管理
+//------------------------------indexModule----主页管理----------------------------------
 var indexModule = angular.module("indexModule", []);
 
-indexModule.controller('indexController', ['$scope', '$http', '$location', function ($scope, $http) {
+indexModule.controller('indexController', ['$scope', '$http', function ($scope, $http) {
     $scope.formData = {};
 
-    $scope.deleteOne = function () {
-        console.log('我被调用了');
-    }
+
 }]);
 
+
+//------------------------------UserModule----用户管理----------------------------------
+var userModule= angular.module('userModule',[]);
+//用户列表页
+userModule.controller('systemUserList',['$scope','$http',function ($scope,$http) {
+    $scope.formData={};
+    initCurrentPageEventForManagerUser($scope,$http);
+
+}]);
+//用户添加页
+userModule.controller('systemUserAdd',['$scope','$http',function ($scope,$http) {
+    $scope.formData={};
+    $scope.sexs=[
+        {id:1,value:"1"},
+        {id:2,value:"2"}
+    ];
+    $scope.submitForm=function (isValid) {
+        
+    }
+}]);

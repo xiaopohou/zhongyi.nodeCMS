@@ -12,11 +12,12 @@ var zy_SystemUserSchema= new Schema({
     userSex:String,
     userTel:String,
     userEmail:String,
-    group:{
-        type:String,
-        ref:"zy_SystemRoleGroup"
-    },
-    createDate:{type:Date,default:Date.now}
+    // group:{
+    //     type:String,
+    //     ref:"zy_SystemRoleGroup"
+    // },
+    createDate:{type:Date,default:Date.now},
+    updateDate:{type:Date,default:Date.now}
 });
 
 var zy_SystemUser=mongoose.model("zy_SystemUser",zy_SystemUserSchema);
