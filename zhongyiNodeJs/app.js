@@ -8,7 +8,7 @@ var bodyParser = require('body-parser');
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var admins = require('./routes/admin');//后台
-var cms=require('./routes/cms');
+
 // 模板引擎
 var partials= require('express-partials');
 var app = express();
@@ -38,7 +38,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', routes);
 app.use('/users', users);
 app.use('/admin',admins);
-app.user('/cms',cms);
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');

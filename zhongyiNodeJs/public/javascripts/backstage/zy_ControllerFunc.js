@@ -1,3 +1,6 @@
+/*
+此类主要是zy_controller的外部方法,共用的函数或响应方法在此声明实现
+* */
 //初始化分页控件基本信息
 function initPagination($scope, $http) {
     initPageInfo($scope);
@@ -111,5 +114,24 @@ function initCurrentPageEventForManagerUser($scope, $http) {
             });
         }
     }
+}
 
+function initCurrentPageEventForManagerInfo($scope, $http) {
+    //分页事件基本信息
+    initPageInfo($scope);
+    //分页事件
+    getPageInfos($scope, $http, '/admin/manager/getDocumentList/ManagerInfoList/', 'normalList')
+    //添加事件
+    $scope.addInfo = function () {
+        window.location.href = '/admin/manager/InfoAdd'
+    }
+
+    $scope.deleteOne = function (id) {
+        if (confirm(info)) {
+            angularHttpGet($http, '/admin/manager/userSystemUserManager/delete?id=' + id, function (result) {
+                console.log('result is :' + result);
+                initPagination($scope, $http);
+            });
+        }
+    }
 }

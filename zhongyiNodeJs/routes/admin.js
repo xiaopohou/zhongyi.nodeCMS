@@ -7,6 +7,8 @@ var siteConfig = require('../public/config/zy_Config');
 var adminFunc = require('../models/zy_AdminFunc');
 var SystemRoleGroup = require('../models/zy_SystemRoleGroup');
 var SystemUser = require('../models/zy_SystemUser');
+var InfoModel= require('../models/zy_Info');
+var KindModel= require('../models/zy_Kind');
 var DBHelper = require('../models/zyDBHelper/zy_Dbopt');
 
 //管理主页面
@@ -135,6 +137,36 @@ router.get('/manager/getDocumentList/:defaultUrl', function (req, res) {
 router.get('/manager/:targetUrl/add', function (req, res) {
     res.render('manager/' + req.params.targetUrl);
 });
-//分类管理
-//资讯管理
+
+//资讯列表
+router.get('/managerinfo',function (req,res) {
+    //console.log('列表首页');
+    res.render('manager/111');
+});
+//分类列表
+router.get('/managerkind',function (req,res) {
+    console.log('列表首页');
+});
+//添加分类
+router.get('/managerkind/kind/add',function (req,res) {
+    console.log('managerkind/kind/add');
+});
+//修改分类
+router.get('/managerkind/kind/:id',function (req,res) {
+    console.log('managerkind/kind/add');
+});
+//修改资讯
+router.get('/managerkind/info/:id',function (req,res) {
+    console.log('列表首页');
+});
+//提交表单添加
+router.post('/manager/:defaultUrl/add',function (req,res) {
+
+});
+//提交表单修改
+router.post('/manager/:defaultUrl/modify',function (req,res) {
+
+});
+
+
 module.exports = router;

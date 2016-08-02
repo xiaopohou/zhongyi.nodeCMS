@@ -1,7 +1,5 @@
 //------------------------------userGroupModule----用户组管理----------------------------------
 var userGroupModule = angular.module("userGroupModule", []);
-
-
 userGroupModule.factory('getItemService', ['$http', function ($http) {
     var getItemRequest = function (currentPage, targetId) {
         var _path = "/admin/manager/" + currentPage + "/item/?id=" + targetId;
@@ -172,4 +170,15 @@ userModule.controller('systemUserAdd',['$scope','$http','getItemServiceForUser',
             }
         })
     }
+}]);
+
+var infoMudule=angular.module('infoModule',[]);
+infoMudule.factory('getItemService',['$scope','$http',function () {
+    
+}]);
+infoMudule.controller('infolistMudule',['$scope','$http',function ($scope,$http) {
+    
+}]);
+infoMudule.controller('infoMudule',['$scope','$http',function ($scope,$http) {
+
 }]);
