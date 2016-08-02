@@ -153,6 +153,9 @@ userModule.controller('systemUserAdd',['$scope','$http','getItemServiceForUser',
     $scope.targetId=window.location.href.split('/')[6];
 
 
+
+
+
     if($scope.targetId){
         //先把对象初始化
         getItemServiceForUser.itemInfo('userSystemUserManager', $scope.targetId).success(function (result) {
@@ -160,8 +163,9 @@ userModule.controller('systemUserAdd',['$scope','$http','getItemServiceForUser',
         });
 
     }else{
-        console.log('---------------------------------------------xxxxxxxxxxxxxxxxxxx------yyyyyyy');
+
     }
+
     $scope.submitForm=function (isValid) {
         var url='/admin/manager/userSystemUserManager/add';
         if($scope.targetId){

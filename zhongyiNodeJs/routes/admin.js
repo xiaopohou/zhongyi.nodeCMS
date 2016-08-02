@@ -69,12 +69,24 @@ router.post('/manager/:defaultUrl/add', function (req, res) {
 });
 //修改
 router.post('/manager/:defaultUrl/modify', function (req, res) {
-    var targetUrl = req.params.defualtUrl;
+    var targetUrl = req.params.defaultUrl;
 
     var targetObject = adminFunc.getTargetObjectByUrl(targetUrl);
+
     DBHelper.updateOndeById(targetObject, req, res);
 });
-
+//修改v2
+// router.post('/manager/:defaultUrl/modify', function (req, res) {
+//
+//     var targetUrl = req.params.defaultUrl;
+//
+//
+//
+//     console.log('--------------------------------------------------------11------>>>'+targetUrl);
+//     var targetObject = adminFunc.getTargetObjectByUrl(targetUrl);
+//     //console.log('-------------------------------------------------------------->>>'+typeof targetObject);
+//     DBHelper.updateOndeById(targetObject, req, res);
+// });
 //删除
 router.get('/manager/:defaultUrl/delete', function (req, res) {
 
@@ -99,22 +111,10 @@ router.get('/manager/:defaultUrl/delete', function (req, res) {
 router.get('/manager/:defaultUrl/item', function (req, res) {
 
     var currentPage = req.params.defaultUrl;
-
-
-
-
-
-
-
     var targetObject = adminFunc.getTargetObjectByUrl(currentPage);
     var targetId = req.query.id;
-
-
     var params = url.parse(req.url, true);
     var id = params.query.id;
-
-
-
     if (targetObject == SystemRoleGroup) {
         SystemRoleGroup.getOneItem(res, targetId, function (result) {
             return res.json(result);
