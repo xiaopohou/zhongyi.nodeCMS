@@ -93,9 +93,8 @@ function angularHttpPost($http, isValid, url, formData, callBack) {
         console.log('未通过验证');
     }
 }
-
+//angularJs https Get方法封装
 function angularHttpGet($http, url, callBack) {
-
     $http.get(url).success(function (result) {
         if (result == 'success') {
             callBack(result);
@@ -111,6 +110,7 @@ var indexModule = angular.module("indexModule", []);
 indexModule.controller('indexController', ['$scope', '$http', function ($scope, $http) {
     $scope.formData = {};
 
+    initCurrentPageEvent($scope, $http, '确定要删除吗?');
 
 }]);
 
@@ -137,6 +137,7 @@ userModule.factory('getItemServiceForUser', ['$http', function ($http) {
 //用户列表页
 userModule.controller('systemUserList',['$scope','$http',function ($scope,$http) {
     $scope.formData={};
+    console.log('-------注册删除事件');
     initCurrentPageEventForManagerUser($scope,$http);
 
 }]);
@@ -148,24 +149,15 @@ userModule.controller('systemUserAdd',['$scope','$http','getItemServiceForUser',
         {name:"女",value:"2"}
     ];
     $scope.formData.userSex="2";
-
     //检查是否有参数标志参数传入
     $scope.targetId=window.location.href.split('/')[6];
-
-
-
-
-
     if($scope.targetId){
         //先把对象初始化
         getItemServiceForUser.itemInfo('userSystemUserManager', $scope.targetId).success(function (result) {
             $scope.formData = result;
         });
 
-    }else{
-
     }
-
     $scope.submitForm=function (isValid) {
         var url='/admin/manager/userSystemUserManager/add';
         if($scope.targetId){

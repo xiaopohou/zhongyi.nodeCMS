@@ -83,7 +83,7 @@
                         <thead>
                         <tr>
 
-                            <th></th>
+                            <th><input type="checkbox"/>全选</th>
                             <th>用户名</th>
                             <th>昵称</th>
                             <th>性别</th>
@@ -99,9 +99,9 @@
                             <td>{{group.userName}}</td>
                             <td><span class="pie">{{group.nickName}}</span>
                             </td>
-                            <td><span class="pie">{{group.userSex}}</span>
+                            <td><span class="pie">{{group.userSex==1?"男":"女"}}</span>
                             </td>
-                            <td>{{group.createDate|date:"yyyy-MM-dd hh:mm:ss"}}</td>
+                            <td>{{group.createDate|date:"yyyy-MM-dd hh:mm:ss"}} </td>
                             <td>
                                 <a class="btn btn-primary btn-xs" href="/admin/manager/SystemUser/{{group._id}}">编辑</a>
                                 <a class="btn btn-primary btn-xs" ng-click="deleteOne(group._id)">删除</a>

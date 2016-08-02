@@ -52,9 +52,10 @@ router.get('/manager/SystemRoleAdd', function (req, res) {
 });
 //编辑用户组
 router.get('/manager/SystemRole/:defaultParam', function (req, res) {
-    //  req.params.defaultParam
+    //传入附带信息
     adminFunc.renderPageWithCondition(req, res, 'manager/addSystemRole');
 });
+
 
 //提交数据
 router.post('/manager/:defaultUrl/add', function (req, res) {
@@ -67,31 +68,17 @@ router.post('/manager/:defaultUrl/add', function (req, res) {
         addSystemUser(req, res, SystemUser);
     }
 });
+
 //修改
 router.post('/manager/:defaultUrl/modify', function (req, res) {
     var targetUrl = req.params.defaultUrl;
-
     var targetObject = adminFunc.getTargetObjectByUrl(targetUrl);
-
     DBHelper.updateOndeById(targetObject, req, res);
 });
-//修改v2
-// router.post('/manager/:defaultUrl/modify', function (req, res) {
-//
-//     var targetUrl = req.params.defaultUrl;
-//
-//
-//
-//     console.log('--------------------------------------------------------11------>>>'+targetUrl);
-//     var targetObject = adminFunc.getTargetObjectByUrl(targetUrl);
-//     //console.log('-------------------------------------------------------------->>>'+typeof targetObject);
-//     DBHelper.updateOndeById(targetObject, req, res);
-// });
+
 //删除
 router.get('/manager/:defaultUrl/delete', function (req, res) {
-
-
-
+    console.log('----------------------------');
     var targetUrl = req.params.defaultUrl;
     var targetId = req.query.id;
     var targetObject = adminFunc.getTargetObjectByUrl(targetUrl);
@@ -99,12 +86,6 @@ router.get('/manager/:defaultUrl/delete', function (req, res) {
     DBHelper.deleteOneById(targetObject, req, res);
 
 });
-
-
-
-
-
-
 
 
 //获取对象方法
@@ -127,10 +108,6 @@ router.get('/manager/:defaultUrl/item', function (req, res) {
 });
 //添加角色组
 function addSystemGroup(req, res, targetObject) {
-    var error;
-    var _name = req.body.name;
-    var _desc = req.body.description;
-
     DBHelper.insertModel(req, res, targetObject);
 }
 //添加角色组
