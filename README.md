@@ -14,15 +14,18 @@
 >   1. 分类管理 
 
 ###3、集成第三方组件
->   1.Angular 1.5.8
->   1.Mongodb 3.2.7
->   1.UEditor
->   1.Bootstrap
->   1.Seesion,Cookie,Redis等
+>   1. Angular 1.5.8
+>   1. Mongodb 3.2.7
+>   1. UEditor
+>   1. Bootstrap
+>   1. Seesion,Cookie,Redis等
 
 ###未来扩展
 >   1.集成7牛图片上传
 >   2.分离对外服务层（提供第三方数据请求，独立此模块）
 
 
-作者：老赵 QQ：393331943
+###作者信息
+>   姓名：老赵 
+>   QQ：393331943
+>   Email:monkey.xiaowei@gmail.com
