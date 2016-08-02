@@ -163,14 +163,7 @@ router.get('/manager/info/add',function (req,res) {
 router.get('/managerkind/info/:id',function (req,res) {
     console.log('列表首页');
 });
-//提交表单添加
-router.post('/manager/:defaultUrl/add',function (req,res) {
 
-});
-//提交表单修改
-router.post('/manager/:defaultUrl/modify',function (req,res) {
-
-});
 
 
 module.exports = router;

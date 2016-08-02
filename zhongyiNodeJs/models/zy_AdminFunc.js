@@ -26,12 +26,10 @@ var adminFunc = {
     },
     getTargetObjectByUrl:function (url) {
         var targetModel;
-        if(url==siteConfig.zy_userSystemRoleGroupList[0])
-        {
+        if(url==siteConfig.zy_userSystemRoleGroupList[0]) {
             targetModel=SystemRoleGroupModel;
         }
-        else if(url==siteConfig.zy_userSystemUserList[0])
-        {
+        else if(url==siteConfig.zy_userSystemUserList[0]) {
             targetModel=SystemUser;
         }
         return targetModel;

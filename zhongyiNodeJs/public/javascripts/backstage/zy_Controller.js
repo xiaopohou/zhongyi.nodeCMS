@@ -172,24 +172,37 @@ userModule.controller('systemUserAdd',['$scope','$http','getItemServiceForUser',
     }
 }]);
 
-var infoMudule=angular.module('infoModule',[]);
-infoMudule.factory('getItemService',['$scope','$http',function () {
+var infoMangerModule=angular.module('infoMangerModule',[]);
+
+infoMangerModule.factory('getItemService',['$scope','$http',function () {
 
 }]);
-infoMudule.controller('infolistController',['$scope','$http',function ($scope,$http) {
-    initCurrentPageEventForManagerInfo($scope,$http);
+infoMangerModule.controller('infolistController',['$scope','$http',function ($scope,$http) {
+    $scope.formData={};
+    //initCurrentPageEventForManagerInfo($scope,$http);
 
 }]);
-infoMudule.controller('infoController',['$scope','$http',function ($scope,$http) {
+infoMangerModule.controller('infoController',['$scope','$http',function ($scope,$http) {
 
     $scope.formData={};
-
-    //todo:截取参数判断是否添加,是:获取对象绑定formdata
-
-    //todo:提交表单
-
+    $scope.targetId=window.location.href.split('/')[6];
+    if($scope.targetId){
+        angularHttpGet($http,'/admin/manager/InfoModel/item/?id='+targetId,function (result) {
+            $scope.formData=result;
+        })
+    }
     $scope.submitForm=function (isValid) {
-
+        var url='/manager/info/add';
+        if($scope.targetId){
+            url='/manager/info/modify/?id='+targetId;
+        }
+        angularHttpPost($http,isValid,url,$scope.formData,function (result) {
+            if(result=='success'){
+                window.location.href='/amdin/manager/manangerinfo';
+            }else {
+                console.log('提交表单错误');
+            }
+        })
     }
 
 }]);
