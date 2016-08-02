@@ -174,11 +174,22 @@ userModule.controller('systemUserAdd',['$scope','$http','getItemServiceForUser',
 
 var infoMudule=angular.module('infoModule',[]);
 infoMudule.factory('getItemService',['$scope','$http',function () {
-    
+
 }]);
-infoMudule.controller('infolistMudule',['$scope','$http',function ($scope,$http) {
-    
+infoMudule.controller('infolistController',['$scope','$http',function ($scope,$http) {
+    initCurrentPageEventForManagerInfo($scope,$http);
+
 }]);
-infoMudule.controller('infoMudule',['$scope','$http',function ($scope,$http) {
+infoMudule.controller('infoController',['$scope','$http',function ($scope,$http) {
+
+    $scope.formData={};
+
+    //todo:截取参数判断是否添加,是:获取对象绑定formdata
+
+    //todo:提交表单
+
+    $scope.submitForm=function (isValid) {
+
+    }
 
 }]);

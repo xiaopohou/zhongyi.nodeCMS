@@ -139,9 +139,9 @@ router.get('/manager/:targetUrl/add', function (req, res) {
 });
 
 //资讯列表
-router.get('/managerinfo',function (req,res) {
-    //console.log('列表首页');
-    res.render('manager/111');
+router.get('/manager/managerinfo',function (req,res) {
+
+    res.render('manager/managerInfo');
 });
 //分类列表
 router.get('/managerkind',function (req,res) {
@@ -154,6 +154,10 @@ router.get('/managerkind/kind/add',function (req,res) {
 //修改分类
 router.get('/managerkind/kind/:id',function (req,res) {
     console.log('managerkind/kind/add');
+});
+//添加资讯
+router.get('/manager/info/add',function (req,res) {
+     res.render('manager/');
 });
 //修改资讯
 router.get('/managerkind/info/:id',function (req,res) {
