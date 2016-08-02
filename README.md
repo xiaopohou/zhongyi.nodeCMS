@@ -3,10 +3,10 @@
 ##整体功能：
  ![Image text](https://github.com/xiaopohou/zhongyi.nodeCMS/blob/master/zhongyiNodeJs/im/map.png)
 ###1、系统管理
->   1.1 用户管理
->   1.2 角色管理
->   1.3 用户组管理
->   1.4 日志管理
+>   1. 用户管理
+>   1. 角色管理
+>   1. 用户组管理
+>   1. 日志管理
 
 ##2、提供对CMS后台数据的管理
 ###2.1 资讯管理（in progress)
