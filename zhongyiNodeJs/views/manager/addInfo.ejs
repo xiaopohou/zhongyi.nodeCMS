@@ -18,6 +18,12 @@
     <link href="/css/style.min862f.css?v=4.1.0" rel="stylesheet">
     <script src="/javascripts/backstage/zy_ControllerFunc.js"></script>
 
+    <script type="text/javascript" charset="utf-8" src="/ueditor/ueditor.config.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/ueditor/ueditor.all.min.js"> </script>
+    <script type="text/javascript" charset="utf-8" src="/ueditor/lang/zh-cn/zh-cn.js"> </script>
+
+
+
     <style>
         /* Additional style to fix warning dialog position */
 
@@ -28,7 +34,7 @@
 
 </head>
 
-<body class="gray-bg" ng-app="infoMudule" >
+<body class="gray-bg" ng-app="infoMangerModule" >
 
 <div class="row" ng-controller="infoController">
     <div class="col-sm-12">
@@ -41,13 +47,14 @@
                         <label class="col-sm-3 control-label">新闻标题</label>
 
                         <div class="col-sm-8">
-                            <input type="text" class="form-control" ng-model="formData.userName"   type="text" required="" aria-required="true">
+                            <input type="text" class="form-control" ng-model="formData.title"   type="text" required="" aria-required="true">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-sm-3 control-label">简介</label>
 
                         <div class="col-sm-8">
+
                             <input type="text" class="form-control" ng-model="formData.desc"   type="text" required="" aria-required="true">
                         </div>
                     </div>
@@ -56,22 +63,33 @@
                         <label class="col-sm-3 control-label">状态</label>
 
                         <div class="col-sm-8">
-                            <select  ng-model="formData.userSex" ng-options="item.value as item.name for item in sexs"></select>
+                            <select ng-model="formData.state" ng-options="item.value as item.name for item in states">
+                                <option value="-1">-请选择-</option>
+
+                            </select>
                         </div>
                     </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">分类</label>
+
+                            <div class="col-sm-8">
+                                <select>
+                                    <option value="-1">-请选择-</option>
+
+                                </select>
+                            </div>
+                        </div>
+                        <div class="hr-line-dashed"></div>
                     <div class="form-group">
                         <label class="col-sm-3 control-label">内容</label>
                         <div class="col-sm-8">
-                            <input type="text" class="form-control" ng-model="formData.content" required="">
+
+                            <textarea class="" name="content" ng-model="formData.content" id="container" style="height: 500px;" ng-minlength="50" placeholder="请输入文章详情" ueditor>{{formData.content}}</textarea>
+
                         </div>
                     </div>
-                    <div class="hr-line-dashed"></div>
-                    <div class="form-group">
-                        <label class="col-sm-3 control-label">email</label>
-                        <div class="col-sm-8">
-                            <input type="text" class="form-control" ng-model="formData.userEmail" required="">
-                        </div>
-                    </div>
+
+
 
 
                     <div class="form-group">
@@ -97,6 +115,9 @@
 <script src="/javascripts/angular.js"></script>
 <script src="/javascripts/backstage/zy_Controller.js"></script>
 
+<script>
+    var ue = UE.getEditor('container');
+</script>
 
 </body>
 

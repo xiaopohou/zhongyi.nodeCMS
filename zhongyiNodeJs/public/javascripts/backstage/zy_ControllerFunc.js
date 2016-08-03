@@ -120,15 +120,15 @@ function initCurrentPageEventForManagerInfo($scope, $http) {
     //分页事件基本信息
     initPageInfo($scope);
     //分页事件
-    getPageInfos($scope, $http, '/admin/manager/getDocumentList/ManagerInfoList/', 'normalList')
+    getPageInfos($scope, $http, '/admin/manager/getDocumentList/ManagerInfoList', 'normalList')
     //添加事件
     $scope.addInfo = function () {
-        window.location.href = '/admin/manager/InfoAdd'
+        window.location.href = '/admin/cms/info/add'
     }
 
     $scope.deleteOne = function (id) {
         if (confirm(info)) {
-            angularHttpGet($http, '/admin/manager/userSystemUserManager/delete?id=' + id, function (result) {
+            angularHttpGet($http, '/admin/cms/info/delete?id=' + id, function (result) {
                 console.log('result is :' + result);
                 initPagination($scope, $http);
             });

@@ -83,9 +83,9 @@
                         <tr>
 
                             <th><input type="checkbox"/>全选</th>
-                            <th>用户名</th>
-                            <th>昵称</th>
-                            <th>性别</th>
+                            <th>标题</th>
+                            <th>状态</th>
+                            <th>发布人</th>
                             <th>创建日期</th>
                             <th>操作</th>
                         </tr>
@@ -95,14 +95,14 @@
                             <td>
                                 <input type="checkbox" checked class="i-checks" name="input[]">
                             </td>
-                            <td>{{group.userName}}</td>
-                            <td><span class="pie">{{group.nickName}}</span>
+                            <td>{{group.title|limitTo:10}}</td>
+                            <td><span class="pie">{{group.state=="1"?"通过":"未通过"}}</span>
                             </td>
-                            <td><span class="pie">{{group.userSex==1?"男":"女"}}</span>
+                            <td><span class="pie">{{group.editorId}}</span>
                             </td>
                             <td>{{group.createDate|date:"yyyy-MM-dd hh:mm:ss"}} </td>
                             <td>
-                                <a class="btn btn-primary btn-xs" href="/admin/manager/SystemUser/{{group._id}}">编辑</a>
+                                <a class="btn btn-primary btn-xs" href="/admin/cms/info/modify/{{group._id}}">编辑</a>
                                 <a class="btn btn-primary btn-xs" ng-click="deleteOne(group._id)">删除</a>
 
                             </td>

@@ -172,33 +172,49 @@ userModule.controller('systemUserAdd',['$scope','$http','getItemServiceForUser',
     }
 }]);
 
+//资讯模块
 var infoMangerModule=angular.module('infoMangerModule',[]);
 
 infoMangerModule.factory('getItemService',['$scope','$http',function () {
 
 }]);
+
 infoMangerModule.controller('infolistController',['$scope','$http',function ($scope,$http) {
     $scope.formData={};
-    //initCurrentPageEventForManagerInfo($scope,$http);
+    initCurrentPageEventForManagerInfo($scope,$http);
 
 }]);
+
 infoMangerModule.controller('infoController',['$scope','$http',function ($scope,$http) {
 
     $scope.formData={};
-    $scope.targetId=window.location.href.split('/')[6];
+    $scope.targetId=window.location.href.split('/')[7];
+
+    //console.log('____________________________'+$scope.targetId+'________'+window.location.href);
+
+
+    // http://localhost:3000/admin/cms/info/add
     if($scope.targetId){
         angularHttpGet($http,'/admin/manager/InfoModel/item/?id='+targetId,function (result) {
             $scope.formData=result;
         })
     }
+
+    $scope.states=[
+        {name:'启用',value:"1"},
+        {name:'禁用',value:"0"}
+    ];
+
+    $scope.formData.state="0";
+
     $scope.submitForm=function (isValid) {
-        var url='/manager/info/add';
+        var url='/admin/cms/info/add';
         if($scope.targetId){
-            url='/manager/info/modify/?id='+targetId;
+            url='/admin/cms/info/modify/?id='+targetId;
         }
         angularHttpPost($http,isValid,url,$scope.formData,function (result) {
             if(result=='success'){
-                window.location.href='/amdin/manager/manangerinfo';
+                window.location.href='/admin/cms/infolist';
             }else {
                 console.log('提交表单错误');
             }

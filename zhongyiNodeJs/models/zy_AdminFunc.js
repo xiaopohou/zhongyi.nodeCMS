@@ -4,6 +4,7 @@
 var siteConfig = require('../public/config/zy_Config');
 var SystemRoleGroupModel= require('../models/zy_SystemRoleGroup');
 var SystemUser=require('../models/zy_SystemUser');
+var InfoModel=require('../models/zy_Info');
 var adminFunc = {
 
     siteInfos: function (description) {
@@ -31,6 +32,9 @@ var adminFunc = {
         }
         else if(url==siteConfig.zy_userSystemUserList[0]) {
             targetModel=SystemUser;
+        }
+        else if(url==siteConfig.zy_ManagerInfoList[0]){
+            targetModel=InfoModel;
         }
         return targetModel;
     },

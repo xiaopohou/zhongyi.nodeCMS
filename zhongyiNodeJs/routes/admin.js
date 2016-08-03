@@ -139,31 +139,49 @@ router.get('/manager/:targetUrl/add', function (req, res) {
 });
 
 //资讯列表
-router.get('/manager/managerinfo',function (req,res) {
+router.get('/cms/infolist',function (req,res) {
 
     res.render('manager/managerInfo');
 });
 //分类列表
-router.get('/managerkind',function (req,res) {
+router.get('/cms/kindlist',function (req,res) {
     console.log('列表首页');
 });
 //添加分类
-router.get('/managerkind/kind/add',function (req,res) {
+router.get('/cms/kind/add',function (req,res) {
     console.log('managerkind/kind/add');
 });
 //修改分类
-router.get('/managerkind/kind/:id',function (req,res) {
+router.get('/cms/kind/modify',function (req,res) {
     console.log('managerkind/kind/add');
 });
 //添加资讯
-router.get('/manager/info/add',function (req,res) {
-     res.render('manager/');
+router.get('/cms/info/add',function (req,res) {
+     res.render('manager/addinfo');
 });
 //修改资讯
-router.get('/managerkind/info/:id',function (req,res) {
-    console.log('列表首页');
+router.get('/cms/info/modify',function (req,res) {
+    res.render('manager/addinfo');
 });
+router.get('/cms/info/delete',function (req,res) {
+    var targetId=req.query.id;
+    DBHelper.deleteOneById(InfoModel,req,res);
+});
+//提交数据
+router.post('/cms/info/add', function (req, res) {
 
+    var _tempInfo=new InfoModel(req.body);
+
+
+    console.log('_______________editor______'+req.body.content);
+
+    _tempInfo.save(function (error) {
+        if(!error){
+            res.end('success');
+        }else
+            res.end('info insert failed');
+    });
+});
 
 
 module.exports = router;
