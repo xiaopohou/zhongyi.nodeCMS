@@ -8,6 +8,8 @@ var routes = require('./routes/index');
 var users = require('./routes/users');
 var admins = require('./routes/admin');//后台
 
+var system= require('./routes/system');
+
 // 模板引擎
 var partials= require('express-partials');
 var app = express();
@@ -22,7 +24,7 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-
+app.use('/system',system);
 
 //ueditor注册
 var ueditor = require('ueditor-nodejs');
