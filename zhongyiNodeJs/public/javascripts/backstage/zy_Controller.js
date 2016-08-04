@@ -83,7 +83,7 @@ function angularHttpPost($http, isValid, url, formData, callBack) {
                 if (data == 'success') {
                     callBack(data);
                 } else {
-                    console.log('error' + data);
+                    console.log('error');
                 }
             });
     }
@@ -93,6 +93,7 @@ function angularHttpPost($http, isValid, url, formData, callBack) {
 }
 //angularJs https Get方法封装
 function angularHttpGet($http, url, callBack) {
+    console.log('___________>>>>>>>>>________'+url);
     $http.get(url).success(function (result) {
         if (result == 'success') {
             callBack(result);
@@ -175,8 +176,17 @@ userModule.controller('systemUserAdd',['$scope','$http','getItemServiceForUser',
 //资讯模块
 var infoMangerModule=angular.module('infoMangerModule',[]);
 
-infoMangerModule.factory('getItemService',['$scope','$http',function () {
+infoMangerModule.factory('getItemService', ['$http', function ($http) {
+    var getItemRequest = function (currentPage, targetId) {
+        var _path = "/admin/manager/" + currentPage + "/item/?id=" + targetId;
 
+        return $http.get(_path);
+    };
+    return {
+        itemInfo: function (currentPage, targetId) {
+            return getItemRequest(currentPage, targetId);
+        }
+    }
 }]);
 
 infoMangerModule.controller('infolistController',['$scope','$http',function ($scope,$http) {
@@ -185,19 +195,17 @@ infoMangerModule.controller('infolistController',['$scope','$http',function ($sc
 
 }]);
 
-infoMangerModule.controller('infoController',['$scope','$http',function ($scope,$http) {
-
+infoMangerModule.controller('infoController',['$scope','$http','getItemService',function ($scope,$http,getItemService) {
     $scope.formData={};
     $scope.targetId=window.location.href.split('/')[7];
+    //console.log('__________________href______________'+window.location.href.split('/')[7]);
 
-    //console.log('____________________________'+$scope.targetId+'________'+window.location.href);
 
-
-    // http://localhost:3000/admin/cms/info/add
     if($scope.targetId){
-        angularHttpGet($http,'/admin/manager/InfoModel/item/?id='+targetId,function (result) {
+
+        getItemService.itemInfo('ManagerInfoList',$scope.targetId).success(function (result) {
             $scope.formData=result;
-        })
+        });
     }
 
     $scope.states=[
@@ -210,7 +218,8 @@ infoMangerModule.controller('infoController',['$scope','$http',function ($scope,
     $scope.submitForm=function (isValid) {
         var url='/admin/cms/info/add';
         if($scope.targetId){
-            url='/admin/cms/info/modify/?id='+targetId;
+            url='/admin/cms/info/modify/?id='+$scope.targetId;
+
         }
         angularHttpPost($http,isValid,url,$scope.formData,function (result) {
             if(result=='success'){

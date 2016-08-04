@@ -129,7 +129,7 @@ function initCurrentPageEventForManagerInfo($scope, $http) {
     $scope.deleteOne = function (id) {
         if (confirm(info)) {
             angularHttpGet($http, '/admin/cms/info/delete?id=' + id, function (result) {
-                console.log('result is :' + result);
+
                 initPagination($scope, $http);
             });
         }

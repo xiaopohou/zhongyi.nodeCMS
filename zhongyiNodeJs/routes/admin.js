@@ -80,7 +80,7 @@ router.post('/manager/:defaultUrl/modify', function (req, res) {
 
 //删除
 router.get('/manager/:defaultUrl/delete', function (req, res) {
-    console.log('----------------------------');
+    console.log('-------------111---------------');
     var targetUrl = req.params.defaultUrl;
     var targetId = req.query.id;
     var targetObject = adminFunc.getTargetObjectByUrl(targetUrl);
@@ -89,8 +89,6 @@ router.get('/manager/:defaultUrl/delete', function (req, res) {
 
 });
 
-
-//获取对象方法
 router.get('/manager/:defaultUrl/item', function (req, res) {
 
     var currentPage = req.params.defaultUrl;
@@ -98,14 +96,25 @@ router.get('/manager/:defaultUrl/item', function (req, res) {
     var targetId = req.query.id;
     var params = url.parse(req.url, true);
     var id = params.query.id;
+
+
+
+
+
+
     if (targetObject == SystemRoleGroup) {
         SystemRoleGroup.getOneItem(res, targetId, function (result) {
             return res.json(result);
         });
     }
+    else if(targetObject==InfoModel)
+    {
+        InfoModel.getOneItem(res,targetId,function (result) {
+            return res.json(result);
+        });
+    }
     else {
-
-        DBHelper.findOne(targetObject, req, res);
+       return DBHelper.findOne(targetObject, req, res);
     }
 });
 //添加角色组
@@ -160,7 +169,7 @@ router.get('/cms/info/add',function (req,res) {
      res.render('manager/addinfo');
 });
 //修改资讯
-router.get('/cms/info/modify',function (req,res) {
+router.get('/cms/info/modify/:id',function (req,res) {
     res.render('manager/addinfo');
 });
 router.get('/cms/info/delete',function (req,res) {
@@ -172,9 +181,6 @@ router.post('/cms/info/add', function (req, res) {
 
     var _tempInfo=new InfoModel(req.body);
 
-
-    console.log('_______________editor______'+req.body.content);
-
     _tempInfo.save(function (error) {
         if(!error){
             res.end('success');
@@ -182,6 +188,9 @@ router.post('/cms/info/add', function (req, res) {
             res.end('info insert failed');
     });
 });
-
+//修改数据
+router.post('/cms/info/modify',function (req,res) {
+    DBHelper.updateOndeById(InfoModel,req,res);
+});
 
 module.exports = router;

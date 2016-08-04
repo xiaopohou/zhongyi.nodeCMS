@@ -26,6 +26,7 @@ var adminFunc = {
         res.redirect('/manager/testPage');
     },
     getTargetObjectByUrl:function (url) {
+
         var targetModel;
         if(url==siteConfig.zy_userSystemRoleGroupList[0]) {
             targetModel=SystemRoleGroupModel;

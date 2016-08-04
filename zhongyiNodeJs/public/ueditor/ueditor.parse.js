@@ -1,6 +1,11 @@
+/*!
+ * UEditor
+ * version: ueditor
+ * build: Thu May 29 2014 16:47:57 GMT+0800 (中国标准时间)
+ */
+
 (function(){
 
-// parse.js
 (function(){
     UE = window.UE || {};
     var isIE = !!window.ActiveXObject;
@@ -329,8 +334,562 @@
     }
 })();
 
+UE.parse.register('insertcode',function(utils){
+    var pres = this.root.getElementsByTagName('pre');
+    if(pres.length){
+        if(typeof XRegExp == "undefined"){
+            var jsurl,cssurl;
+            if(this.rootPath !== undefined){
+                jsurl = utils.removeLastbs(this.rootPath)  + '/third-party/SyntaxHighlighter/shCore.js';
+                cssurl = utils.removeLastbs(this.rootPath) + '/third-party/SyntaxHighlighter/shCoreDefault.css';
+            }else{
+                jsurl = this.highlightJsUrl;
+                cssurl = this.highlightCssUrl;
+            }
+            utils.loadFile(document,{
+                id : "syntaxhighlighter_css",
+                tag : "link",
+                rel : "stylesheet",
+                type : "text/css",
+                href : cssurl
+            });
+            utils.loadFile(document,{
+                id : "syntaxhighlighter_js",
+                src : jsurl,
+                tag : "script",
+                type : "text/javascript",
+                defer : "defer"
+            },function(){
+                utils.each(pres,function(pi){
+                    if(pi && /brush/i.test(pi.className)){
+                        SyntaxHighlighter.highlight(pi);
+                    }
+                });
+            });
+        }else{
+            utils.each(pres,function(pi){
+                if(pi && /brush/i.test(pi.className)){
+                    SyntaxHighlighter.highlight(pi);
+                }
+            });
+        }
+    }
 
-// list.js
+});
+UE.parse.register('table', function (utils) {
+    var me = this,
+        root = this.root,
+        tables = root.getElementsByTagName('table');
+    if (tables.length) {
+        var selector = this.selector;
+        //追加默认的表格样式
+        utils.cssRule('table',
+            selector + ' table.noBorderTable td,' +
+                selector + ' table.noBorderTable th,' +
+                selector + ' table.noBorderTable caption{border:1px dashed #ddd !important}' +
+                selector + ' table.sortEnabled tr.firstRow th,' + selector + ' table.sortEnabled tr.firstRow td{padding-right:20px; background-repeat: no-repeat;' +
+                    'background-position: center right; background-image:url(' + this.rootPath + 'themes/default/images/sortable.png);}' +
+                selector + ' table.sortEnabled tr.firstRow th:hover,' + selector + ' table.sortEnabled tr.firstRow td:hover{background-color: #EEE;}' +
+                selector + ' table{margin-bottom:10px;border-collapse:collapse;display:table;}' +
+                selector + ' td,' + selector + ' th{ background:white; padding: 5px 10px;border: 1px solid #DDD;}' +
+                selector + ' caption{border:1px dashed #DDD;border-bottom:0;padding:3px;text-align:center;}' +
+                selector + ' th{border-top:1px solid #BBB;background:#F7F7F7;}' +
+                selector + ' table tr.firstRow th{border-top:2px solid #BBB;background:#F7F7F7;}' +
+                selector + ' tr.ue-table-interlace-color-single td{ background: #fcfcfc; }' +
+                selector + ' tr.ue-table-interlace-color-double td{ background: #f7faff; }' +
+                selector + ' td p{margin:0;padding:0;}',
+            document);
+        //填充空的单元格
+
+        utils.each('td th caption'.split(' '), function (tag) {
+            var cells = root.getElementsByTagName(tag);
+            cells.length && utils.each(cells, function (node) {
+                if (!node.firstChild) {
+                    node.innerHTML = '&nbsp;';
+
+                }
+            })
+        });
+
+        //表格可排序
+        var tables = root.getElementsByTagName('table');
+        utils.each(tables, function (table) {
+            if (/\bsortEnabled\b/.test(table.className)) {
+                utils.on(table, 'click', function(e){
+                    var target = e.target || e.srcElement,
+                        cell = findParentByTagName(target, ['td', 'th']);
+                    var table = findParentByTagName(target, 'table'),
+                        colIndex = utils.indexOf(table.rows[0].cells, cell),
+                        sortType = table.getAttribute('data-sort-type');
+                    if(colIndex != -1) {
+                        sortTable(table, colIndex, me.tableSortCompareFn || sortType);
+                        updateTable(table);
+                    }
+                });
+            }
+        });
+
+        //按照标签名查找父节点
+        function findParentByTagName(target, tagNames) {
+            var i, current = target;
+            tagNames = utils.isArray(tagNames) ? tagNames:[tagNames];
+            while(current){
+                for(i = 0;i < tagNames.length; i++) {
+                    if(current.tagName == tagNames[i].toUpperCase()) return current;
+                }
+                current = current.parentNode;
+            }
+            return null;
+        }
+        //表格排序
+        function sortTable(table, sortByCellIndex, compareFn) {
+            var rows = table.rows,
+                trArray = [],
+                flag = rows[0].cells[0].tagName === "TH",
+                lastRowIndex = 0;
+
+            for (var i = 0,len = rows.length; i < len; i++) {
+                trArray[i] = rows[i];
+            }
+
+            var Fn = {
+                'reversecurrent': function(td1,td2){
+                    return 1;
+                },
+                'orderbyasc': function(td1,td2){
+                    var value1 = td1.innerText||td1.textContent,
+                        value2 = td2.innerText||td2.textContent;
+                    return value1.localeCompare(value2);
+                },
+                'reversebyasc': function(td1,td2){
+                    var value1 = td1.innerHTML,
+                        value2 = td2.innerHTML;
+                    return value2.localeCompare(value1);
+                },
+                'orderbynum': function(td1,td2){
+                    var value1 = td1[utils.isIE ? 'innerText':'textContent'].match(/\d+/),
+                        value2 = td2[utils.isIE ? 'innerText':'textContent'].match(/\d+/);
+                    if(value1) value1 = +value1[0];
+                    if(value2) value2 = +value2[0];
+                    return (value1||0) - (value2||0);
+                },
+                'reversebynum': function(td1,td2){
+                    var value1 = td1[utils.isIE ? 'innerText':'textContent'].match(/\d+/),
+                        value2 = td2[utils.isIE ? 'innerText':'textContent'].match(/\d+/);
+                    if(value1) value1 = +value1[0];
+                    if(value2) value2 = +value2[0];
+                    return (value2||0) - (value1||0);
+                }
+            };
+
+            //对表格设置排序的标记data-sort-type
+            table.setAttribute('data-sort-type', compareFn && typeof compareFn === "string" && Fn[compareFn] ? compareFn:'');
+
+            //th不参与排序
+            flag && trArray.splice(0, 1);
+            trArray = sort(trArray,function (tr1, tr2) {
+                var result;
+                if (compareFn && typeof compareFn === "function") {
+                    result = compareFn.call(this, tr1.cells[sortByCellIndex], tr2.cells[sortByCellIndex]);
+                } else if (compareFn && typeof compareFn === "number") {
+                    result = 1;
+                } else if (compareFn && typeof compareFn === "string" && Fn[compareFn]) {
+                    result = Fn[compareFn].call(this, tr1.cells[sortByCellIndex], tr2.cells[sortByCellIndex]);
+                } else {
+                    result = Fn['orderbyasc'].call(this, tr1.cells[sortByCellIndex], tr2.cells[sortByCellIndex]);
+                }
+                return result;
+            });
+            var fragment = table.ownerDocument.createDocumentFragment();
+            for (var j = 0, len = trArray.length; j < len; j++) {
+                fragment.appendChild(trArray[j]);
+            }
+            var tbody = table.getElementsByTagName("tbody")[0];
+            if(!lastRowIndex){
+                tbody.appendChild(fragment);
+            }else{
+                tbody.insertBefore(fragment,rows[lastRowIndex- range.endRowIndex + range.beginRowIndex - 1])
+            }
+        }
+        //冒泡排序
+        function sort(array, compareFn){
+            compareFn = compareFn || function(item1, item2){ return item1.localeCompare(item2);};
+            for(var i= 0,len = array.length; i<len; i++){
+                for(var j = i,length = array.length; j<length; j++){
+                    if(compareFn(array[i], array[j]) > 0){
+                        var t = array[i];
+                        array[i] = array[j];
+                        array[j] = t;
+                    }
+                }
+            }
+            return array;
+        }
+        //更新表格
+        function updateTable(table) {
+            //给第一行设置firstRow的样式名称,在排序图标的样式上使用到
+            if(!utils.hasClass(table.rows[0], "firstRow")) {
+                for(var i = 1; i< table.rows.length; i++) {
+                    utils.removeClass(table.rows[i], "firstRow");
+                }
+                utils.addClass(table.rows[0], "firstRow");
+            }
+        }
+    }
+});
+UE.parse.register('charts',function( utils ){
+
+    utils.cssRule('chartsContainerHeight','.edui-chart-container { height:'+(this.chartContainerHeight||300)+'px}');
+    var resourceRoot = this.rootPath,
+        containers = this.root,
+        sources = null;
+
+    //不存在指定的根路径， 则直接退出
+    if ( !resourceRoot ) {
+        return;
+    }
+
+    if ( sources = parseSources() ) {
+
+        loadResources();
+
+    }
+
+
+    function parseSources () {
+
+        if ( !containers ) {
+            return null;
+        }
+
+        return extractChartData( containers );
+
+    }
+
+    /**
+     * 提取数据
+     */
+    function extractChartData ( rootNode ) {
+
+        var data = [],
+            tables = rootNode.getElementsByTagName( "table" );
+
+        for ( var i = 0, tableNode; tableNode = tables[ i ]; i++ ) {
+
+            if ( tableNode.getAttribute( "data-chart" ) !== null ) {
+
+                data.push( formatData( tableNode ) );
+
+            }
+
+        }
+
+        return data.length ? data : null;
+
+    }
+
+    function formatData ( tableNode ) {
+
+        var meta = tableNode.getAttribute( "data-chart" ),
+            metaConfig = {},
+            data = [];
+
+        //提取table数据
+        for ( var i = 0, row; row = tableNode.rows[ i ]; i++ ) {
+
+            var rowData = [];
+
+            for ( var j = 0, cell; cell = row.cells[ j ]; j++ ) {
+
+                var value = ( cell.innerText || cell.textContent || '' );
+                rowData.push( cell.tagName == 'TH' ? value:(value | 0) );
+
+            }
+
+            data.push( rowData );
+
+        }
+
+        //解析元信息
+        meta = meta.split( ";" );
+        for ( var i = 0, metaData; metaData = meta[ i ]; i++ ) {
+
+            metaData = metaData.split( ":" );
+            metaConfig[ metaData[ 0 ] ] = metaData[ 1 ];
+
+        }
+
+
+        return {
+            table: tableNode,
+            meta: metaConfig,
+            data: data
+        };
+
+    }
+
+    //加载资源
+    function loadResources () {
+
+        loadJQuery();
+
+    }
+
+    function loadJQuery () {
+
+        //不存在jquery， 则加载jquery
+        if ( !window.jQuery ) {
+
+            utils.loadFile(document,{
+                src : resourceRoot + "/third-party/jquery-1.10.2.min.js",
+                tag : "script",
+                type : "text/javascript",
+                defer : "defer"
+            },function(){
+
+                loadHighcharts();
+
+            });
+
+        } else {
+
+            loadHighcharts();
+
+        }
+
+    }
+
+    function loadHighcharts () {
+
+        //不存在Highcharts， 则加载Highcharts
+        if ( !window.Highcharts ) {
+
+            utils.loadFile(document,{
+                src : resourceRoot + "/third-party/highcharts/highcharts.js",
+                tag : "script",
+                type : "text/javascript",
+                defer : "defer"
+            },function(){
+
+                loadTypeConfig();
+
+            });
+
+        } else {
+
+            loadTypeConfig();
+
+        }
+
+    }
+
+    //加载图表差异化配置文件
+    function loadTypeConfig () {
+
+        utils.loadFile(document,{
+            src : resourceRoot + "/dialogs/charts/chart.config.js",
+            tag : "script",
+            type : "text/javascript",
+            defer : "defer"
+        },function(){
+
+            render();
+
+        });
+
+    }
+
+    //渲染图表
+    function render () {
+
+        var config = null,
+            chartConfig = null,
+            container = null;
+
+        for ( var i = 0, len = sources.length; i < len; i++ ) {
+
+            config = sources[ i ];
+
+            chartConfig = analysisConfig( config );
+
+            container = createContainer( config.table );
+
+            renderChart( container, typeConfig[ config.meta.chartType ], chartConfig );
+
+        }
+
+
+    }
+
+    /**
+     * 渲染图表
+     * @param container 图表容器节点对象
+     * @param typeConfig 图表类型配置
+     * @param config 图表通用配置
+     * */
+    function renderChart ( container, typeConfig, config ) {
+
+
+        $( container ).highcharts( $.extend( {}, typeConfig, {
+
+            credits: {
+                enabled: false
+            },
+            exporting: {
+                enabled: false
+            },
+            title: {
+                text: config.title,
+                x: -20 //center
+            },
+            subtitle: {
+                text: config.subTitle,
+                x: -20
+            },
+            xAxis: {
+                title: {
+                    text: config.xTitle
+                },
+                categories: config.categories
+            },
+            yAxis: {
+                title: {
+                    text: config.yTitle
+                },
+                plotLines: [{
+                    value: 0,
+                    width: 1,
+                    color: '#808080'
+                }]
+            },
+            tooltip: {
+                enabled: true,
+                valueSuffix: config.suffix
+            },
+            legend: {
+                layout: 'vertical',
+                align: 'right',
+                verticalAlign: 'middle',
+                borderWidth: 1
+            },
+            series: config.series
+
+        } ));
+
+    }
+
+    /**
+     * 创建图表的容器
+     * 新创建的容器会替换掉对应的table对象
+     * */
+    function createContainer ( tableNode ) {
+
+        var container = document.createElement( "div" );
+        container.className = "edui-chart-container";
+
+        tableNode.parentNode.replaceChild( container, tableNode );
+
+        return container;
+
+    }
+
+    //根据config解析出正确的类别和图表数据信息
+    function analysisConfig ( config ) {
+
+        var series = [],
+        //数据类别
+            categories = [],
+            result = [],
+            data = config.data,
+            meta = config.meta;
+
+        //数据对齐方式为相反的方式， 需要反转数据
+        if ( meta.dataFormat != "1" ) {
+
+            for ( var i = 0, len = data.length; i < len ; i++ ) {
+
+                for ( var j = 0, jlen = data[ i ].length; j < jlen; j++ ) {
+
+                    if ( !result[ j ] ) {
+                        result[ j ] = [];
+                    }
+
+                    result[ j ][ i ] = data[ i ][ j ];
+
+                }
+
+            }
+
+            data = result;
+
+        }
+
+        result = {};
+
+        //普通图表
+        if ( meta.chartType != typeConfig.length - 1 ) {
+
+            categories = data[ 0 ].slice( 1 );
+
+            for ( var i = 1, curData; curData = data[ i ]; i++ ) {
+                series.push( {
+                    name: curData[ 0 ],
+                    data: curData.slice( 1 )
+                } );
+            }
+
+            result.series = series;
+            result.categories = categories;
+            result.title = meta.title;
+            result.subTitle = meta.subTitle;
+            result.xTitle = meta.xTitle;
+            result.yTitle = meta.yTitle;
+            result.suffix = meta.suffix;
+
+        } else {
+
+            var curData = [];
+
+            for ( var i = 1, len = data[ 0 ].length; i < len; i++ ) {
+
+                curData.push( [ data[ 0 ][ i ], data[ 1 ][ i ] | 0 ] );
+
+            }
+
+            //饼图
+            series[ 0 ] = {
+                type: 'pie',
+                name: meta.tip,
+                data: curData
+            };
+
+            result.series = series;
+            result.title = meta.title;
+            result.suffix = meta.suffix;
+
+        }
+
+        return result;
+
+    }
+
+});
+UE.parse.register('background', function (utils) {
+    var me = this,
+        root = me.root,
+        p = root.getElementsByTagName('p'),
+        styles;
+
+    for (var i = 0,ci; ci = p[i++];) {
+        styles = ci.getAttribute('data-background');
+        if (styles){
+            ci.parentNode.removeChild(ci);
+        }
+    }
+
+    //追加默认的表格样式
+    styles && utils.cssRule('ueditor_background', me.selector + '{' + styles + '}', document);
+});
 UE.parse.register('list',function(utils){
     var customCss = [],
         customStyle = {
@@ -425,7 +984,39 @@ UE.parse.register('list',function(utils){
 
 
 });
+UE.parse.register('vedio',function(utils){
+    var video = this.root.getElementsByTagName('video'),
+        audio = this.root.getElementsByTagName('audio');
 
+    document.createElement('video');document.createElement('audio');
+    if(video.length || audio.length){
+        var sourcePath = utils.removeLastbs(this.rootPath),
+            jsurl = sourcePath + '/third-party/video-js/video.js',
+            cssurl = sourcePath + '/third-party/video-js/video-js.min.css',
+            swfUrl = sourcePath + '/third-party/video-js/video-js.swf';
 
+        if(window.videojs) {
+            videojs.autoSetup();
+        } else {
+            utils.loadFile(document,{
+                id : "video_css",
+                tag : "link",
+                rel : "stylesheet",
+                type : "text/css",
+                href : cssurl
+            });
+            utils.loadFile(document,{
+                id : "video_js",
+                src : jsurl,
+                tag : "script",
+                type : "text/javascript"
+            },function(){
+                videojs.options.flash.swf = swfUrl;
+                videojs.autoSetup();
+            });
+        }
+
+    }
+});
 
 })();

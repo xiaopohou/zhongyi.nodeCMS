@@ -18,9 +18,11 @@
     <link href="/css/style.min862f.css?v=4.1.0" rel="stylesheet">
     <script src="/javascripts/backstage/zy_ControllerFunc.js"></script>
 
-    <script type="text/javascript" charset="utf-8" src="/ueditor/ueditor.config.js"></script>
-    <script type="text/javascript" charset="utf-8" src="/ueditor/ueditor.all.min.js"> </script>
-    <script type="text/javascript" charset="utf-8" src="/ueditor/lang/zh-cn/zh-cn.js"> </script>
+    <!--百度编辑器-->
+    <!-- 配置文件 -->
+    <script type="text/javascript" src="/ueditor/ueditor.config.js"></script>
+    <!-- 编辑器源码文件 -->
+    <script type="text/javascript" src="/ueditor/ueditor.all.js"></script>
 
 
 
@@ -84,7 +86,7 @@
                         <label class="col-sm-3 control-label">内容</label>
                         <div class="col-sm-8">
 
-                            <textarea class="" name="content" ng-model="formData.content" id="container" style="height: 500px;" ng-minlength="50" placeholder="请输入文章详情" ueditor>{{formData.content}}</textarea>
+                            <textarea class="" name="content" ng-model="formData.content" id="container" ng-minlength="10" placeholder="请输入文章详情" ueditor>{{formData.content}}</textarea>
 
                         </div>
                     </div>
@@ -96,7 +98,7 @@
                         <div class="col-sm-4 col-sm-offset-2">
 
                             <button class="btn btn-primary" type="submit"  ng-disabled="myform.$invalid">保存内容</button>
-                         <a href="/admin/manager/managerUser" class="btn btn-primary">返回</a>
+                         <a href="/admin/cms/infolist" class="btn btn-primary">返回</a>
                         </div>
                     </div>
                 </form>
@@ -114,10 +116,9 @@
 
 <script src="/javascripts/angular.js"></script>
 <script src="/javascripts/backstage/zy_Controller.js"></script>
+<script src="/javascripts/backstage/zy_Directives.js"></script>
 
-<script>
-    var ue = UE.getEditor('container');
-</script>
+
 
 </body>
 
