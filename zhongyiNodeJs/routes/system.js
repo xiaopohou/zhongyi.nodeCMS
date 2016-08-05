@@ -1,7 +1,4 @@
 /**
- * Created by duzhong on 16/8/4.
- */
-/**
  * Created by Administrator on 2015/4/29.
  * 系统支持功能
  */
@@ -18,17 +15,20 @@ var url = require('url');
 var mime = require('../util/mime').types;
 var system = require('../util/system');
 //站点配置
-var settings = require("../models/db/settings");
+var settings = require("../public/config/zy_Config");
 
 /* GET users listing. */
 router.post('/upload', function(req, res, next) {
+
+
+
 
 //    获取传入参数
     var params = url.parse(req.url,true);
     var fileType = params.query.type;
     var fileKey = params.query.key;
     var form = new formidable.IncomingForm(),files=[],fields=[],docs=[];
-    console.log('start upload');
+    console.log('----------------------------start upload-----------------------------');
 
     //存放目录
     var updatePath = "public/upload/images/";

@@ -14,6 +14,7 @@ var InfoSchema=new Schema({
     desc: String,
     state:String,
     content:String,
+    pageImage:String,
     parentId:{type:String,'default':"0"},
     editorId:{type:String,'default':"0"},
     createDate: {type: Date, default: Date.now},

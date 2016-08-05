@@ -200,6 +200,10 @@ infoMangerModule.controller('infoController',['$scope','$http','getItemService',
     $scope.targetId=window.location.href.split('/')[7];
     //console.log('__________________href______________'+window.location.href.split('/')[7]);
 
+    initUploadFyBtn('uploadContentImg','images','key',function (img) {
+        console.log('img-------is:'+img);
+        $scope.formData.pageImage=img;
+    });
 
     if($scope.targetId){
 

@@ -18,12 +18,36 @@
     <link href="/css/style.min862f.css?v=4.1.0" rel="stylesheet">
     <script src="/javascripts/backstage/zy_ControllerFunc.js"></script>
 
+
+
+    <script src="/js/jquery.min.js?v=2.1.4"></script>
+    <script src="/js/bootstrap.min.js?v=3.3.6"></script>
+    <script src="/js/plugins/peity/jquery.peity.min.js"></script>
+    <script src="/js/plugins/validate/jquery.validate.min.js"></script>
+    <script src="/js/plugins/validate/messages_zh.min.js"></script>
+    <script src="/js/demo/form-validate-demo.min.js"></script>
+
+
+
+
+
+
     <!--百度编辑器-->
     <!-- 配置文件 -->
     <script type="text/javascript" src="/ueditor/ueditor.config.js"></script>
     <!-- 编辑器源码文件 -->
     <script type="text/javascript" src="/ueditor/ueditor.all.js"></script>
+    <!--uploadify-->
+    <link href="/plugins/uploadify/uploadify.css" rel="stylesheet" type="text/css" />
+    <script src="/plugins/uploadify/jquery.uploadify.min.js"></script>
 
+    <script src="/javascripts/zy_public.js"></script>
+
+
+
+    <script src="/javascripts/angular.js"></script>
+    <script src="/javascripts/backstage/zy_Controller.js"></script>
+    <script src="/javascripts/backstage/zy_Directives.js"></script>
 
 
     <style>
@@ -60,7 +84,15 @@
                             <input type="text" class="form-control" ng-model="formData.desc"   type="text" required="" aria-required="true">
                         </div>
                     </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">封面图</label>
 
+                            <div class="col-sm-8">
+
+                                <input type="file" name="uploadify" id="uploadContentImg" />
+                                <img src="" alt="" width="120" height="120" class="img-thumbnail" id="myImg">
+                            </div>
+                        </div>
                     <div class="form-group">
                         <label class="col-sm-3 control-label">状态</label>
 
@@ -107,16 +139,9 @@
     </div>
 </div>
 
-<script src="/js/jquery.min.js?v=2.1.4"></script>
-<script src="/js/bootstrap.min.js?v=3.3.6"></script>
-<script src="/js/plugins/peity/jquery.peity.min.js"></script>
-<script src="/js/plugins/validate/jquery.validate.min.js"></script>
-<script src="/js/plugins/validate/messages_zh.min.js"></script>
-<script src="/js/demo/form-validate-demo.min.js"></script>
 
-<script src="/javascripts/angular.js"></script>
-<script src="/javascripts/backstage/zy_Controller.js"></script>
-<script src="/javascripts/backstage/zy_Directives.js"></script>
+
+
 
 
 

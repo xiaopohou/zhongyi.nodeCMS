@@ -15,5 +15,6 @@ module.exports={
     zy_ManagerInfoList:['ManagerInfoList','资讯管理'],
 
     zy_system_illegal_param:'无效参数',
-    zy_system_noPower:'无权限'
+    zy_system_noPower:'无权限',
+    imgZip : true // 上传图片是否压缩(如果为false则本地不需要安装gm)
 };
