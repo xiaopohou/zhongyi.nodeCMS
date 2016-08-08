@@ -170,6 +170,7 @@ router.get('/cms/info/add',function (req,res) {
 });
 //修改资讯
 router.get('/cms/info/modify/:id',function (req,res) {
+
     res.render('manager/addinfo');
 });
 router.get('/cms/info/delete',function (req,res) {

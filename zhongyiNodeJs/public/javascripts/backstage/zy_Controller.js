@@ -198,19 +198,25 @@ infoMangerModule.controller('infolistController',['$scope','$http',function ($sc
 infoMangerModule.controller('infoController',['$scope','$http','getItemService',function ($scope,$http,getItemService) {
     $scope.formData={};
     $scope.targetId=window.location.href.split('/')[7];
-    //console.log('__________________href______________'+window.location.href.split('/')[7]);
-
     initUploadFyBtn('uploadContentImg','images','key',function (img) {
-        console.log('img-------is:'+img);
         $scope.formData.pageImage=img;
+        $("#myImg").attr("src",img);
+
+        //alert($("#myImg").attr("src"));
     });
 
-    if($scope.targetId){
+    if($scope.targetId){//编辑操作,获取原始对象
 
         getItemService.itemInfo('ManagerInfoList',$scope.targetId).success(function (result) {
+
             $scope.formData=result;
+
+            $("#myImg").attr("src",$scope.formData.pageImage);
+
         });
     }
+
+
 
     $scope.states=[
         {name:'启用',value:"1"},

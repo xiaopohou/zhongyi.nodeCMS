@@ -72,7 +72,8 @@ function initUploadFyBtn(id,type,key,callBack){
             //fileObj:选中文件的对象，他包含的属性列表
             //response:服务器端返回的Response文本，我这里返回的是处理过的文件名称
             //data：文件队列详细信息和文件上传的一般数据
-            alert("文件:" + fileObj.name + " 上传成功！");
+            //alert("文件:" + fileObj.name + " 上传成功！");
+            alert('ooxx');
         },
         //上传错误
         'onUploadError' : function(file, errorCode, errorMsg, errorString) {
