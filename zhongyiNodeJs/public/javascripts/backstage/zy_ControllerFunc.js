@@ -125,9 +125,25 @@ function initCurrentPageEventForManagerInfo($scope, $http) {
     $scope.addInfo = function () {
         window.location.href = '/admin/cms/info/add'
     }
+    //单选事件
+    $scope.getNewIds=function () {
+        getSelectValues();
+    }
+    $scope.mutilDelete=function () {
+        var ids=$("#targetIds").val();
+        if(ids==""||ids.split(',').length==0){
+            alert('请勾选删除项');
+            return;
+        }
 
-    $scope.deleteOne = function (id) {
-        if (confirm(info)) {
+        if(confirm('确定要删除吗')){
+            angularHttpGet($http,'/admin/manager/ManagerInfoList/mutiDelete/?ids='+ids,function (result) {
+                initPagination($scope,$http);
+            });
+        }
+    }
+    $scope.deleteOne = function (id,confirmMsg) {
+        if (confirm(confirmMsg)) {
             angularHttpGet($http, '/admin/cms/info/delete?id=' + id, function (result) {
 
                 initPagination($scope, $http);

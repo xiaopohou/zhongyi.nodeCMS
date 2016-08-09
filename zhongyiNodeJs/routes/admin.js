@@ -88,7 +88,25 @@ router.get('/manager/:defaultUrl/delete', function (req, res) {
     DBHelper.deleteOneById(targetObject, req, res);
 
 });
-
+//批量删除
+router.get('/manager/:defaultUrl/mutiDelete',function (req,res) {
+    var targetObject=adminFunc.getTargetObjectByUrl(req.params.defaultUrl);
+    var idsArray=req.query.ids.split(',');
+    //todo:目前批量删除针对资讯,其他暂不支持,如有需要,请自行扩展
+    if(targetObject==InfoModel)
+    {
+        targetObject.remove({_id:{$in:idsArray}},function (error) {
+            if(error){
+                res.end(error);
+            }else {
+                res.end('success');
+            }
+        });
+    }else
+    {
+        res.end('目前批量删除针对资讯,其他暂不支持,如有需要,请自行扩展 in admin.js');
+    }
+});
 router.get('/manager/:defaultUrl/item', function (req, res) {
 
     var currentPage = req.params.defaultUrl;

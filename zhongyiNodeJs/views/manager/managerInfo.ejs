@@ -13,7 +13,7 @@
 
     <link href="/css/animate.min.css" rel="stylesheet">
     <link href="/css/style.min862f.css?v=4.1.0" rel="stylesheet">
-    <script src="/javascripts/backstage/zy_ControllerFunc.js"></script>
+
 
     <style>
         /* Additional style to fix warning dialog position */
@@ -33,7 +33,7 @@
         <div class="col-md-2" style="margin: 5px 0;">
 
               <button type="button" class="btn btn-danger btn-sm" ng-click="addInfo()">添加资讯</button>
-
+            <button type="button" class="btn btn-danger btn-sm" ng-click="mutilDelete()">批量删除</button>
         </div>
     </div>
 
@@ -82,7 +82,7 @@
                         <thead>
                         <tr>
 
-                            <th><input type="checkbox"/>全选</th>
+                            <th><input type="checkbox" id="chkSelectAll"/>全选</th>
                             <th>标题</th>
                             <th>状态</th>
                             <th>发布人</th>
@@ -91,9 +91,9 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr ng-repeat="group in data">
+                        <tr class="datalist" ng-repeat="group in data">
                             <td>
-                                <input type="checkbox" checked class="i-checks" name="input[]">
+                                <input type="checkbox" checked class="i-checks" value="{{group._id}}" ng-click="" name="chkItem">
                             </td>
                             <td>{{group.title|limitTo:10}}</td>
                             <td><span class="pie">{{group.state=="1"?"通过":"未通过"}}</span>
@@ -103,7 +103,7 @@
                             <td>{{group.createDate|date:"yyyy-MM-dd hh:mm:ss"}} </td>
                             <td>
                                 <a class="btn btn-primary btn-xs" href="/admin/cms/info/modify/{{group._id}}">编辑</a>
-                                <a class="btn btn-primary btn-xs" ng-click="deleteOne(group._id)">删除</a>
+                                <a class="btn btn-primary btn-xs" ng-click="deleteOne(group._id,'确定要删除吗?')">删除</a>
 
                             </td>
                         </tr>
@@ -126,6 +126,8 @@
 <!--<script src="/js/plugins/jqgrid/jquery.jqGrid.minffe4.js?0820"></script>-->
 <!--<script src="/js/content.min.js?v=1.0.0"></script>-->
 
+<script src="/javascripts/zy_public.js"></script>
+<script src="/javascripts/backstage/zy_ControllerFunc.js"></script>
 <script src="/javascripts/angular.js"></script>
 <script src="/javascripts/backstage/zy_Controller.js"></script>
 
