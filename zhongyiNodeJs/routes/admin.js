@@ -18,10 +18,13 @@ router.get('/', function (req, res) {
 
 //后台欢迎页面
 router.get('/manager', function (req, res) {
+ 
     res.render('manager/welcome', adminFunc.setPageInfo(req, res, 'xxx'));
 });
 
-
+router.get('/manager/default',function(req,res){
+    res.render('manager/welcome');
+});
 //聚合页
 // router.get('/manager/managerUser', function (req, res) {
 //     res.render('manager/managerUser');

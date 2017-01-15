@@ -17,6 +17,8 @@ var adminFunc = {
     },
     setPageInfo: function (req, res, module) {
 
+        console.log('--------------------------参数是'+this.siteInfos(module).title);
+        
         return {
             siteInfo: this.siteInfos(module),
             layout: 'manager/public/zy_AdminLayout'
