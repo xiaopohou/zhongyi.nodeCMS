@@ -21,6 +21,12 @@ var adminFunc = {
             layout: 'manager/public/zy_AdminLayout'
         }
     },
+        setPageInfov2: function (req, res, module) {
+        return {
+            siteInfo: this.siteInfos(module),
+            layout: 'managerv2/layout/layout'
+        }
+    },
     RedirectURL:function (req,res) {
         res.redirect('/manager/testPage');
     },
