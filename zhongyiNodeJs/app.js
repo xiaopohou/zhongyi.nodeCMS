@@ -9,6 +9,7 @@ var users = require('./routes/users');
 var admins = require('./routes/admin');//后台
 var cms = require('./routes/cms');
 var system= require('./routes/system');
+var adminV2= require('./routes/admin2');
 
 // 模板引擎
 var partials= require('express-partials');
@@ -52,7 +53,7 @@ app.use('/users', users);
 app.use('/admin',admins);
 app.use('/system',system);
 app.use('/api',cms);
-
+app.use('/adminV2',adminV2);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
