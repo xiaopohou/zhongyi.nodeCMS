@@ -26,14 +26,23 @@
 
 </head>
 
+
+
+
 <body class="gray-bg" ng-app="userModule">
+
+
 
 <div class="row" ng-controller="systemUserList">
 
     <div class="col-sm-12">
         <div class="col-md-2" style="margin: 5px 0;">
+         <a href="#addNewAdminUser" role="button" class="btn btn-primary btn-sm"
+          data-toggle="modal"><span class="fa fa-plus-square" aria-hidden="true">&nbsp;</span>添加系统用户</a>
 
-              <button type="button" class="btn btn-danger btn-sm" ng-click="addUser()">添加用户111</button>
+              <!--<button type="button" class="btn btn-danger btn-sm" ng-click="addUser()">添加用户</button>-->
+
+ 
 
         </div>
     </div>
@@ -123,9 +132,7 @@
 <script src="/js/jquery.min.js?v=2.1.4"></script>
 <script src="/js/bootstrap.min.js?v=3.3.6"></script>
 <script src="/js/plugins/peity/jquery.peity.min.js"></script>
-<!--<script src="/js/plugins/jqgrid/i18n/grid.locale-cnffe4.js?0820"></script>-->
-<!--<script src="/js/plugins/jqgrid/jquery.jqGrid.minffe4.js?0820"></script>-->
-<!--<script src="/js/content.min.js?v=1.0.0"></script>-->
+ 
 
 <script src="/javascripts/angular.js"></script>
 <script src="/javascripts/backstage/zy_Controller.js"></script>

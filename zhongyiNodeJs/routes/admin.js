@@ -13,7 +13,7 @@ var DBHelper = require('../models/zyDBHelper/zy_Dbopt');
 
 //管理主页面
 router.get('/', function (req, res) {
-    res.render('manager/index_v7');
+    res.render('manager/index_v7',adminFunc.setPageInfo(req, res, 'xxx'));
 });
 
 //后台欢迎页面

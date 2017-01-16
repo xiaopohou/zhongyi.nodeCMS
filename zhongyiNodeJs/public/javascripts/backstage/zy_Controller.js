@@ -134,12 +134,21 @@ userModule.factory('getItemServiceForUser', ['$http', function ($http) {
 }]);
 
 //用户列表页
-userModule.controller('systemUserList',['$scope','$http',function ($scope,$http) {
+userModule.controller('systemUserList',['$scope','$http',function ($scope,$http) 
+{
     $scope.formData={};
-    console.log('-------注册删除事件');
+  
     initCurrentPageEventForManagerUser($scope,$http);
+    var obj=$(event.relatedTarget);
+    var editId=obj.data("whatever");
+    $("#addNewAdminUser").on('show.bs.modal',function(event){
+
+    }).on('hidden.bs.modal',function(e){
+
+    });
 
 }]);
+
 //用户添加页
 userModule.controller('systemUserAdd',['$scope','$http','getItemServiceForUser',function ($scope,$http,getItemServiceForUser) {
     $scope.formData={};
