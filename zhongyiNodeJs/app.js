@@ -3,14 +3,17 @@ var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
+ 
 var bodyParser = require('body-parser');
+
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var admins = require('./routes/admin');//后台
 var cms = require('./routes/cms');
+var cmsV2 = require('./routes/cmsV2');
 var system= require('./routes/system');
 var adminV2= require('./routes/admin2');
-
+var authority = require('./routes/authority');
 // 模板引擎
 var partials= require('express-partials');
 var app = express();
@@ -54,11 +57,24 @@ app.use('/admin',admins);
 app.use('/system',system);
 app.use('/api',cms);
 app.use('/adminV2',adminV2);
+app.use('/adminV2/authority',authority);
+app.use('/adminV2/cmsv2',cmsV2);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
   err.status = 404;
   next(err);
+});
+
+// 错误或者服务器500异常处理
+app.use(function (err, req, res, next) {
+    var error = (req.app.get('env') === 'development') ? err : {};
+    //写错误日志
+    var errorMes = '[' + Date() + ']' + req.url + '\n' + '[' + error.stack + ']' + '\n';
+  
+    var status = err.status || 500;
+    res.status(status);
+    res.send('<pre>' + status + ' ' + err.message + '\n' + errorMes + '</pre>');
 });
 
 // error handlers
