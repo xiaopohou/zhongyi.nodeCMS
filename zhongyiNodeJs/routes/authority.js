@@ -3,7 +3,7 @@ var router= express.Router();
 var baseRouter = require('../routes/base');
 //默认页
 router.get('/', function (req, res) {
-    res.render('managerv2/dashboard',baseRouter.setPageCurrentInfo(req, res, 'xxx'));
+    res.render('managerv2/authority/authoritys',baseRouter.setPageCurrentInfo(req, res, 'xxx'));
 });
 
 router.get('/authority/:id', function (req, res) {

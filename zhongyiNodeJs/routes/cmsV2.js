@@ -7,19 +7,19 @@ var baseRouter = require('../routes/base');
 
 
 router.get('/', function (req, res) {
-  res.send("--------------------2111--------------------------");
+ // res.send("--------------------2111--------------------------");
    
-   // res.render('managerv2/dashboard', baseRouter.setPageCurrentInfo(req, res, 'x'));
+   res.render('managerv2/dashboard', baseRouter.setPageCurrentInfo(req, res, 'x'));
 });
 
 router.get('/fuckyou', function (req, res) {
 var params = url.parse(req.url,true);
 var name = params.query.name;
 var age = params.query.age;
-     res.send("--------------------3333333333--------------------------"+name+age);
+   //  res.send("--------------------3333333333--------------------------"+name+age);
 
 
-    //res.render('managerv2/dashboard', baseRouter.setPageCurrentInfo(req, res, 'x'));
+    res.render('managerv2/dashboard', baseRouter.setPageCurrentInfo(req, res, 'x'));
 });
 
 router.get('/fuckyou2/:name', function (req, res) {

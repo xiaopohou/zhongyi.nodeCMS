@@ -1,0 +1,309 @@
+    <link rel="stylesheet" type="text/css" href="vendor/plugins/datatables/media/css/dataTables.bootstrap.css">
+     <!-- Start: Topbar-Dropdown -->
+            <div id="topbar-dropmenu">
+                <div class="topbar-menu row">
+                    <div class="col-xs-4 col-sm-2">
+                        <a href="#" class="metro-tile bg-success">
+                            <span class="metro-icon glyphicons glyphicons-inbox"></span>
+                            <p class="metro-title">Messages</p>
+                        </a>
+                    </div>
+                    <div class="col-xs-4 col-sm-2">
+                        <a href="#" class="metro-tile bg-info">
+                            <span class="metro-icon glyphicons glyphicons-parents"></span>
+                            <p class="metro-title">Users</p>
+                        </a>
+                    </div>
+                    <div class="col-xs-4 col-sm-2">
+                        <a href="#" class="metro-tile bg-alert">
+                            <span class="metro-icon glyphicons glyphicons-headset"></span>
+                            <p class="metro-title">Support</p>
+                        </a>
+                    </div>
+                    <div class="col-xs-4 col-sm-2">
+                        <a href="#" class="metro-tile bg-primary">
+                            <span class="metro-icon glyphicons glyphicons-cogwheels"></span>
+                            <p class="metro-title">Settings</p>
+                        </a>
+                    </div>
+                    <div class="col-xs-4 col-sm-2">
+                        <a href="#" class="metro-tile bg-warning">
+                            <span class="metro-icon glyphicons glyphicons-facetime_video"></span>
+                            <p class="metro-title">Videos</p>
+                        </a>
+                    </div>
+                    <div class="col-xs-4 col-sm-2">
+                        <a href="#" class="metro-tile bg-system">
+                            <span class="metro-icon glyphicons glyphicons-picture"></span>
+                            <p class="metro-title">Pictures</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- End: Topbar-Dropdown -->
+
+            <!-- Start: Topbar -->
+            <header id="topbar">
+                <div class="topbar-left">
+                    <ol class="breadcrumb">
+                        <li class="crumb-active">
+                            <a href="dashboard.html">Dashboard</a>
+                        </li>
+                        <li class="crumb-icon">
+                            <a href="dashboard.html">
+                                <span class="glyphicon glyphicon-home"></span>
+                            </a>
+                        </li>
+                        <li class="crumb-link">
+                            <a href="index.html">Home</a>
+                        </li>
+                        <li class="crumb-trail">Dashboard</li>
+                    </ol>
+                </div>
+                <div class="topbar-right">
+                    <div class="ib topbar-dropdown">
+                        <label for="topbar-multiple" class="control-label pr10 fs11 text-muted">Reporting Period</label>
+                        <select id="topbar-multiple" multiple="multiple">
+                            <optgroup label="Filter By:">
+                                <option value="1-1">Last 30 Days</option>
+                                <option value="1-2" selected="selected">Last 60 Days</option>
+                                <option value="1-3">Last Year</option>
+                            </optgroup>
+                        </select>
+                    </div>
+                    <div class="ml15 ib va-m" id="toggle_sidemenu_r">
+                        <a href="#" class="pl5"> <i class="fa fa-sign-in fs22 text-primary"></i>
+                            <span class="badge badge-hero badge-danger">3</span>
+                        </a>
+                    </div>
+                </div>
+            </header>
+            <!-- End: Topbar -->
+
+            <!-- Begin: Content -->
+            <section id="content">
+
+                <div class="animated-delay" data-animate='["100","fadeIn"]'>
+                    <h2 class="lh30 mt15 text-center">Send just about <b class="text-primary">Anything</b> to AdminDock</h2>
+                    
+                    <p class="lead mb30 text-center center-block mw800"> Give it a try below! Select a type of content and click "Send to Admin Dock".</p>
+                                </div>
+
+                <div class="row animated-delay" data-animate='["500","fadeIn"]'>
+
+                    <div class="col-md-10 center-block text-center">
+
+                        <div class="row table-layout">
+                            <div class="col-xs-4 br-a br-light bg-light pv20 ph30 va-t">
+                                <div class="row" id="content-type">
+                                    <div class="col-sm-12">
+                                        <h5 class="text-muted mtn mb20">Select Content Type</h5>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <a class="holder-style p15 mb20 holder-active" href="#dock-image">
+                                            <span class="fa fa-picture-o holder-icon"></span>
+                                            <br> Image
+                                        </a>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <a class="holder-style p15 mb20" href="#dock-panel">
+                                            <span class="fa fa-text-height holder-icon"></span>
+                                            <br> Panel
+                                        </a>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <a class="holder-style p15 mb20" href="#dock-table">
+                                            <span class="fa fa-pencil-square-o holder-icon"></span>
+                                            <br> Table
+                                        </a>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <a class="holder-style p15 mb20" href="#dock-form">
+                                            <span class="fa fa-map-marker holder-icon"></span>
+                                            <br> Form
+                                        </a>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <a class="holder-style p15 mb20" href="#dock-text">
+                                            <span class="fa fa-film holder-icon"></span>
+                                            <br> Text
+                                        </a>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <a class="holder-style p15 mb20" href="#dock-video">
+                                            <span class="fa fa-spinner holder-icon"></span>
+                                            <br> Video
+                                        </a>
+                                    </div>
+
+                                </div>
+                                <button id="dock-push" type="button" class="btn btn-success fs14 fw600 pv15 btn-block">Send to Admin Dock</button>
+                            </div>
+                            <div class="col-xs-8 br-a br-light bg-light dark va-t p10 va-m">
+                                <h5 class="text-muted mb30 hidden">Content to be sent to AdminDock</h5>
+
+                                <div id="dock-content" class="ph20">
+                                    <div id="dock-image" class="active-content">
+                                        <div class="dock-item" data-title="Tiger Image">
+                                            <img class="img-responsive center-block" src="http://farm9.staticflickr.com/8242/8558295633_f34a55c1c6_b.jpg">
+                                        </div>
+                                    </div>
+                                    <div id="dock-panel">
+                                        <div class="dock-item" data-title="A Panel">
+                                            <div class="panel">
+                                                <div class="panel-heading">
+                                                    <span class="panel-icon pl5"><i class="fa fa-pencil"></i>
+                                                    </span>
+                                                    <span class="panel-title">Panel 1</span>
+                                                </div>
+                                                <div class="panel-body">
+                                                    <h3 class="mtn"> Hello. </h3>
+                                                    <p> I'm Example panel content </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="dock-table">
+                                        <div class="dock-item" data-title="Green Table">
+                                            <div class="panel">
+                                                <div class="panel-body pn">
+                                                    <table class="table">
+                                                        <thead>
+                                                            <tr class="success">
+                                                                <th>#</th>
+                                                                <th>First Name</th>
+                                                                <th>
+                                                                    <code>.success</code>
+                                                                </th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>1</td>
+                                                                <td>Mark</td>
+                                                                <td>Cell</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>2</td>
+                                                                <td>Jacob</td>
+                                                                <td>Cell</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>3</td>
+                                                                <td>Larry</td>
+                                                                <td>Cell</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>4</td>
+                                                                <td>Sussy</td>
+                                                                <td>Cell</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="dock-form">
+                                        <div class="dock-item" data-title="Admin Form">
+                                            <div class="admin-form">
+                                                <div class="panel panel-success heading-border">
+                                                    <div class="panel-heading bg-white hidden">
+                                                        <span class="panel-title"><i class="fa fa-rocket"></i>Leave a comment</span>
+                                                    </div>
+                                                    <!-- end .panel-heading section -->
+
+                                                    <form method="post" action="/" id="comment">
+                                                        <div class="panel-body p25 pb15">
+                                                            <div class="section row">
+                                                                <div class="col-md-6">
+                                                                    <label for="firstname" class="field prepend-icon">
+                                                                        <input type="text" name="firstname" id="firstname" class="gui-input" placeholder="First name...">
+                                                                        <label for="firstname" class="field-icon"><i class="fa fa-user"></i>
+                                                                        </label>
+                                                                    </label>
+                                                                </div>
+                                                                <!-- end section -->
+
+                                                                <div class="col-md-6">
+                                                                    <label for="lastname" class="field prepend-icon">
+                                                                        <input type="text" name="lastname" id="lastname" class="gui-input" placeholder="Last name...">
+                                                                        <label for="lastname" class="field-icon"><i class="fa fa-user"></i>
+                                                                        </label>
+                                                                    </label>
+                                                                </div>
+                                                                <!-- end section -->
+
+                                                            </div>
+                                                            <!-- end section row section -->
+
+                                                            <div class="section row">
+                                                                <div class="col-md-6">
+                                                                    <label for="email" class="field prepend-icon">
+                                                                        <input type="email" name="email" id="email" class="gui-input" placeholder="Email address">
+                                                                        <label for="email" class="field-icon"><i class="fa fa-envelope"></i>
+                                                                        </label>
+                                                                    </label>
+                                                                </div>
+                                                                <!-- end section -->
+
+                                                                <div class="col-md-6">
+                                                                    <label for="website" class="field prepend-icon">
+                                                                        <input type="url" name="website" id="lastname" class="gui-input" placeholder="Website url...">
+                                                                        <label for="website" class="field-icon"><i class="fa fa-globe"></i>
+                                                                        </label>
+                                                                    </label>
+                                                                </div>
+                                                                <!-- end section -->
+
+                                                            </div>
+                                                            <!-- end section row section -->
+
+                                                            <div class="section">
+                                                                <label for="comment" class="field prepend-icon">
+                                                                    <textarea class="gui-textarea" id="comment" name="comment" placeholder="Your comment"></textarea>
+                                                                    <label for="comment" class="field-icon"><i class="fa fa-comments"></i>
+                                                                    </label>
+                                                                    <span class="input-footer">
+                                                                        <strong>DO NOT:</strong>Be negative or off topic. We expect a great comment.</span>
+                                                                </label>
+                                                            </div>
+                                                            <!-- end section -->
+
+                                                        </div>
+                                                        <!-- end .form-body section -->
+
+                                                        <div class="panel-footer hidden">
+                                                            <button type="submit" class="button btn-primary">Post Comment</button>
+                                                        </div>
+                                                        <!-- end .form-footer section -->
+                                                    </form>
+                                                </div>
+                                                <!-- end: .panel -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="dock-text">
+                                        <div class="dock-item" data-title="Just Text">
+                                            <p class="fs15 mt10 mb20 ph20"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p> 
+                                            <p class="fs15 mb20 ph20"> Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum </p>
+                                        </div>
+                                    </div>
+                                    <div id="dock-video">
+                                        <div class="dock-item" data-title="Online Video">
+                                            <div class="embed-responsive embed-responsive-16by9">
+                                                <iframe width="100%" height="300" src="http://www.youtube.com/embed/MxCRgtdAuBo?rel=0" frameborder="0" allowfullscreen></iframe>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+            <!-- End: Content -->
