@@ -14,6 +14,7 @@ var cmsV2 = require('./routes/cmsV2');
 var system= require('./routes/system');
 var adminV2= require('./routes/admin2');
 var authority = require('./routes/authority');
+var role = require('./routes/role');
 // 模板引擎
 var partials= require('express-partials');
 var app = express();
@@ -58,7 +59,9 @@ app.use('/system',system);
 app.use('/api',cms);
 app.use('/adminV2',adminV2);
 app.use('/adminV2/authority',authority);
+app.use('/adminV2/role',role);
 app.use('/adminV2/cmsv2',cmsV2);
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');

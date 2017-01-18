@@ -425,7 +425,7 @@
                         </a>
                         <ul class="nav sub-nav">
                             <li>
-                                <a href="/adminV2/cmsv2/">
+                                <a href="/adminV2/role/">
                                     <span class="glyphicons glyphicons-book"></span>角色管理 </a>
                             </li>
                             <li>
@@ -526,9 +526,10 @@
                 </div>
             </div>
             <!-- End: Topbar-Dropdown -->
+<div ng-app="baseMudule">
 
            <%-body%>
-
+</div>
         </section>
         <!-- End: Content-Wrapper -->
 
@@ -648,6 +649,11 @@
 
     <!-- Page Javascript -->
     <script type="text/javascript" src="/adminV2/assets/js/pages/widgets.js"></script>
+
+    <!-- base ng -->
+ <script src="/javascripts/angular.js"></script>
+<script src="/javascripts/app/base_Controller.js"></script>
+<script src="/javascripts/app/role_Controller.js"></script>
     <script type="text/javascript">
         jQuery(document).ready(function() {
 
