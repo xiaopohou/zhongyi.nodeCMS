@@ -13,6 +13,7 @@ var cms = require('./routes/cms');
 var cmsV2 = require('./routes/cmsV2');
 var system= require('./routes/system');
 var adminV2= require('./routes/admin2');
+var adminV3= require('./routes/admin3');
 var authority = require('./routes/authority');
 var role = require('./routes/role');
 // 模板引擎
@@ -54,10 +55,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 app.use('/users', users);
-app.use('/admin',admins);
+//app.use('/admin',admins);
 app.use('/system',system);
 app.use('/api',cms);
 app.use('/adminV2',adminV2);
+app.use('/admin',adminV3);
 app.use('/adminV2/authority',authority);
 app.use('/adminV2/role',role);
 app.use('/adminV2/cmsv2',cmsV2);

@@ -18,21 +18,19 @@ router.get('/login',function(req,res){
 router.post('/login',function(req,res){
     var _uname=req.body.username;
     var _pwd=req.body.password;
-    if(_uname!="admin"){
+    if(_uname!="1"){
         console.log(_uname);
           res.send('账号不对'+_uname);
     }
-   
-
-     if(_pwd!="admin")
+     if(_pwd!="1")
      {
           console.log(_pwd);
           res.send('密码不对'+_pwd);
      }
-    
-     
-
     res.redirect('/adminV2');
-   
+});
+//退出
+router.get('/loginout',function(req,res){
+    res.render('managerv2/pageslogin');
 });
 module.exports = router;
