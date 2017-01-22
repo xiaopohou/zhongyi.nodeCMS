@@ -6,7 +6,7 @@ var express = require('express');
 var router = express.Router();
 //文件上传类
 var formidable = require('formidable'),
-    util = require('utils'),fs=require('fs');
+    util = require('util'),fs=require('fs');
 
 //时间格式化
 var moment = require('moment');

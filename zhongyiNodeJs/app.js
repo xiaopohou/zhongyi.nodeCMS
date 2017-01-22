@@ -16,7 +16,7 @@ var authority = require('./routes/authority');
 var role = require('./routes/role');
 
 //载入路由解析组件
-var resolve = require(path.json(__dirname,'utils','route'));
+var resolve = require(path.join(__dirname,'utils','route'));
 
 //引入session
 var session = require('express-session');
