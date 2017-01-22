@@ -3,9 +3,7 @@ var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
- 
 var bodyParser = require('body-parser');
-
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var admins = require('./routes/admin');//后台
@@ -15,6 +13,10 @@ var system= require('./routes/system');
 var adminV2= require('./routes/admin2');
 var authority = require('./routes/authority');
 var role = require('./routes/role');
+//引入session
+var session = require('express-session');
+var redisStorage = require('connect-redis')(session);
+var setting=require('./public/config/zy_Config');
 // 模板引擎
 var partials= require('express-partials');
 var app = express();
@@ -29,6 +31,20 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+
+
+//引入session并设置存储介质
+app.use(session({
+   secret:'laozhao',
+    store:new redisStorage({
+      port:setting.redis_port,
+      host:setting.redis_host,
+      pass:setting.redis_pwd,
+      ttl:1800
+    }),
+    resave:true,
+    saveUninitialized:true
+}));
 
 
 //ueditor注册
