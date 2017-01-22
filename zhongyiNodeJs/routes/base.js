@@ -19,6 +19,12 @@ var adminFunc = {
             layout: 'managerv2/layout/layout'
         }
     },
+      setPageCurrentInfo3: function (req, res, module) {
+        return {
+            siteInfo: this.siteInfos(module),
+            layout: 'managerv3/layout/layout'
+        }
+    },
     RedirectURL: function (req, res) {
         res.redirect('/manager/testPage');
     },

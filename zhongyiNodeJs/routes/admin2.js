@@ -16,30 +16,24 @@ router.get('/login', function (req, res) {
     res.render('managerv2/pageslogin');
 });
 //登录验证
-router.post('/login', function (req, res) {
-    var _uname = req.body.username;
-    var _pwd = req.body.password;
-    if (_uname != "1") {
-        res.send('账号不对' + _uname);
+ 
+router.post('/login',function(req,res){
+    var _uname=req.body.username;
+    var _pwd=req.body.password;
+    if(_uname!="1"){
+        console.log(_uname);
+          res.send('账号不对'+_uname);
     }
-    else if (_pwd != "1") {
-        res.send('密码不对' + _pwd);
-    }
-    // res.session.adminPower='';
-    // res.session.adminLogined=true;
-    // res.session.adminUser=_uname;
-
-
-  res.send(systemUserBiz.log());
-
-
-    //res.redirect('/adminV2');
+     if(_pwd!="1")
+     {
+          console.log(_pwd);
+          res.send('密码不对'+_pwd);
+     }
+    res.redirect('/adminV2');
 });
 //退出
-router.get('/loginout', function (req, res) {
-    // res.session.adminLogined=false;
-    // res.session.adminPower='';
-    // res.session.adminUser='';
-    res.redirect('/adminV2/login');
+router.get('/loginout',function(req,res){
+    res.render('managerv2/pageslogin');
+ 
 });
 module.exports = router;
