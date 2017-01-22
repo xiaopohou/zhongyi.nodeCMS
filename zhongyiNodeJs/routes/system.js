@@ -6,14 +6,14 @@ var express = require('express');
 var router = express.Router();
 //文件上传类
 var formidable = require('formidable'),
-    util = require('util'),fs=require('fs');
+    util = require('utils'),fs=require('fs');
 
 //时间格式化
 var moment = require('moment');
 var gm = require('gm');
 var url = require('url');
-var mime = require('../util/mime').types;
-var system = require('../util/system');
+var mime = require('../utils/mime').types;
+var system = require('../utils/system');
 //站点配置
 var settings = require("../public/config/zy_Config");
 

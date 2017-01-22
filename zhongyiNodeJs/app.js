@@ -14,14 +14,49 @@ var adminV2= require('./routes/admin2');
 var adminV3= require('./routes/admin3');
 var authority = require('./routes/authority');
 var role = require('./routes/role');
+
+//载入路由解析组件
+var resolve = require(path.json(__dirname,'utils','route'));
+
 //引入session
 var session = require('express-session');
 var redisStorage = require('connect-redis')(session);
+
 var setting=require('./public/config/zy_Config');
 // 模板引擎
 var partials= require('express-partials');
 var app = express();
 
+//默认设置区域
+var defaultArea="frontend";
+var router=express.Router();
+// 路由中间件,实现多视图切换
+router.use(function (req, res, next) {
+    var url = req.url;
+    var pathArr = url.split(/\/|\?/);
+    var viewPath = path.join(__dirname, 'areas', defaultArea, 'views');
+    if (pathArr[1] != "" && pathArr[1] != "favicon.ico") {
+        viewPath = path.join(__dirname, 'areas', pathArr[1], 'views');
+    }
+    else {
+        viewPath = path.join(__dirname, 'areas', defaultArea, 'views');
+    }
+    app.set('views', viewPath);
+    next();
+});
+app.use(router);
+
+// 设置控制器文件夹并绑定到路由
+resolve
+    .setRouteDirectory({
+        areaDirectory: __dirname + '/areas',
+        controllerDirname: 'controllers',
+        defaultArea: defaultArea,
+        defautController: 'home',
+        defautAction: 'index'
+    })
+    .bind(router);
+    
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -68,6 +103,7 @@ app.use('/ueditor/ue', ueditor({//这里的/ueditor/ue是因为文件件重命�
 
 
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'uploads')));
 
 app.use('/', routes);
 app.use('/users', users);
