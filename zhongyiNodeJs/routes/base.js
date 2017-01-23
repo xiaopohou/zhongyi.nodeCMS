@@ -8,7 +8,7 @@ var adminFunc = {
     setPageCurrentInfo: function (req, res) {
         return {
             //siteInfo: this.siteInfos(module),
-            layout: 'layout/layout'
+            layout: '/managerv2/layout'
         }
     }
 };
