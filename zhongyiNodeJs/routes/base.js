@@ -5,32 +5,11 @@ var siteConfig = require('../public/config/zy_Config');
 
 var adminFunc = {
 
-    siteInfos: function (description) {
+    setPageCurrentInfo: function (req, res) {
         return {
-            title: siteConfig.zy_sitename,
-            desc: description,
-            author: siteConfig.zy_authorName,
-            version: siteConfig.zy_appVerson
+            //siteInfo: this.siteInfos(module),
+            layout: 'layout/layout'
         }
-    },
-    setPageCurrentInfo: function (req, res, module) {
-        return {
-            siteInfo: this.siteInfos(module),
-            layout: 'managerv2/layout/layout'
-        }
-    },
-      setPageCurrentInfo3: function (req, res, module) {
-        return {
-            siteInfo: this.siteInfos(module),
-            layout: 'managerv3/layout/layout'
-        }
-    },
-    RedirectURL: function (req, res) {
-        res.redirect('/manager/testPage');
-    },
-
-    renderPageWithCondition: function (req, res, targetUrl) {
-        res.render(targetUrl);
     }
 };
 
