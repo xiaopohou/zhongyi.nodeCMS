@@ -16,20 +16,20 @@ var adminV2 = require('./routes/admin2');
 var adminV3 = require('./routes/admin3');
 var authority = require('./routes/authority');
 var role = require('./routes/role');
-//模板引擎
+//template engine
 var expressLayouts = require('express-ejs-layouts');
 var partials = require('express-partials');
 //载入路由解析组件
 var resolve = require(path.join(__dirname, 'utils', 'route'));
 
-//引入session
+//session
 var session = require('express-session');
 var redisStorage = require('connect-redis')(session);
 var setting = require('./public/config/zy_Config');
 var app = express();
 
 app.use(expressLayouts);
-//默认设置区域
+//default area
 var defaultArea = "frontend";
 var router = express.Router();
 // 路由中间件,实现多视图切换
