@@ -16,6 +16,7 @@
     "ejs": "~2.4.1",
     "express": "~4.13.4",
     "express-controller": "^0.3.2",
+    "express-ejs-layouts": "^2.2.0",
     "express-partials": "^0.3.0",
     "express-session": "^1.14.2",
     "formidable": "^1.0.17",
