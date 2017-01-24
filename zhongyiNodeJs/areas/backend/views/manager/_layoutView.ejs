@@ -14,7 +14,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>back index</title>
+    <title><%=setting.title%></title>
 
     <link href="/adminv3/css/bootstrap.min.css" rel="stylesheet">
     <link href="/adminv3/font-awesome/css/font-awesome.css" rel="stylesheet">
@@ -51,13 +51,13 @@
                             </ul>
                         </div>
                         <div class="logo-element">
-                            IN+
+                            LZ
                         </div>
                     </li>
                     <li class="active">
                         <a href="index.html"><i class="fa fa-th-large"></i> <span class="nav-label">权限管理</span> <span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
-                            <li class="active"><a href="index.html">用户列表</a></li>
+                            <li class="active"><a href="/backend/authority/index">用户列表</a></li>
                             <li><a href="dashboard_2.html">角色管理</a></li>
                             <li><a href="dashboard_3.html">权限管理</a></li>
                             <li><a href="dashboard_4_1.html">菜单管理</a></li>
@@ -233,10 +233,10 @@
 
 </nav>
 </div>
-<%include header.ejs%>
-<%-foo%>
-<%-pageSectionA %>
+
+         <div class="wrapper wrapper-content">
 <%-body%>
+  </div>
 
     <div class="row">
         <div class="footer">

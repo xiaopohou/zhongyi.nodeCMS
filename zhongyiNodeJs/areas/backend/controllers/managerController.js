@@ -8,14 +8,15 @@ module.exports = {
             'manager/index2',
             {
                 title: "hello",
-                "layout": "manager/_layoutView.ejs"
-                ,"foo": "hh"
-                ,"pageSectionA":"xxx"
+                "layout": "manager/_layoutView"
             }
         );
     },
     get_login: function (req, res) {
         res.render('manager/login');
+    },
+     get_default: function (req, res) {
+        res.render('manager/default',{"layout":"manager/_layoutView"});
     }
 
 };
