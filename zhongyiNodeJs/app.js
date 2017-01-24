@@ -1,5 +1,7 @@
 var express = require('express');
 var path = require('path');
+var fs = require('fs');
+var fileStreamRotator = require('file-stream-rotator');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
@@ -9,27 +11,27 @@ var users = require('./routes/users');
 var admins = require('./routes/admin');//后台
 var cms = require('./routes/cms');
 var cmsV2 = require('./routes/cmsV2');
-var system= require('./routes/system');
-var adminV2= require('./routes/admin2');
-var adminV3= require('./routes/admin3');
+var system = require('./routes/system');
+var adminV2 = require('./routes/admin2');
+var adminV3 = require('./routes/admin3');
 var authority = require('./routes/authority');
 var role = require('./routes/role');
 //模板引擎
-var expressLayouts= require('express-ejs-layouts');
-var partials= require('express-partials');
+var expressLayouts = require('express-ejs-layouts');
+var partials = require('express-partials');
 //载入路由解析组件
-var resolve = require(path.join(__dirname,'utils','route'));
+var resolve = require(path.join(__dirname, 'utils', 'route'));
 
 //引入session
 var session = require('express-session');
 var redisStorage = require('connect-redis')(session);
-var setting=require('./public/config/zy_Config');
+var setting = require('./public/config/zy_Config');
 var app = express();
 
 app.use(expressLayouts);
 //默认设置区域
-var defaultArea="frontend";
-var router=express.Router();
+var defaultArea = "frontend";
+var router = express.Router();
 // 路由中间件,实现多视图切换
 router.use(function (req, res, next) {
     var url = req.url;
@@ -56,7 +58,7 @@ resolve
         defautAction: 'index'
     })
     .bind(router);
-    
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -67,19 +69,33 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+ 
+var logDir = __dirname + '/logs/access';
+fs.existsSync(logDir) || fs.mkdirSync(logDir);
+var logErrorDir = __dirname + '/logs/error'
+fs.existsSync(logErrorDir) || fs.mkdirSync(logErrorDir);
+//保存日志
+var accessStream = fileStreamRotator.getStream({
+    filename: logDir + '/access-%DATE%.txt',
+    frequency: 'daily',
+    verbose: false,
+    date_format: "YYYY-MM-DD"
+});
+app.use(logger('combined', { stream: accessStream }));
 
+var errorLogStream = fs.createWriteStream(logErrorDir + '/error.txt');
 
 //引入session并设置存储介质
 app.use(session({
-   secret:'laozhao',
-    store:new redisStorage({
-      port:setting.redis_port,
-      host:setting.redis_host,
-      pass:setting.redis_pwd,
-      ttl:1800
+    secret: 'laozhao',
+    store: new redisStorage({
+        port: setting.redis_port,
+        host: setting.redis_host,
+        pass: setting.redis_pwd,
+        ttl: 1800
     }),
-    resave:true,
-    saveUninitialized:true
+    resave: true,
+    saveUninitialized: true
 }));
 
 
@@ -108,19 +124,19 @@ app.use(express.static(path.join(__dirname, 'uploads')));
 app.use('/', routes);
 app.use('/users', users);
 //app.use('/admin',admins);
-app.use('/system',system);
-app.use('/api',cms);
-app.use('/adminV2',adminV2);
-app.use('/admin',adminV3);
-app.use('/adminV2/authority',authority);
-app.use('/adminV2/role',role);
-app.use('/adminV2/cmsv2',cmsV2);
+app.use('/system', system);
+app.use('/api', cms);
+app.use('/adminV2', adminV2);
+app.use('/admin', adminV3);
+app.use('/adminV2/authority', authority);
+app.use('/adminV2/role', role);
+app.use('/adminV2/cmsv2', cmsV2);
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
-  var err = new Error('Not Found');
-  err.status = 404;
-  next(err);
+app.use(function (req, res, next) {
+    var err = new Error('Not Found');
+    err.status = 404;
+    next(err);
 });
 
 // 错误或者服务器500异常处理
@@ -128,35 +144,11 @@ app.use(function (err, req, res, next) {
     var error = (req.app.get('env') === 'development') ? err : {};
     //写错误日志
     var errorMes = '[' + Date() + ']' + req.url + '\n' + '[' + error.stack + ']' + '\n';
-  
+    errorLogStream.write(errorMes);
     var status = err.status || 500;
     res.status(status);
     res.send('<pre>' + status + ' ' + err.message + '\n' + errorMes + '</pre>');
 });
 
-// error handlers
-
-// development error handler
-// will print stacktrace
-if (app.get('env') === 'development') {
-  app.use(function(err, req, res, next) {
-    res.status(err.status || 500);
-    res.render('error', {
-      message: err.message,
-      error: err
-    });
-  });
-}
-
-// production error handler
-// no stacktraces leaked to user
-app.use(function(err, req, res, next) {
-  res.status(err.status || 500);
-  res.render('error', {
-    message: err.message,
-    error: {}
-  });
-});
-
-
+ 
 module.exports = app;
