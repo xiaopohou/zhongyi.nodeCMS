@@ -1,0 +1,40 @@
+
+language: node_js
+
+node_js:
+  - "0.10"
+  - "0.12"
+  - "iojs-v1"
+  - "iojs-v2"
+
+sudo: false
+
+cache:
+  directories:
+    - node_modules
+
+addons:
+  postgresql: "9.4"
+
+before_script:
+  - "npm install -g mysql"
+  - "npm install -g sqlite3"
+  - "npm install -g pg pg-hstore"
+  - "mysql -e 'create database sequelize_auto_test;'"
+  - "psql -c 'create database sequelize_auto_test;' -U postgres"
+
+script:
+  - "npm run test"
+
+branches:
+  only:
+    - master
+
+notifications:
+  email:
+    - me@danieldurante.com
+
+env:
+  - DB=mysql DIALECT=mysql
+  - DB=mysql DIALECT=postgres
+  - DB=mysql DIALECT=sqlite

@@ -11,5 +11,11 @@ module.exports = {
             setting: this.getCurrnetPageBaseInfo(tag),
             layout: "manager/_layoutView"
         };
+    },
+     setLayoutPage2: function (req, res, tag) {
+        return {
+            setting: this.getCurrnetPageBaseInfo(tag),
+            layout: "manager/layout/layout"
+        };
     }
 };
