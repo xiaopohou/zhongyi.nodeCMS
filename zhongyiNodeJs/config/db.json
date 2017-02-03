@@ -1,0 +1,14 @@
+{
+    "development": {
+        "username": "xiaopohou",
+        "password": "monkey~531",
+        "database": "NFineBase",
+        "host": "DESKTOP-IJPBS6K",
+        "dialect": "mssql",
+        "output": "../models2",
+        "additional": {
+            "timestamps": false,
+            "freezeTableName": true
+        }
+    }
+}

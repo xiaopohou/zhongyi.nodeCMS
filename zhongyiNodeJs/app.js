@@ -81,6 +81,8 @@ var accessStream = fileStreamRotator.getStream({
     verbose: false,
     date_format: "YYYY-MM-DD"
 });
+
+
 app.use(logger('combined', { stream: accessStream }));
 
 var errorLogStream = fs.createWriteStream(logErrorDir + '/error.txt');

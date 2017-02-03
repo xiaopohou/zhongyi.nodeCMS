@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>生成实体模型111</title>
+</head>
+<body>
+<h1>success</h1>
+<%for(var item in tables){%>
+    <dl>
+    <dt>表名：<%=item%></dt>
+    <dd><%=JSON.stringify(tables[item])%></dd>
+    </dl>
+<%}%>
+</body>
+</html>
