@@ -30,7 +30,7 @@
 
 </head>
 
-<body>
+<body ng-app="nodeApp">
     <div id="wrapper">
         <nav class="navbar-default navbar-static-side" role="navigation">
             <div class="sidebar-collapse">
@@ -755,8 +755,11 @@
 
 <!-- Toastr -->
 <script src="/adminv3/js/plugins/toastr/toastr.min.js"></script>
-
-
+<!--load angular-->
+<script src="/plugins/angular/angular.min.js"></script>
+<!--load controller-->
+ 
+<script src="/app/controllers/controller.js"></script>
 <script>
         $(document).ready(function () {
             setTimeout(function () {
