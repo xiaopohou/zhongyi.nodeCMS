@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ceshi</title>
+     <script src="/js/jquery-2.1.1.min.js"></script>
+      <script src="/js/plugins/bootstrap.min.js"></script>
+      <script src="/plugins/angular/angular.min.js"></script>
+  <script src="/app/controllers/controller.js"></script>
+ <script src="/plugins/framework-ui.js"></script>
+
+<script>
+  function btn_add() {
+        $.modalOpen({
+            id: "Form",
+            title: "新增角色",
+            url: "/tools/generate/form",
+            width: "550px",
+            height: "570px",
+            btn: null
+        });
+    }
+</script>
+</head>
+<body ng-app="adminApp">
+<div ng-controller="roleController">
+  <a ng-click="fuck()">fuck</a>
+  <a onclick="btn_add()">fuck2</a>
+</div>
+  
+
+  
+
+</body>
+</html>

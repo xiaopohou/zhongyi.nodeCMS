@@ -66,7 +66,7 @@ var system = {
     zy_mongo_root: "",
     zy_mongo_pass: "",
     zy_mongo_port: "27017",
-    sitename: "cms",
+    sitename: "",
     //缓存设置
     redis_host: '127.0.0.1',
     redis_port: 6379,
