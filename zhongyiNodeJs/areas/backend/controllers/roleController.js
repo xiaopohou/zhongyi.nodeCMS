@@ -5,7 +5,11 @@ module.exports={
        //res.send('index');
        res.render('manager/role/index',basePage.setLayoutPage(req,res,'x'));
     },
-    get_index2:function(req,res){
+    get_addrole:function(req,res){
        res.render('manager/role/form',{layout:"manager/layout/formLayout"});
+    },
+    post_addrole:function(req,res)
+    {
+        res.send('success');
     }
 };

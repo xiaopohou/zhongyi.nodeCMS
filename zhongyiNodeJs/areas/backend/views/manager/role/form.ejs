@@ -1,4 +1,7 @@
-<form id="form1">
+<div ng-controller="roleController">
+
+
+<form id="myform" name="myform" ng-submit="processForm(myform.$valid)">
     <div class="widget-body">
         <div id="wizard" class="wizard" data-target="#wizard-steps" style="border-left: none; border-top: none; border-right: none;">
             <ul class="steps">
@@ -22,7 +25,8 @@
                             <tr>
                                 <th class="formTitle">角色名称</th>
                                 <td class="formValue">
-                                    <input id="F_FullName" name="F_FullName" type="text" class="form-control" placeholder="请输入角色名称" />
+                                    <input id="F_FullName" name="F_FullName" type="text" class="form-control" placeholder="请输入角色名称" required/>
+                                    <label for="F_FullName" class="control-label text-danger" ng-show="myForm.F_FullName.$invalid && !myForm.F_FullName.$pristine"><i class="fa fa-times-circle-o"></i>请输入</label>
                                 </td>
                             </tr>
                              <!-- <tr>
@@ -75,9 +79,11 @@
             </div>
         </div>
         <div class="form-button" id="wizard-actions">
-            <a id="btn_last" disabled class="btn btn-default btn-prev">上一步</a>
+              <button type="submit" id="btn_last"  class="btn btn-default" >提交</button>
+            <!--<a id="btn_last" disabled class="btn btn-default btn-prev">上一步</a>
             <a id="btn_next" class="btn btn-default btn-next">下一步</a>
-            <a id="btn_finish" class="btn btn-default" style="display: none;" onclick="submitForm()">完成</a>
+            <a id="btn_finish" class="btn btn-default" style="display: none;" onclick="submitForm()">完成</a>-->
         </div>
     </div>
 </form>
+</div>
