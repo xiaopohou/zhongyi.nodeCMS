@@ -1,0 +1,168 @@
+[Tue Feb 07 2017 17:57:40 GMT+0800 (中国标准时间)]/js/plugins/bootstrap.min.js
+[Error: Not Found
+    at D:\Work\work_nodejs\zhongyi.nodeCMS\zhongyiNodeJs\app.js:139:15
+    at Layer.handle [as handle_request] (D:\Work\work_nodejs\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (D:\Work\work_nodejs\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\lib\router\index.js:312:13)
+    at D:\Work\work_nodejs\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\lib\router\index.js:280:7
+    at Function.process_params (D:\Work\work_nodejs\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\lib\router\index.js:330:12)
+    at next (D:\Work\work_nodejs\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\lib\router\index.js:271:10)
+    at D:\Work\work_nodejs\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\lib\router\index.js:618:15
+    at next (D:\Work\work_nodejs\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\lib\router\index.js:256:14)
+    at Function.handle (D:\Work\work_nodejs\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\lib\router\index.js:176:3)
+    at router (D:\Work\work_nodejs\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\lib\router\index.js:46:12)
+    at Layer.handle [as handle_request] (D:\Work\work_nodejs\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (D:\Work\work_nodejs\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\lib\router\index.js:312:13)
+    at D:\Work\work_nodejs\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\lib\router\index.js:280:7
+    at Function.process_params (D:\Work\work_nodejs\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\lib\router\index.js:330:12)
+    at next (D:\Work\work_nodejs\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\lib\router\index.js:271:10)
+    at SendStream.error (D:\Work\work_nodejs\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\node_modules\serve-static\index.js:120:7)
+    at emitOne (events.js:77:13)
+    at SendStream.emit (events.js:169:7)
+    at SendStream.error (D:\Work\work_nodejs\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\node_modules\serve-static\node_modules\send\index.js:245:17)
+    at SendStream.onStatError (D:\Work\work_nodejs\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\node_modules\serve-static\node_modules\send\index.js:356:12)
+    at onstat (D:\Work\work_nodejs\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\node_modules\serve-static\node_modules\send\index.js:621:26)
+    at FSReqWrap.oncomplete (fs.js:82:15)]
+[Tue Feb 07 2017 17:57:40 GMT+0800 (中国标准时间)]/adminv3/img/a61.jpg
+[Error: Not Found
+    at D:\Work\work_nodejs\zhongyi.nodeCMS\zhongyiNodeJs\app.js:139:15
+    at Layer.handle [as handle_request] (D:\Work\work_nodejs\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (D:\Work\work_nodejs\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\lib\router\index.js:312:13)
+    at D:\Work\work_nodejs\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\lib\router\index.js:280:7
+    at Function.process_params (D:\Work\work_nodejs\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\lib\router\index.js:330:12)
+    at next (D:\Work\work_nodejs\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\lib\router\index.js:271:10)
+    at D:\Work\work_nodejs\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\lib\router\index.js:618:15
+    at next (D:\Work\work_nodejs\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\lib\router\index.js:256:14)
+    at Function.handle (D:\Work\work_nodejs\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\lib\router\index.js:176:3)
+    at router (D:\Work\work_nodejs\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\lib\router\index.js:46:12)
+    at Layer.handle [as handle_request] (D:\Work\work_nodejs\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (D:\Work\work_nodejs\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\lib\router\index.js:312:13)
+    at D:\Work\work_nodejs\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\lib\router\index.js:280:7
+    at Function.process_params (D:\Work\work_nodejs\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\lib\router\index.js:330:12)
+    at next (D:\Work\work_nodejs\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\lib\router\index.js:271:10)
+    at SendStream.error (D:\Work\work_nodejs\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\node_modules\serve-static\index.js:120:7)
+    at emitOne (events.js:77:13)
+    at SendStream.emit (events.js:169:7)
+    at SendStream.error (D:\Work\work_nodejs\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\node_modules\serve-static\node_modules\send\index.js:245:17)
+    at SendStream.onStatError (D:\Work\work_nodejs\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\node_modules\serve-static\node_modules\send\index.js:356:12)
+    at onstat (D:\Work\work_nodejs\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\node_modules\serve-static\node_modules\send\index.js:621:26)
+    at FSReqWrap.oncomplete (fs.js:82:15)]
+[Tue Feb 07 2017 17:57:40 GMT+0800 (中国标准时间)]/backend/skin-config.html
+[Error: Not Found
+    at D:\Work\work_nodejs\zhongyi.nodeCMS\zhongyiNodeJs\app.js:139:15
+    at Layer.handle [as handle_request] (D:\Work\work_nodejs\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (D:\Work\work_nodejs\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\lib\router\index.js:312:13)
+    at D:\Work\work_nodejs\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\lib\router\index.js:280:7
+    at Function.process_params (D:\Work\work_nodejs\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\lib\router\index.js:330:12)
+    at next (D:\Work\work_nodejs\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\lib\router\index.js:271:10)
+    at D:\Work\work_nodejs\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\lib\router\index.js:618:15
+    at next (D:\Work\work_nodejs\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\lib\router\index.js:256:14)
+    at Function.handle (D:\Work\work_nodejs\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\lib\router\index.js:176:3)
+    at router (D:\Work\work_nodejs\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\lib\router\index.js:46:12)
+    at Layer.handle [as handle_request] (D:\Work\work_nodejs\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (D:\Work\work_nodejs\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\lib\router\index.js:312:13)
+    at D:\Work\work_nodejs\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\lib\router\index.js:280:7
+    at Function.process_params (D:\Work\work_nodejs\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\lib\router\index.js:330:12)
+    at next (D:\Work\work_nodejs\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\lib\router\index.js:271:10)
+    at SendStream.error (D:\Work\work_nodejs\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\node_modules\serve-static\index.js:120:7)
+    at emitOne (events.js:77:13)
+    at SendStream.emit (events.js:169:7)
+    at SendStream.error (D:\Work\work_nodejs\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\node_modules\serve-static\node_modules\send\index.js:245:17)
+    at SendStream.onStatError (D:\Work\work_nodejs\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\node_modules\serve-static\node_modules\send\index.js:356:12)
+    at onstat (D:\Work\work_nodejs\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\node_modules\serve-static\node_modules\send\index.js:621:26)
+    at FSReqWrap.oncomplete (fs.js:82:15)]
+[Tue Feb 07 2017 17:57:41 GMT+0800 (中国标准时间)]/js/bootstrap.js
+[Error: Not Found
+    at D:\Work\work_nodejs\zhongyi.nodeCMS\zhongyiNodeJs\app.js:139:15
+    at Layer.handle [as handle_request] (D:\Work\work_nodejs\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (D:\Work\work_nodejs\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\lib\router\index.js:312:13)
+    at D:\Work\work_nodejs\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\lib\router\index.js:280:7
+    at Function.process_params (D:\Work\work_nodejs\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\lib\router\index.js:330:12)
+    at next (D:\Work\work_nodejs\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\lib\router\index.js:271:10)
+    at D:\Work\work_nodejs\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\lib\router\index.js:618:15
+    at next (D:\Work\work_nodejs\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\lib\router\index.js:256:14)
+    at Function.handle (D:\Work\work_nodejs\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\lib\router\index.js:176:3)
+    at router (D:\Work\work_nodejs\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\lib\router\index.js:46:12)
+    at Layer.handle [as handle_request] (D:\Work\work_nodejs\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (D:\Work\work_nodejs\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\lib\router\index.js:312:13)
+    at D:\Work\work_nodejs\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\lib\router\index.js:280:7
+    at Function.process_params (D:\Work\work_nodejs\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\lib\router\index.js:330:12)
+    at next (D:\Work\work_nodejs\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\lib\router\index.js:271:10)
+    at SendStream.error (D:\Work\work_nodejs\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\node_modules\serve-static\index.js:120:7)
+    at emitOne (events.js:77:13)
+    at SendStream.emit (events.js:169:7)
+    at SendStream.error (D:\Work\work_nodejs\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\node_modules\serve-static\node_modules\send\index.js:245:17)
+    at SendStream.onStatError (D:\Work\work_nodejs\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\node_modules\serve-static\node_modules\send\index.js:356:12)
+    at onstat (D:\Work\work_nodejs\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\node_modules\serve-static\node_modules\send\index.js:621:26)
+    at FSReqWrap.oncomplete (fs.js:82:15)]
+[Tue Feb 07 2017 17:57:47 GMT+0800 (中国标准时间)]/plugins/angular/angular.min.js.map
+[Error: Not Found
+    at D:\Work\work_nodejs\zhongyi.nodeCMS\zhongyiNodeJs\app.js:139:15
+    at Layer.handle [as handle_request] (D:\Work\work_nodejs\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (D:\Work\work_nodejs\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\lib\router\index.js:312:13)
+    at D:\Work\work_nodejs\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\lib\router\index.js:280:7
+    at Function.process_params (D:\Work\work_nodejs\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\lib\router\index.js:330:12)
+    at next (D:\Work\work_nodejs\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\lib\router\index.js:271:10)
+    at D:\Work\work_nodejs\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\lib\router\index.js:618:15
+    at next (D:\Work\work_nodejs\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\lib\router\index.js:256:14)
+    at Function.handle (D:\Work\work_nodejs\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\lib\router\index.js:176:3)
+    at router (D:\Work\work_nodejs\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\lib\router\index.js:46:12)
+    at Layer.handle [as handle_request] (D:\Work\work_nodejs\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (D:\Work\work_nodejs\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\lib\router\index.js:312:13)
+    at D:\Work\work_nodejs\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\lib\router\index.js:280:7
+    at Function.process_params (D:\Work\work_nodejs\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\lib\router\index.js:330:12)
+    at next (D:\Work\work_nodejs\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\lib\router\index.js:271:10)
+    at SendStream.error (D:\Work\work_nodejs\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\node_modules\serve-static\index.js:120:7)
+    at emitOne (events.js:77:13)
+    at SendStream.emit (events.js:169:7)
+    at SendStream.error (D:\Work\work_nodejs\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\node_modules\serve-static\node_modules\send\index.js:245:17)
+    at SendStream.onStatError (D:\Work\work_nodejs\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\node_modules\serve-static\node_modules\send\index.js:356:12)
+    at onstat (D:\Work\work_nodejs\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\node_modules\serve-static\node_modules\send\index.js:621:26)
+    at FSReqWrap.oncomplete (fs.js:82:15)]
+[Tue Feb 07 2017 17:57:47 GMT+0800 (中国标准时间)]/toastr.js.map
+[Error: Not Found
+    at D:\Work\work_nodejs\zhongyi.nodeCMS\zhongyiNodeJs\app.js:139:15
+    at Layer.handle [as handle_request] (D:\Work\work_nodejs\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (D:\Work\work_nodejs\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\lib\router\index.js:312:13)
+    at D:\Work\work_nodejs\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\lib\router\index.js:280:7
+    at Function.process_params (D:\Work\work_nodejs\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\lib\router\index.js:330:12)
+    at next (D:\Work\work_nodejs\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\lib\router\index.js:271:10)
+    at D:\Work\work_nodejs\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\lib\router\index.js:618:15
+    at next (D:\Work\work_nodejs\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\lib\router\index.js:256:14)
+    at Function.handle (D:\Work\work_nodejs\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\lib\router\index.js:176:3)
+    at router (D:\Work\work_nodejs\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\lib\router\index.js:46:12)
+    at Layer.handle [as handle_request] (D:\Work\work_nodejs\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (D:\Work\work_nodejs\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\lib\router\index.js:312:13)
+    at D:\Work\work_nodejs\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\lib\router\index.js:280:7
+    at Function.process_params (D:\Work\work_nodejs\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\lib\router\index.js:330:12)
+    at next (D:\Work\work_nodejs\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\lib\router\index.js:271:10)
+    at SendStream.error (D:\Work\work_nodejs\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\node_modules\serve-static\index.js:120:7)
+    at emitOne (events.js:77:13)
+    at SendStream.emit (events.js:169:7)
+    at SendStream.error (D:\Work\work_nodejs\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\node_modules\serve-static\node_modules\send\index.js:245:17)
+    at SendStream.onStatError (D:\Work\work_nodejs\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\node_modules\serve-static\node_modules\send\index.js:356:12)
+    at onstat (D:\Work\work_nodejs\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\node_modules\serve-static\node_modules\send\index.js:621:26)
+    at FSReqWrap.oncomplete (fs.js:82:15)]
+[Tue Feb 07 2017 17:57:47 GMT+0800 (中国标准时间)]/adminv3/css/bootstrap.min.css.map
+[Error: Not Found
+    at D:\Work\work_nodejs\zhongyi.nodeCMS\zhongyiNodeJs\app.js:139:15
+    at Layer.handle [as handle_request] (D:\Work\work_nodejs\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (D:\Work\work_nodejs\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\lib\router\index.js:312:13)
+    at D:\Work\work_nodejs\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\lib\router\index.js:280:7
+    at Function.process_params (D:\Work\work_nodejs\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\lib\router\index.js:330:12)
+    at next (D:\Work\work_nodejs\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\lib\router\index.js:271:10)
+    at D:\Work\work_nodejs\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\lib\router\index.js:618:15
+    at next (D:\Work\work_nodejs\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\lib\router\index.js:256:14)
+    at Function.handle (D:\Work\work_nodejs\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\lib\router\index.js:176:3)
+    at router (D:\Work\work_nodejs\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\lib\router\index.js:46:12)
+    at Layer.handle [as handle_request] (D:\Work\work_nodejs\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (D:\Work\work_nodejs\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\lib\router\index.js:312:13)
+    at D:\Work\work_nodejs\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\lib\router\index.js:280:7
+    at Function.process_params (D:\Work\work_nodejs\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\lib\router\index.js:330:12)
+    at next (D:\Work\work_nodejs\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\lib\router\index.js:271:10)
+    at SendStream.error (D:\Work\work_nodejs\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\node_modules\serve-static\index.js:120:7)
+    at emitOne (events.js:77:13)
+    at SendStream.emit (events.js:169:7)
+    at SendStream.error (D:\Work\work_nodejs\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\node_modules\serve-static\node_modules\send\index.js:245:17)
+    at SendStream.onStatError (D:\Work\work_nodejs\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\node_modules\serve-static\node_modules\send\index.js:356:12)
+    at onstat (D:\Work\work_nodejs\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\node_modules\serve-static\node_modules\send\index.js:621:26)
+    at FSReqWrap.oncomplete (fs.js:82:15)]
