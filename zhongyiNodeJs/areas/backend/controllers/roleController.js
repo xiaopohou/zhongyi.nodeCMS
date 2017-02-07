@@ -3,6 +3,6 @@ var roleModel=require('../../../models/Sys_Role');
 module.exports={
     get_index:function(req,res){
        //res.send('index');
-       res.render('manager/role/index',basePage.setLayoutPage2(req,res,'x'));
+       res.render('manager/role/index',basePage.setLayoutPage(req,res,'x'));
     }
 };
