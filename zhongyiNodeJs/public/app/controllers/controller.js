@@ -12,21 +12,27 @@ nodeApp.controller('roleController', ['$scope', '$http', function ($scope, $http
             title: "新增角色",
             url: "/backend/role/addrole",
             width: "550px",
-            height: "570px",
+            height: "370px",
             btn: null
         });
     };
     $scope.processForm=function(isValid)
     {
-        var roleData={
-            name:$scope.formData.F_FullName
-        };
+      var roleData=
+      {
+          name:$scope.formData.name
+      };
         if(isValid)
         {
             ngPost($http,isValid,"/backend/role/addrole",$scope.formData,function(data){
-                alert(data);
+                //表格刷新
+               top.window.location.reload();
             });
         }
 
+    },
+    $scope.test1=function()
+    {
+        window.location="/backend/role/test1/laozhao";
     }
 }]);

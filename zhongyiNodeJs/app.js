@@ -6,16 +6,9 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var routes = require('./routes/index');
-var users = require('./routes/users');
-var admins = require('./routes/admin');//后台
-var cms = require('./routes/cms');
-var cmsV2 = require('./routes/cmsV2');
-var system = require('./routes/system');
-var adminV2 = require('./routes/admin2');
-var adminV3 = require('./routes/admin3');
-var authority = require('./routes/authority');
-var role = require('./routes/role');
+
+ 
+
 //template engine
 var expressLayouts = require('express-ejs-layouts');
 var partials = require('express-partials');
@@ -29,6 +22,12 @@ var setting = require('./public/config/zy_Config');
 var app = express();
 
 app.use(expressLayouts);
+
+ 
+ //处理非get提交数据
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
 //default area
 var defaultArea = "frontend";
 var router = express.Router();
@@ -48,6 +47,9 @@ router.use(function (req, res, next) {
 });
 app.use(router);
 
+
+
+ 
 // 设置控制器文件夹并绑定到路由
 resolve
     .setRouteDirectory({
@@ -66,8 +68,7 @@ app.use(partials());
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+ 
 app.use(cookieParser());
  
 var logDir = __dirname + '/logs/access';
@@ -122,20 +123,10 @@ app.use('/ueditor/ue', ueditor({//这里的/ueditor/ue是因为文件件重命�
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'uploads')));
-
-app.use('/', routes);
-app.use('/users', users);
-//app.use('/admin',admins);
-app.use('/system', system);
-app.use('/api', cms);
-app.use('/adminV2', adminV2);
-app.use('/admin', adminV3);
-app.use('/adminV2/authority', authority);
-app.use('/adminV2/role', role);
-app.use('/adminV2/cmsv2', cmsV2);
-
+ 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
+ 
     var err = new Error('Not Found');
     err.status = 404;
     next(err);

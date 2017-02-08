@@ -6,7 +6,7 @@
         <div id="wizard" class="wizard" data-target="#wizard-steps" style="border-left: none; border-top: none; border-right: none;">
             <ul class="steps">
                 <li data-target="#step-1" class="active"><span class="step">1</span>角色信息<span class="chevron"></span></li>
-                <li data-target="#step-2"><span class="step">2</span>功能权限<span class="chevron"></span></li>
+                <!--<li data-target="#step-2"><span class="step">2</span>功能权限<span class="chevron"></span></li>-->
             </ul>
         </div>
         <div class="step-content" id="wizard-steps" style="border-left: none; border-bottom: none; border-right: none;">
@@ -25,8 +25,8 @@
                             <tr>
                                 <th class="formTitle">角色名称</th>
                                 <td class="formValue">
-                                    <input id="F_FullName" name="F_FullName" type="text" class="form-control" placeholder="请输入角色名称" required/>
-                                    <label for="F_FullName" class="control-label text-danger" ng-show="myForm.F_FullName.$invalid && !myForm.F_FullName.$pristine"><i class="fa fa-times-circle-o"></i>请输入</label>
+                                    <input id="rolename" name="rolename" type="text" ng-model="formData.name" class="form-control" placeholder="请输入角色名称" required/>
+                                    <label for="rolename" class="control-label text-danger" ng-show="myForm.rolename.$invalid && !myForm.rolename.$pristine"><i class="fa fa-times-circle-o"></i>请输入</label>
                                 </td>
                             </tr>
                              <!-- <tr>
