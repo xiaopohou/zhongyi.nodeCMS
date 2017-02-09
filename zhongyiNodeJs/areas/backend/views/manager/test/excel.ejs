@@ -1,0 +1,9 @@
+<script>
+    function upload()
+    {
+        $.get('/backend/test/say',function(data){
+             alert(data);
+        });
+    }
+</script>
+<a onclick="upload()">upload</a>
