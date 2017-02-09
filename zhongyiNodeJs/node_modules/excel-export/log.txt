@@ -1,0 +1,7 @@
+0.3.7
+	styles support
+0.3.11  
+  Add in eOpt.cellType in beforeCellWrite call back
+
+0.4.1
+  Use SortedMap for lookup
