@@ -1,5 +1,5 @@
 var basePage = require('../../../core/baseController');
-var roleModel=require('../../../models/zyModels/Sys_Role');
+var roleModel=require('../../../models/zyModels/Role');
 var dbOperator=require('../../../models/zyDBHelper/zy_Dbopt');
  
 module.exports={

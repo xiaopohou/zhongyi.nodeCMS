@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-[Wed Feb 08 2017 22:13:56 GMT+0800 (中国标准时间)]/
+[Thu Feb 09 2017 21:22:53 GMT+0800 (中国标准时间)]/
 [Error: Failed to lookup view "layout" in views directory "D:\work\T\zhongyi.nodeCMS\zhongyiNodeJs\areas\frontend\views"
     at EventEmitter.render (D:\work\T\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\lib\application.js:579:17)
     at ServerResponse.render (D:\work\T\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\lib\response.js:961:7)
@@ -23,10 +22,7 @@
     at Layer.handle [as handle_request] (D:\work\T\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\lib\router\layer.js:95:5)
     at trim_prefix (D:\work\T\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\lib\router\index.js:312:13)
     at D:\work\T\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\lib\router\index.js:280:7]
-[Wed Feb 08 2017 22:13:56 GMT+0800 (中国标准时间)]/favicon.ico
-=======
-[Thu Feb 09 2017 13:27:03 GMT+0800 (中国标准时间)]/js/plugins/bootstrap.min.js
->>>>>>> 1d0bbdc76c8e45b7bbac66d0fdc4dc13b8bc708b
+[Thu Feb 09 2017 21:22:53 GMT+0800 (中国标准时间)]/favicon.ico
 [Error: Not Found
     at D:\work\T\zhongyi.nodeCMS\zhongyiNodeJs\app.js:130:15
     at Layer.handle [as handle_request] (D:\work\T\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\lib\router\layer.js:95:5)
@@ -41,11 +37,7 @@
     at SendStream.onStatError (D:\work\T\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\node_modules\serve-static\node_modules\send\index.js:356:12)
     at onstat (D:\work\T\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\node_modules\serve-static\node_modules\send\index.js:621:26)
     at FSReqWrap.oncomplete (fs.js:82:15)]
-<<<<<<< HEAD
-[Wed Feb 08 2017 22:13:59 GMT+0800 (中国标准时间)]/js/plugins/bootstrap.min.js
-=======
-[Thu Feb 09 2017 13:27:03 GMT+0800 (中国标准时间)]/adminv3/img/a61.jpg
->>>>>>> 1d0bbdc76c8e45b7bbac66d0fdc4dc13b8bc708b
+[Thu Feb 09 2017 21:22:59 GMT+0800 (中国标准时间)]/js/plugins/bootstrap.min.js
 [Error: Not Found
     at D:\work\T\zhongyi.nodeCMS\zhongyiNodeJs\app.js:130:15
     at Layer.handle [as handle_request] (D:\work\T\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\lib\router\layer.js:95:5)
@@ -60,8 +52,7 @@
     at SendStream.onStatError (D:\work\T\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\node_modules\serve-static\node_modules\send\index.js:356:12)
     at onstat (D:\work\T\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\node_modules\serve-static\node_modules\send\index.js:621:26)
     at FSReqWrap.oncomplete (fs.js:82:15)]
-<<<<<<< HEAD
-[Wed Feb 08 2017 22:14:00 GMT+0800 (中国标准时间)]/adminv3/img/a61.jpg
+[Thu Feb 09 2017 21:22:59 GMT+0800 (中国标准时间)]/js/plugins/bootstrap.min.js
 [Error: Not Found
     at D:\work\T\zhongyi.nodeCMS\zhongyiNodeJs\app.js:130:15
     at Layer.handle [as handle_request] (D:\work\T\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\lib\router\layer.js:95:5)
@@ -76,7 +67,7 @@
     at SendStream.onStatError (D:\work\T\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\node_modules\serve-static\node_modules\send\index.js:356:12)
     at onstat (D:\work\T\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\node_modules\serve-static\node_modules\send\index.js:621:26)
     at FSReqWrap.oncomplete (fs.js:82:15)]
-[Wed Feb 08 2017 22:14:00 GMT+0800 (中国标准时间)]/backend/manager/skin-config.html
+[Thu Feb 09 2017 21:22:59 GMT+0800 (中国标准时间)]/adminv3/img/a61.jpg
 [Error: Not Found
     at D:\work\T\zhongyi.nodeCMS\zhongyiNodeJs\app.js:130:15
     at Layer.handle [as handle_request] (D:\work\T\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\lib\router\layer.js:95:5)
@@ -91,7 +82,7 @@
     at SendStream.onStatError (D:\work\T\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\node_modules\serve-static\node_modules\send\index.js:356:12)
     at onstat (D:\work\T\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\node_modules\serve-static\node_modules\send\index.js:621:26)
     at FSReqWrap.oncomplete (fs.js:82:15)]
-[Wed Feb 08 2017 22:14:03 GMT+0800 (中国标准时间)]/js/plugins/bootstrap.min.js
+[Thu Feb 09 2017 21:22:59 GMT+0800 (中国标准时间)]/backend/manager/skin-config.html
 [Error: Not Found
     at D:\work\T\zhongyi.nodeCMS\zhongyiNodeJs\app.js:130:15
     at Layer.handle [as handle_request] (D:\work\T\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\lib\router\layer.js:95:5)
@@ -106,7 +97,7 @@
     at SendStream.onStatError (D:\work\T\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\node_modules\serve-static\node_modules\send\index.js:356:12)
     at onstat (D:\work\T\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\node_modules\serve-static\node_modules\send\index.js:621:26)
     at FSReqWrap.oncomplete (fs.js:82:15)]
-[Wed Feb 08 2017 22:14:03 GMT+0800 (中国标准时间)]/adminv3/img/a61.jpg
+[Thu Feb 09 2017 21:23:06 GMT+0800 (中国标准时间)]/js/plugins/bootstrap.min.js
 [Error: Not Found
     at D:\work\T\zhongyi.nodeCMS\zhongyiNodeJs\app.js:130:15
     at Layer.handle [as handle_request] (D:\work\T\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\lib\router\layer.js:95:5)
@@ -121,7 +112,7 @@
     at SendStream.onStatError (D:\work\T\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\node_modules\serve-static\node_modules\send\index.js:356:12)
     at onstat (D:\work\T\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\node_modules\serve-static\node_modules\send\index.js:621:26)
     at FSReqWrap.oncomplete (fs.js:82:15)]
-[Wed Feb 08 2017 22:14:03 GMT+0800 (中国标准时间)]/backend/skin-config.html
+[Thu Feb 09 2017 21:23:06 GMT+0800 (中国标准时间)]/adminv3/img/a61.jpg
 [Error: Not Found
     at D:\work\T\zhongyi.nodeCMS\zhongyiNodeJs\app.js:130:15
     at Layer.handle [as handle_request] (D:\work\T\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\lib\router\layer.js:95:5)
@@ -136,7 +127,7 @@
     at SendStream.onStatError (D:\work\T\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\node_modules\serve-static\node_modules\send\index.js:356:12)
     at onstat (D:\work\T\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\node_modules\serve-static\node_modules\send\index.js:621:26)
     at FSReqWrap.oncomplete (fs.js:82:15)]
-[Wed Feb 08 2017 22:14:04 GMT+0800 (中国标准时间)]/js/bootstrap.js
+[Thu Feb 09 2017 21:23:06 GMT+0800 (中国标准时间)]/backend/role/skin-config.html
 [Error: Not Found
     at D:\work\T\zhongyi.nodeCMS\zhongyiNodeJs\app.js:130:15
     at Layer.handle [as handle_request] (D:\work\T\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\lib\router\layer.js:95:5)
@@ -151,7 +142,7 @@
     at SendStream.onStatError (D:\work\T\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\node_modules\serve-static\node_modules\send\index.js:356:12)
     at onstat (D:\work\T\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\node_modules\serve-static\node_modules\send\index.js:621:26)
     at FSReqWrap.oncomplete (fs.js:82:15)]
-[Wed Feb 08 2017 22:14:04 GMT+0800 (中国标准时间)]/js/bootstrap.js
+[Thu Feb 09 2017 21:23:10 GMT+0800 (中国标准时间)]/js/plugins/bootstrap.min.js
 [Error: Not Found
     at D:\work\T\zhongyi.nodeCMS\zhongyiNodeJs\app.js:130:15
     at Layer.handle [as handle_request] (D:\work\T\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\lib\router\layer.js:95:5)
@@ -166,7 +157,7 @@
     at SendStream.onStatError (D:\work\T\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\node_modules\serve-static\node_modules\send\index.js:356:12)
     at onstat (D:\work\T\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\node_modules\serve-static\node_modules\send\index.js:621:26)
     at FSReqWrap.oncomplete (fs.js:82:15)]
-[Wed Feb 08 2017 22:14:06 GMT+0800 (中国标准时间)]/js/plugins/bootstrap.min.js
+[Thu Feb 09 2017 21:23:10 GMT+0800 (中国标准时间)]/adminv3/img/a61.jpg
 [Error: Not Found
     at D:\work\T\zhongyi.nodeCMS\zhongyiNodeJs\app.js:130:15
     at Layer.handle [as handle_request] (D:\work\T\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\lib\router\layer.js:95:5)
@@ -181,7 +172,7 @@
     at SendStream.onStatError (D:\work\T\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\node_modules\serve-static\node_modules\send\index.js:356:12)
     at onstat (D:\work\T\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\node_modules\serve-static\node_modules\send\index.js:621:26)
     at FSReqWrap.oncomplete (fs.js:82:15)]
-[Wed Feb 08 2017 22:14:06 GMT+0800 (中国标准时间)]/adminv3/img/a61.jpg
+[Thu Feb 09 2017 21:23:10 GMT+0800 (中国标准时间)]/backend/skin-config.html
 [Error: Not Found
     at D:\work\T\zhongyi.nodeCMS\zhongyiNodeJs\app.js:130:15
     at Layer.handle [as handle_request] (D:\work\T\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\lib\router\layer.js:95:5)
@@ -196,7 +187,7 @@
     at SendStream.onStatError (D:\work\T\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\node_modules\serve-static\node_modules\send\index.js:356:12)
     at onstat (D:\work\T\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\node_modules\serve-static\node_modules\send\index.js:621:26)
     at FSReqWrap.oncomplete (fs.js:82:15)]
-[Wed Feb 08 2017 22:14:06 GMT+0800 (中国标准时间)]/adminv3/img/a61.jpg
+[Thu Feb 09 2017 21:23:10 GMT+0800 (中国标准时间)]/js/plugins/bootstrap.min.js
 [Error: Not Found
     at D:\work\T\zhongyi.nodeCMS\zhongyiNodeJs\app.js:130:15
     at Layer.handle [as handle_request] (D:\work\T\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\lib\router\layer.js:95:5)
@@ -211,7 +202,7 @@
     at SendStream.onStatError (D:\work\T\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\node_modules\serve-static\node_modules\send\index.js:356:12)
     at onstat (D:\work\T\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\node_modules\serve-static\node_modules\send\index.js:621:26)
     at FSReqWrap.oncomplete (fs.js:82:15)]
-[Wed Feb 08 2017 22:14:06 GMT+0800 (中国标准时间)]/backend/skin-config.html
+[Thu Feb 09 2017 21:23:10 GMT+0800 (中国标准时间)]/adminv3/img/a61.jpg
 [Error: Not Found
     at D:\work\T\zhongyi.nodeCMS\zhongyiNodeJs\app.js:130:15
     at Layer.handle [as handle_request] (D:\work\T\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\lib\router\layer.js:95:5)
@@ -226,7 +217,7 @@
     at SendStream.onStatError (D:\work\T\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\node_modules\serve-static\node_modules\send\index.js:356:12)
     at onstat (D:\work\T\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\node_modules\serve-static\node_modules\send\index.js:621:26)
     at FSReqWrap.oncomplete (fs.js:82:15)]
-[Wed Feb 08 2017 23:01:49 GMT+0800 (中国标准时间)]/js/plugins/bootstrap.min.js
+[Thu Feb 09 2017 21:23:10 GMT+0800 (中国标准时间)]/backend/skin-config.html
 [Error: Not Found
     at D:\work\T\zhongyi.nodeCMS\zhongyiNodeJs\app.js:130:15
     at Layer.handle [as handle_request] (D:\work\T\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\lib\router\layer.js:95:5)
@@ -241,7 +232,7 @@
     at SendStream.onStatError (D:\work\T\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\node_modules\serve-static\node_modules\send\index.js:356:12)
     at onstat (D:\work\T\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\node_modules\serve-static\node_modules\send\index.js:621:26)
     at FSReqWrap.oncomplete (fs.js:82:15)]
-[Wed Feb 08 2017 23:01:49 GMT+0800 (中国标准时间)]/adminv3/img/a61.jpg
+[Thu Feb 09 2017 21:23:13 GMT+0800 (中国标准时间)]/js/bootstrap.js
 [Error: Not Found
     at D:\work\T\zhongyi.nodeCMS\zhongyiNodeJs\app.js:130:15
     at Layer.handle [as handle_request] (D:\work\T\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\lib\router\layer.js:95:5)
@@ -256,7 +247,7 @@
     at SendStream.onStatError (D:\work\T\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\node_modules\serve-static\node_modules\send\index.js:356:12)
     at onstat (D:\work\T\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\node_modules\serve-static\node_modules\send\index.js:621:26)
     at FSReqWrap.oncomplete (fs.js:82:15)]
-[Wed Feb 08 2017 23:01:49 GMT+0800 (中国标准时间)]/backend/skin-config.html
+[Thu Feb 09 2017 21:50:09 GMT+0800 (中国标准时间)]/js/plugins/bootstrap.min.js
 [Error: Not Found
     at D:\work\T\zhongyi.nodeCMS\zhongyiNodeJs\app.js:130:15
     at Layer.handle [as handle_request] (D:\work\T\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\lib\router\layer.js:95:5)
@@ -271,7 +262,7 @@
     at SendStream.onStatError (D:\work\T\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\node_modules\serve-static\node_modules\send\index.js:356:12)
     at onstat (D:\work\T\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\node_modules\serve-static\node_modules\send\index.js:621:26)
     at FSReqWrap.oncomplete (fs.js:82:15)]
-[Wed Feb 08 2017 23:01:52 GMT+0800 (中国标准时间)]/js/plugins/bootstrap.min.js
+[Thu Feb 09 2017 21:50:09 GMT+0800 (中国标准时间)]/js/plugins/bootstrap.min.js
 [Error: Not Found
     at D:\work\T\zhongyi.nodeCMS\zhongyiNodeJs\app.js:130:15
     at Layer.handle [as handle_request] (D:\work\T\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\lib\router\layer.js:95:5)
@@ -286,7 +277,7 @@
     at SendStream.onStatError (D:\work\T\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\node_modules\serve-static\node_modules\send\index.js:356:12)
     at onstat (D:\work\T\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\node_modules\serve-static\node_modules\send\index.js:621:26)
     at FSReqWrap.oncomplete (fs.js:82:15)]
-[Wed Feb 08 2017 23:01:52 GMT+0800 (中国标准时间)]/adminv3/img/a61.jpg
+[Thu Feb 09 2017 21:50:09 GMT+0800 (中国标准时间)]/adminv3/img/a61.jpg
 [Error: Not Found
     at D:\work\T\zhongyi.nodeCMS\zhongyiNodeJs\app.js:130:15
     at Layer.handle [as handle_request] (D:\work\T\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\lib\router\layer.js:95:5)
@@ -301,7 +292,7 @@
     at SendStream.onStatError (D:\work\T\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\node_modules\serve-static\node_modules\send\index.js:356:12)
     at onstat (D:\work\T\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\node_modules\serve-static\node_modules\send\index.js:621:26)
     at FSReqWrap.oncomplete (fs.js:82:15)]
-[Wed Feb 08 2017 23:01:52 GMT+0800 (中国标准时间)]/backend/skin-config.html
+[Thu Feb 09 2017 21:50:09 GMT+0800 (中国标准时间)]/backend/skin-config.html
 [Error: Not Found
     at D:\work\T\zhongyi.nodeCMS\zhongyiNodeJs\app.js:130:15
     at Layer.handle [as handle_request] (D:\work\T\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\lib\router\layer.js:95:5)
@@ -316,7 +307,7 @@
     at SendStream.onStatError (D:\work\T\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\node_modules\serve-static\node_modules\send\index.js:356:12)
     at onstat (D:\work\T\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\node_modules\serve-static\node_modules\send\index.js:621:26)
     at FSReqWrap.oncomplete (fs.js:82:15)]
-[Wed Feb 08 2017 23:01:53 GMT+0800 (中国标准时间)]/js/plugins/bootstrap.min.js
+[Thu Feb 09 2017 21:50:11 GMT+0800 (中国标准时间)]/js/plugins/bootstrap.min.js
 [Error: Not Found
     at D:\work\T\zhongyi.nodeCMS\zhongyiNodeJs\app.js:130:15
     at Layer.handle [as handle_request] (D:\work\T\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\lib\router\layer.js:95:5)
@@ -331,7 +322,7 @@
     at SendStream.onStatError (D:\work\T\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\node_modules\serve-static\node_modules\send\index.js:356:12)
     at onstat (D:\work\T\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\node_modules\serve-static\node_modules\send\index.js:621:26)
     at FSReqWrap.oncomplete (fs.js:82:15)]
-[Wed Feb 08 2017 23:01:53 GMT+0800 (中国标准时间)]/adminv3/img/a61.jpg
+[Thu Feb 09 2017 21:50:11 GMT+0800 (中国标准时间)]/adminv3/img/a61.jpg
 [Error: Not Found
     at D:\work\T\zhongyi.nodeCMS\zhongyiNodeJs\app.js:130:15
     at Layer.handle [as handle_request] (D:\work\T\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\lib\router\layer.js:95:5)
@@ -346,7 +337,7 @@
     at SendStream.onStatError (D:\work\T\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\node_modules\serve-static\node_modules\send\index.js:356:12)
     at onstat (D:\work\T\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\node_modules\serve-static\node_modules\send\index.js:621:26)
     at FSReqWrap.oncomplete (fs.js:82:15)]
-[Wed Feb 08 2017 23:01:53 GMT+0800 (中国标准时间)]/backend/skin-config.html
+[Thu Feb 09 2017 21:50:11 GMT+0800 (中国标准时间)]/backend/skin-config.html
 [Error: Not Found
     at D:\work\T\zhongyi.nodeCMS\zhongyiNodeJs\app.js:130:15
     at Layer.handle [as handle_request] (D:\work\T\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\lib\router\layer.js:95:5)
@@ -361,7 +352,7 @@
     at SendStream.onStatError (D:\work\T\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\node_modules\serve-static\node_modules\send\index.js:356:12)
     at onstat (D:\work\T\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\node_modules\serve-static\node_modules\send\index.js:621:26)
     at FSReqWrap.oncomplete (fs.js:82:15)]
-[Wed Feb 08 2017 23:02:20 GMT+0800 (中国标准时间)]/js/plugins/bootstrap.min.js
+[Thu Feb 09 2017 21:50:11 GMT+0800 (中国标准时间)]/js/plugins/bootstrap.min.js
 [Error: Not Found
     at D:\work\T\zhongyi.nodeCMS\zhongyiNodeJs\app.js:130:15
     at Layer.handle [as handle_request] (D:\work\T\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\lib\router\layer.js:95:5)
@@ -376,7 +367,7 @@
     at SendStream.onStatError (D:\work\T\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\node_modules\serve-static\node_modules\send\index.js:356:12)
     at onstat (D:\work\T\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\node_modules\serve-static\node_modules\send\index.js:621:26)
     at FSReqWrap.oncomplete (fs.js:82:15)]
-[Wed Feb 08 2017 23:02:20 GMT+0800 (中国标准时间)]/adminv3/img/a61.jpg
+[Thu Feb 09 2017 21:50:11 GMT+0800 (中国标准时间)]/adminv3/img/a61.jpg
 [Error: Not Found
     at D:\work\T\zhongyi.nodeCMS\zhongyiNodeJs\app.js:130:15
     at Layer.handle [as handle_request] (D:\work\T\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\lib\router\layer.js:95:5)
@@ -391,7 +382,7 @@
     at SendStream.onStatError (D:\work\T\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\node_modules\serve-static\node_modules\send\index.js:356:12)
     at onstat (D:\work\T\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\node_modules\serve-static\node_modules\send\index.js:621:26)
     at FSReqWrap.oncomplete (fs.js:82:15)]
-[Wed Feb 08 2017 23:02:20 GMT+0800 (中国标准时间)]/backend/skin-config.html
+[Thu Feb 09 2017 21:50:12 GMT+0800 (中国标准时间)]/backend/skin-config.html
 [Error: Not Found
     at D:\work\T\zhongyi.nodeCMS\zhongyiNodeJs\app.js:130:15
     at Layer.handle [as handle_request] (D:\work\T\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\lib\router\layer.js:95:5)
@@ -406,7 +397,7 @@
     at SendStream.onStatError (D:\work\T\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\node_modules\serve-static\node_modules\send\index.js:356:12)
     at onstat (D:\work\T\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\node_modules\serve-static\node_modules\send\index.js:621:26)
     at FSReqWrap.oncomplete (fs.js:82:15)]
-[Wed Feb 08 2017 23:09:52 GMT+0800 (中国标准时间)]/js/plugins/bootstrap.min.js
+[Thu Feb 09 2017 21:50:12 GMT+0800 (中国标准时间)]/js/plugins/bootstrap.min.js
 [Error: Not Found
     at D:\work\T\zhongyi.nodeCMS\zhongyiNodeJs\app.js:130:15
     at Layer.handle [as handle_request] (D:\work\T\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\lib\router\layer.js:95:5)
@@ -421,7 +412,7 @@
     at SendStream.onStatError (D:\work\T\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\node_modules\serve-static\node_modules\send\index.js:356:12)
     at onstat (D:\work\T\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\node_modules\serve-static\node_modules\send\index.js:621:26)
     at FSReqWrap.oncomplete (fs.js:82:15)]
-[Wed Feb 08 2017 23:09:52 GMT+0800 (中国标准时间)]/adminv3/img/a61.jpg
+[Thu Feb 09 2017 21:50:12 GMT+0800 (中国标准时间)]/adminv3/img/a61.jpg
 [Error: Not Found
     at D:\work\T\zhongyi.nodeCMS\zhongyiNodeJs\app.js:130:15
     at Layer.handle [as handle_request] (D:\work\T\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\lib\router\layer.js:95:5)
@@ -436,7 +427,7 @@
     at SendStream.onStatError (D:\work\T\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\node_modules\serve-static\node_modules\send\index.js:356:12)
     at onstat (D:\work\T\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\node_modules\serve-static\node_modules\send\index.js:621:26)
     at FSReqWrap.oncomplete (fs.js:82:15)]
-[Wed Feb 08 2017 23:09:52 GMT+0800 (中国标准时间)]/backend/skin-config.html
+[Thu Feb 09 2017 21:50:12 GMT+0800 (中国标准时间)]/backend/skin-config.html
 [Error: Not Found
     at D:\work\T\zhongyi.nodeCMS\zhongyiNodeJs\app.js:130:15
     at Layer.handle [as handle_request] (D:\work\T\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\lib\router\layer.js:95:5)
@@ -451,7 +442,7 @@
     at SendStream.onStatError (D:\work\T\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\node_modules\serve-static\node_modules\send\index.js:356:12)
     at onstat (D:\work\T\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\node_modules\serve-static\node_modules\send\index.js:621:26)
     at FSReqWrap.oncomplete (fs.js:82:15)]
-[Wed Feb 08 2017 23:09:53 GMT+0800 (中国标准时间)]/js/plugins/bootstrap.min.js
+[Thu Feb 09 2017 21:50:43 GMT+0800 (中国标准时间)]/admin
 [Error: Not Found
     at D:\work\T\zhongyi.nodeCMS\zhongyiNodeJs\app.js:130:15
     at Layer.handle [as handle_request] (D:\work\T\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\lib\router\layer.js:95:5)
@@ -464,38 +455,6 @@
     at SendStream.emit (events.js:169:7)
     at SendStream.error (D:\work\T\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\node_modules\serve-static\node_modules\send\index.js:245:17)
     at SendStream.onStatError (D:\work\T\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\node_modules\serve-static\node_modules\send\index.js:356:12)
-    at onstat (D:\work\T\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\node_modules\serve-static\node_modules\send\index.js:621:26)
-    at FSReqWrap.oncomplete (fs.js:82:15)]
-[Wed Feb 08 2017 23:09:53 GMT+0800 (中国标准时间)]/adminv3/img/a61.jpg
-=======
-[Thu Feb 09 2017 13:27:03 GMT+0800 (中国标准时间)]/backend/skin-config.html
->>>>>>> 1d0bbdc76c8e45b7bbac66d0fdc4dc13b8bc708b
-[Error: Not Found
-    at D:\work\T\zhongyi.nodeCMS\zhongyiNodeJs\app.js:130:15
-    at Layer.handle [as handle_request] (D:\work\T\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\lib\router\layer.js:95:5)
-    at trim_prefix (D:\work\T\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\lib\router\index.js:312:13)
-    at D:\work\T\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\lib\router\index.js:280:7
-    at Function.process_params (D:\work\T\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\lib\router\index.js:330:12)
-    at next (D:\work\T\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\lib\router\index.js:271:10)
-    at SendStream.error (D:\work\T\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\node_modules\serve-static\index.js:120:7)
-    at emitOne (events.js:77:13)
-    at SendStream.emit (events.js:169:7)
-    at SendStream.error (D:\work\T\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\node_modules\serve-static\node_modules\send\index.js:245:17)
-    at SendStream.onStatError (D:\work\T\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\node_modules\serve-static\node_modules\send\index.js:356:12)
-    at onstat (D:\work\T\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\node_modules\serve-static\node_modules\send\index.js:621:26)
-    at FSReqWrap.oncomplete (fs.js:82:15)]
-[Wed Feb 08 2017 23:09:53 GMT+0800 (中国标准时间)]/backend/skin-config.html
-[Error: Not Found
-    at D:\work\T\zhongyi.nodeCMS\zhongyiNodeJs\app.js:130:15
-    at Layer.handle [as handle_request] (D:\work\T\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\lib\router\layer.js:95:5)
-    at trim_prefix (D:\work\T\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\lib\router\index.js:312:13)
-    at D:\work\T\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\lib\router\index.js:280:7
-    at Function.process_params (D:\work\T\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\lib\router\index.js:330:12)
-    at next (D:\work\T\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\lib\router\index.js:271:10)
-    at SendStream.error (D:\work\T\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\node_modules\serve-static\index.js:120:7)
-    at emitOne (events.js:77:13)
-    at SendStream.emit (events.js:169:7)
-    at SendStream.error (D:\work\T\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\node_modules\serve-static\node_modules\send\index.js:245:17)
-    at SendStream.onStatError (D:\work\T\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\node_modules\serve-static\node_modules\send\index.js:356:12)
-    at onstat (D:\work\T\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\node_modules\serve-static\node_modules\send\index.js:621:26)
+    at next (D:\work\T\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\node_modules\serve-static\node_modules\send\index.js:630:16)
+    at onstat (D:\work\T\zhongyi.nodeCMS\zhongyiNodeJs\node_modules\express\node_modules\serve-static\node_modules\send\index.js:619:14)
     at FSReqWrap.oncomplete (fs.js:82:15)]

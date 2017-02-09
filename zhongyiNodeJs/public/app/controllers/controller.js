@@ -36,3 +36,5 @@ nodeApp.controller('roleController', ['$scope', '$http', function ($scope, $http
         window.location="/backend/role/test1/laozhao";
     }
 }]);
+
+

@@ -19,7 +19,12 @@ var resolve = require(path.join(__dirname, 'utils', 'route'));
 var session = require('express-session');
 var redisStorage = require('connect-redis')(session);
 var setting = require('./public/config/zy_Config');
+
+var filter= require('./filter/filter');
+ 
 var app = express();
+//加载过滤器
+ //app.use(filter);
 
 app.use(expressLayouts);
 
@@ -29,7 +34,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 //default area
-var defaultArea = "frontend";
+var defaultArea = "backend";
 var router = express.Router();
 // 路由中间件,实现多视图切换
 router.use(function (req, res, next) {
@@ -46,9 +51,6 @@ router.use(function (req, res, next) {
     next();
 });
 app.use(router);
-
-
-
  
 // 设置控制器文件夹并绑定到路由
 resolve
@@ -70,23 +72,22 @@ app.use(partials());
 app.use(logger('dev'));
  
 app.use(cookieParser());
- 
-var logDir = __dirname + '/logs/access';
-fs.existsSync(logDir) || fs.mkdirSync(logDir);
-var logErrorDir = __dirname + '/logs/error'
-fs.existsSync(logErrorDir) || fs.mkdirSync(logErrorDir);
-//保存日志
-var accessStream = fileStreamRotator.getStream({
-    filename: logDir + '/access-%DATE%.txt',
-    frequency: 'daily',
-    verbose: false,
-    date_format: "YYYY-MM-DD"
-});
 
+//日志 
+// var logDir = __dirname + '/logs/access';
+// fs.existsSync(logDir) || fs.mkdirSync(logDir);
+// var logErrorDir = __dirname + '/logs/error'
+// fs.existsSync(logErrorDir) || fs.mkdirSync(logErrorDir);
+// //保存日志
+// var accessStream = fileStreamRotator.getStream({
+//     filename: logDir + '/access-%DATE%.txt',
+//     frequency: 'daily',
+//     verbose: false,
+//     date_format: "YYYY-MM-DD"
+// });
+// app.use(logger('combined', { stream: accessStream }));
 
-app.use(logger('combined', { stream: accessStream }));
-
-var errorLogStream = fs.createWriteStream(logErrorDir + '/error.txt');
+// var errorLogStream = fs.createWriteStream(logErrorDir + '/error.txt');
 
 //引入session并设置存储介质
 app.use(session({
@@ -137,7 +138,7 @@ app.use(function (err, req, res, next) {
     var error = (req.app.get('env') === 'development') ? err : {};
     //写错误日志
     var errorMes = '[' + Date() + ']' + req.url + '\n' + '[' + error.stack + ']' + '\n';
-    errorLogStream.write(errorMes);
+    //errorLogStream.write(errorMes);
     var status = err.status || 500;
     res.status(status);
     res.send('<pre>' + status + ' ' + err.message + '\n' + errorMes + '</pre>');
