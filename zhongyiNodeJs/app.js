@@ -21,13 +21,13 @@ var redisStorage = require('connect-redis')(session);
 var setting = require('./public/config/zy_Config');
 
 var filter= require('./filter/filter');
- 
+var common = require('./routes/common'); 
 var app = express();
 //加载过滤器
  //app.use(filter);
 
 app.use(expressLayouts);
-
+app.use('/common',common);
  
  //处理非get提交数据
 app.use(bodyParser.json());

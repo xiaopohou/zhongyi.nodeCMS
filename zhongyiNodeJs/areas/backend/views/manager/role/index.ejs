@@ -86,9 +86,9 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr>
+                                    <tr ng-repeat="role in data">
                                         <td><input type="checkbox"  checked class="i-checks" name="input[]"></td>
-                                        <td>Project<small>This is example of project</small></td>
+                                        <td>{{role.name}}</td>
                                         <td><span class="pie">0.52/1.561</span></td>
                                         <td>20%</td>
                                         <td>Jul 14, 2013</td>

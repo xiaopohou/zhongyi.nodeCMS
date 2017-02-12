@@ -6,6 +6,9 @@ nodeApp.controller('roleController', ['$scope', '$http', function ($scope, $http
         alert('fuck you everyday !');
     };
     
+    //分页 
+    initPagination($scope,$http,'/common/getDocumentList/role','normalList');
+    
     $scope.addrole = function () {
         $.modalOpen({
             id: "Form",

@@ -7,6 +7,10 @@ var config = require('../../public/config/zy_Config');
 var db = mongoose.connect(config.zy_mongo_address);
 
 var DBHelper = {
+    test:function()
+    {
+        return "0";
+    },
     queryDocumentsByConditions: function (req, res, model, where) {
 
         var params = url.parse(req.url, true);
@@ -16,6 +20,9 @@ var DBHelper = {
 
         var pageInfo;
         var query;
+
+      
+
         //追加查询条件
         if (where && where.length > 1) {
             query = model.find().or(where);
@@ -30,8 +37,8 @@ var DBHelper = {
         // if(model==ZY_SystemRoleGroup){
         //
         // }
-
-        query.exec(function (err, docs) {
+        try {
+             query.exec(function (err, docs) {
             if (err) {
                 console.log('数据库操作报错:' + err);
             } else {
@@ -48,6 +55,10 @@ var DBHelper = {
                 });
             }
         });
+        } catch (e) {
+            console.log('___________error___________________'+e);
+        }
+       
     },
     insertModel: function (req, res, model) {
         var newObj = new model(req.body);
