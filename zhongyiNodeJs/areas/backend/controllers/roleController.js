@@ -10,6 +10,18 @@ module.exports={
     get_addrole:function(req,res){
        res.render('manager/role/form',{layout:"manager/layout/formLayout"});
     },
+    get_role:function(req,res,id)
+    {
+        roleModel.findOne({"_id":id},function(err,doc){ 
+             if(err)
+             {
+                res.end(err);
+             }else
+             {
+                res.json(doc);
+             }
+        }); 
+    },
     post_addrole:function(req,res)
     {
          //获取参数

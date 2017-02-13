@@ -16,6 +16,16 @@ function ngPost($http, isVal, url, data, callBack) {
         alert('服务器返回：error');
     }
 }
+function ngGet($http, url, data, callBack) {
+      $http({
+            method  : 'GET',
+            url     : url,
+            data    : $.param(data),  // pass in data as strings
+            headers : { 'Content-Type': 'application/x-www-form-urlencoded' }  // set the headers so angular passing info as form data (not request payload)
+        }).success(function (data) {
+             callBack(data);
+        });
+}
 
 function initPagination($scope,$http,url,dataType){
     initPageInfo($scope);

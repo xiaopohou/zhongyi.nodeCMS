@@ -25,11 +25,7 @@ router.get('/getDocumentList/:modelName', function (req, res) {
     }
  
   dbAccess.queryDocumentsByConditions(req,res,defaultModel,null);
-
  
- 
-   
-   
 });
  
 module.exports = router;

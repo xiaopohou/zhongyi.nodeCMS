@@ -8,16 +8,38 @@ nodeApp.controller('roleController', ['$scope', '$http', function ($scope, $http
     
     //分页 
     initPagination($scope,$http,'/common/getDocumentList/role','normalList');
-    
-    $scope.addrole = function () {
-        $.modalOpen({
+
+     
+
+    $scope.addrole = function (id) {
+        if(!id)
+        {
+            $.modalOpen({
             id: "Form",
-            title: "新增角色",
+            title: "编辑角色",
             url: "/backend/role/addrole",
             width: "550px",
             height: "370px",
             btn: null
-        });
+            });
+        }
+        else
+        {
+             
+            ngGet($http,'/backend/role/role/'+id,'',function(data){
+                $scope.formData=data;
+            });
+
+                $.modalOpen({
+                id: "Form",
+                title: "新增角色",
+                url: "/backend/role/addrole",
+                width: "550px",
+                height: "370px",
+                btn: null
+            });
+        }
+
     };
     $scope.processForm=function(isValid)
     {
