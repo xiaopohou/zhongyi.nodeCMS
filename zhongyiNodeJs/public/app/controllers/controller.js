@@ -9,14 +9,15 @@ nodeApp.controller('roleController', ['$scope', '$http', function ($scope, $http
     $scope.addrole = function (id) {
 
 
-    $scope.formData.name="xxxxxxxxxxxxxxxxxxxxxxx";
+    
 
         //编辑
         if (id != "") {
             var url = '/backend/role/role/' + id;
             $http.get(url).success(function (res) {
-                //alert(res.data.name);
- 
+                //赋值
+                $scope.formData.name="xxxxxxxxxxxxxxxxxxxxxxx";
+                //打开窗口
                 $.modalOpen({
                     id: "Form",
                     title: "编辑角色",
