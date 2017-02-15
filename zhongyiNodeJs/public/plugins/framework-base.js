@@ -16,6 +16,8 @@ function ngPost($http, isVal, url, data, callBack) {
         alert('服务器返回：error');
     }
 }
+
+ 
 function ngGet($http, url, data, callBack) {
       $http({
             method  : 'GET',

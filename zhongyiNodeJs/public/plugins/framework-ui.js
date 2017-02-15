@@ -92,6 +92,7 @@ $.modalOpen = function (options) {
     var options = $.extend(defaults, options);
     var _width = top.$(window).width() > parseInt(options.width.replace('px', '')) ? options.width : top.$(window).width() + 'px';
     var _height = top.$(window).height() > parseInt(options.height.replace('px', '')) ? options.height : top.$(window).height() + 'px';
+   
     top.layer.open({
         id: options.id,
         type: 2,
@@ -103,6 +104,7 @@ $.modalOpen = function (options) {
         btn: options.btn,
         btnclass: options.btnclass,
         yes: function () {
+           
             options.callBack(options.id)
         }, cancel: function () {
             return true;

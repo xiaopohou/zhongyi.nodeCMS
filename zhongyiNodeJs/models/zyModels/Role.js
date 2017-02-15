@@ -8,7 +8,7 @@ var RoleSchema = new Schema({
         unique: true,
         'default': shortid.generate
     },
-    Name:String,
+    name:String,
     CreateDate:{type:Date,default:Date.now}
 });
 var Role=mongoose.model("Role",RoleSchema);
