@@ -7,12 +7,11 @@ nodeApp.controller('roleController', ['$scope', '$http', function ($scope, $http
     initPagination($scope, $http, '/common/getDocumentList/role', 'normalList');
 
     $scope.addrole = function (id) {
-
  
 
-    
 
-        //编辑
+ 
+        //编辑1
         if (id != "") {
             var url = '/backend/role/role/' + id;
             $http.get(url).success(function (res) {
