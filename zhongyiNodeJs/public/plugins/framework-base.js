@@ -16,8 +16,17 @@ function ngPost($http, isVal, url, data, callBack) {
         alert('服务器返回：error');
     }
 }
-
- 
+//表单验证
+function initValidateForForm(formId)
+{
+    $("#"+formId).validate();
+} 
+//关闭窗口
+function closeModal($scope,obj)
+{
+    $scope.formData={};
+      obj.find(".form-control").val("");
+}
 function ngGet($http, url, data, callBack) {
       $http({
             method  : 'GET',
