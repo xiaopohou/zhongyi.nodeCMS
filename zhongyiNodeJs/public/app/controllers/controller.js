@@ -5,18 +5,15 @@ nodeApp.controller('roleController', ['$scope', '$http', function ($scope, $http
  
     //分页 
     initPagination($scope, $http, '/common/getDocumentList/role', 'normalList');
-
+  $scope.formData.name="1";
     $scope.addrole = function (id) {
- 
-
-
  
         //编辑1
         if (id != "") {
             var url = '/backend/role/role/' + id;
             $http.get(url).success(function (res) {
                 //赋值
-                $scope.formData.name="xxxxxxxxxxxxxxxxxxxxxxx";
+                $scope.formData.name="2";
                 //打开窗口
                 $.modalOpen({
                     id: "Form",
