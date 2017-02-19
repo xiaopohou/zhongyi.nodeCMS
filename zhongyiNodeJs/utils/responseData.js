@@ -2,6 +2,6 @@ var ResponseData=function()
 {
     this.data={};
     this.errorMessage="";
-    this.isSuccess=true;
+    this.isSuccess='';
 }
 module.exports=ResponseData;

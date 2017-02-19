@@ -79,8 +79,9 @@
                                     <tr>
 
                                      <th>id</th>
-                                    <th>用户名称</th>
-                                    <th>用户电话</th>
+                                    <th>用户</th>
+                                    <th>电话</th>
+                                    <th>eamil</th>
                                     <th>创建时间</th>
                                     <th>操作</th>
                                     
@@ -91,6 +92,7 @@
                                         <td><input type="checkbox"  checked class="i-checks" name="input[]"></td>
                                         <td>{{admin.name}}</td>
                                         <td>{{admin.phone}}</td>
+                                          <td>{{admin.email}}</td>
                                         <td>{{admin.CreateDate}}</td>
                                         <td><a type="button" class="btn btn-sm btn-success" data-whatever="{{admin._id}}" data-toggle="modal" data-target="#myModal">编辑</a></td>
                                            
@@ -109,6 +111,7 @@
  <!-- 模态框（Modal） -->
 <div class="modal" id="myModal"  role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
  <form class="form-horizontal" role="form" id="myform" name="myform" ng-submit="processForm(myform.$valid)" novalidate>
+     <input type="hidden" ng-model="formData.isUpdate"/>
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
@@ -124,9 +127,9 @@
                     <div class="form-group">
                         <label for="firstname" class="col-sm-2 control-label">用户名</label>
                         <div class="col-sm-10">
-                        <input type="text" class="form-control" id="name" name="name" ng-model="formData.name" placeholder="请输入名字" required>
+                        <input type="text" class="form-control" id="name" name="name" ng-model="formData.name" minlength="2" placeholder="请输入名字" required>
                     
-                        <label for="name" class="control-label text-danger" ng-show="myForm.name.$invalid && !myForm.name.$pristine"><i class="fa fa-times-circle-o"></i>请输入</label>
+                       
                         </div>
                     </div>
                     <div class="form-group">
@@ -134,17 +137,24 @@
                         <div class="col-sm-10">
                         <input type="text" class="form-control" id="password" name="password" ng-model="formData.password" placeholder="请输入密码" required>
                     
-                        <label for="password" class="control-label text-danger" ng-show="myForm.password.$invalid && !myForm.password.$pristine"><i class="fa fa-times-circle-o"></i>请输入</label>
+                       
                         </div>
                     </div>
-                      
+                        <div class="form-group">
+                        <label for="firstname" class="col-sm-2 control-label">Email</label>
+                        <div class="col-sm-10">
+                        <input type="text" class="form-control" id="email" name="email" type="email" ng-model="formData.email" placeholder="请输入邮件地址" required>
+                    
+                       
+                        </div>
+                    </div>
                     
                        <div class="form-group">
                         <label for="firstname" class="col-sm-2 control-label">联系电话</label>
                         <div class="col-sm-10">
                         <input type="text" class="form-control" id="phone" name="phone" ng-model="formData.phone" placeholder="请输入电话" required>
                     
-                        <label for="phone" class="control-label text-danger" ng-show="myForm.phone.$invalid && !myForm.phone.$pristine"><i class="fa fa-times-circle-o"></i>请输入</label>
+                       
                         </div>
                     </div>
 			</div>

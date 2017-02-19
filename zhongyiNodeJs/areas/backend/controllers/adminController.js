@@ -1,40 +1,53 @@
 var basePage = require('../../../core/baseController');
 var adminModel = require('../../../models/zyModels/Admin');
+
 var dbOperator = require('../../../models/zyDBHelper/zy_Dbopt');
 var ResponseData = require('../../../utils/responseData');
+var url=require('url');
+
 module.exports = {
     get_index: function (req, res) {
         //res.send('index');
         res.render('manager/admin/index', basePage.setLayoutPage(req, res, 'x'));
     },
-    post_addadmin: function (req, res) {
+
+    get_admin: function (req, res, id) {
         var _responseData = new ResponseData();
-        var adminModel = new adminModel({
+     
+        adminModel.findOne({ "_id": id }, function (err, doc) {
+            if (err) {
+                _responseData.isSuccess = 'false';
+            } else {
+                _responseData.isSuccess = 'success';
+                _responseData.data = doc;
+            }
+            res.json(_responseData);
+        });
+    },
+    post_addadmin: function (req, res) {
+
+        var _responseData = new ResponseData();
+        var AdminModel = new adminModel({
             name: req.body.name,
             phone: req.body.phone,
-            password: req.body.password
+            password: req.body.password,
+            email: req.body.email
         });
-        console.log(req.body.name);
-        adminModel.save(function (err) {
+
+        AdminModel.save(function (err) {
             if (!err) {
-                _responseData.isSuccess = true;
+                _responseData.isSuccess = 'success';
             } else {
-                _responseData.isSuccess = false;
+                _responseData.isSuccess = 'false';
                 _responseData.errorMessage = err;
             }
             res.json(_responseData);
         });
     },
-    get_admin: function (req, res, id) {
-        var _responseData = new ResponseData();
-        adminModel.findOne({ "_id": id }, function (err, doc) {
-            if (!err) {
-                _responseData.isSuccess = false;
-            } else {
-                _responseData.isSuccess = true;
-                _responseData.data = doc;
-            }
-            res.json(_responseData);
-        });
+    post_updateAdmin:function(req,res,id){
+        console.log('---------------------------------'+req.query.id);
+        // console.log(req.query.id);
+        // console.log(req.query.id2);
+        //dbOperator.updateOndeById(adminModel,req,res);
     }
 };

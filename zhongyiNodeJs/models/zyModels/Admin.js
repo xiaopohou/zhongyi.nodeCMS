@@ -9,9 +9,9 @@ var AdminSchema = new Schema({
         'default': shortid.generate
     },
     name:String,
-    sex:String,
     phone:String,
     password:String,
+    email:String,
     CreateDate:{type:Date,default:Date.now}
 });
 var Admin=mongoose.model("Admin",AdminSchema);
