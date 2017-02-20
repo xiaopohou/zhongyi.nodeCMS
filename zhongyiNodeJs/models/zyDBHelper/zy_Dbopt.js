@@ -87,8 +87,8 @@ var DBHelper = {
 
     },
     updateOndeById: function (obj, req, res) {
-        var params = url.parse(req.url, true);
-        var targetId = params.query.id;
+
+        var targetId = req.body.itemId;
         if (shortid.isValid(targetId)) {
             var conditions = {_id: targetId};
             req.body.updateDate = new Date();
@@ -97,12 +97,11 @@ var DBHelper = {
                 if (err) {
                     res.end(err);
                 } else {
-                    console.log('修改成功了');
                     res.end('success');
                 }
             })
         } else {
-            res.end(config.zy_system_illegal_param);
+            res.end('false');
         }
     },
     deleteOneById:function (obj,req,res) {

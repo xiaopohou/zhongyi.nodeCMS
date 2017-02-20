@@ -7,19 +7,31 @@ function ngPost($http, isVal, url, data, callBack) {
             dataType: "json",
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' }  // set the headers so angular passing info as form data (not request payload)
         }).success(function (res) {
+           
             if (res.isSuccess == 'success') {
                 callBack(data);
             } else {
-                alert('服务器返回：' + data);
+                console.log('错误');
             }
         });
     } else {
-        alert('服务器返回：error');
+        console.log('服务器返回：error');
     }
 }
 //表单验证
 function initValidateForForm(formId) {
     $("#" + formId).validate();
+}
+function itemDelete($http,url,callBack)
+{
+    $http({
+         method: 'get',
+         url:url,
+         dataType:"json",
+         success:function(data){
+            callBack(data);
+         }
+    });
 }
 //关闭窗口
 function closeModal($scope, obj) {

@@ -93,7 +93,9 @@
                                         <td>{{role.name}}</td>
                                        
                                         <td>{{role.CreateDate}}</td>
-                                        <td><a type="button" class="btn btn-sm btn-success" data-whatever="{{role._id}}" data-toggle="modal" data-target="#myModal">编辑</a></td>
+                                        <td><a type="button" class="btn btn-sm btn-success" data-whatever="{{role._id}}" data-toggle="modal" data-target="#myModal">编辑</a>
+                                        <a type="button" class="btn btn-sm btn-success" ng-click="itemDelete(role._id)">删除</a>
+                                        </td>
                                            
                                     </tr>
                                  

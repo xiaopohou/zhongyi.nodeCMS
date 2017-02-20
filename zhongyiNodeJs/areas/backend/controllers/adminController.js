@@ -25,7 +25,7 @@ module.exports = {
         });
     },
     post_addadmin: function (req, res) {
-
+ 
         var _responseData = new ResponseData();
         var AdminModel = new adminModel({
             name: req.body.name,
@@ -44,10 +44,8 @@ module.exports = {
             res.json(_responseData);
         });
     },
-    post_updateAdmin:function(req,res,id){
-        console.log('---------------------------------'+req.query.id);
-        // console.log(req.query.id);
-        // console.log(req.query.id2);
-        //dbOperator.updateOndeById(adminModel,req,res);
+    post_updateadmin:function(req,res){
+        dbOperator.updateOndeById(adminModel,req,res);
     }
+     
 };

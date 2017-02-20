@@ -2,7 +2,7 @@ var basePage = require('../../../core/baseController');
 var roleModel = require('../../../models/zyModels/Role');
 var dbOperator = require('../../../models/zyDBHelper/zy_Dbopt');
 var ResponseData = require('../../../utils/responseData');
-
+var shortid = require('shortid');
 module.exports = {
     get_index: function (req, res) {
         //res.send('index');
@@ -16,7 +16,7 @@ module.exports = {
         var _responseData = new ResponseData();
         roleModel.findOne({ "_id": id }, function (err, doc) {
             if (err) {
-                _responseData.errorMessage = "出错了";
+                _responseData.errorMessage = "出错";
                 _responseData.isSuccess = 'false';
                 res.json(_responseData);
             } else {
@@ -26,15 +26,46 @@ module.exports = {
             }
         });
     },
+    get_id_delete: function (req, res,id) {
+ 
+        var _responseData = new ResponseData();
+        if (shortid.isValid(id)) {
+            var _where = { "_id": id };
+            roleModel.remove({ _where }, function (err, doc) {
+                if (err) {
+                    _responseData.errorMessage = "出错";
+                    _responseData.isSuccess = 'false';
+
+                } else {
+                    _responseData.errorMessage = '成功';
+                    _responseData.isSuccess = 'success';
+                }
+                res.json(_responseData);
+            });
+        } else {
+            _responseData.errorMessage = '';
+            _responseData.isSuccess = 'false';
+            res.json(_responseData);
+        }
+    },
     post_addrole: function (req, res) {
+        var _responseData = new ResponseData();
         //获取参数
         var name = req.body.name;
         var role = new roleModel({
             name: name
         });
         role.save(function (err) {
+            if (err) {
+                _responseData.isSuccess = 'false';
+                _responseData.errorMessage = '出错了' + err;
+            } else {
+                _responseData.isSuccess = 'success';
+                _responseData.errorMessage = '';
+            }
+            res.json(_responseData);
         });
-        res.send('success');
+
     },
     get_test1: function (req, res, name) {
         //获取参数

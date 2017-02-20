@@ -4,7 +4,19 @@ nodeApp.controller('roleController', ['$scope', '$http', function ($scope, $http
     $scope.formData = {};
     //分页 
     initPagination($scope, $http, '/common/getDocumentList/role', 'normalList');
-
+    //删除 
+    $scope.itemDelete=function(itemId){
+    
+        $http({
+            type: 'get',
+            url:'/backend/role/'+itemId+'/delete',
+            dataType:"json",
+            success:function(data){
+               alert('1111');
+               
+            }
+        });
+    };
 
     $('#myModal').on('show.bs.modal', function (event) {
         var obj = $(event.relatedTarget);
@@ -34,7 +46,8 @@ nodeApp.controller('roleController', ['$scope', '$http', function ($scope, $http
                 name: $scope.formData.name
             };
         if (isValid) {
-            ngPost($http, isValid, "/backend/role/addrole", $scope.formData, function (data) {
+            ngPost($http, isValid, "/backend/role/addrole", $scope.formData, function (res) {
+                 
                 //表格刷新
                 top.window.location.reload();
             });
@@ -75,12 +88,13 @@ nodeApp.controller('adminController', ['$scope', '$http', function ($scope, $htt
         var _itemId=$scope.formData.itemId;
         if (isValid) {
             if (_itemId == "") {
-                ngPost($http, isValid, "/backend/admin/addadmin", $scope.formData, function (data) {
-                    top.window.location.reload();
-                });
+                    ngPost($http, isValid, "/backend/admin/addadmin", $scope.formData, function (data) {
+                        top.window.location.reload();
+                    });
             }else
             {
-                    ngPost($http, isValid, "/backend/admin/updateAdmin?id="+_itemId, $scope.formData, function (data) {
+                 //+_itemId
+                    ngPost($http, isValid, "/backend/admin/updateadmin", $scope.formData, function (data) {
                     top.window.location.reload();
                 });
             }

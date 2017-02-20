@@ -12,7 +12,9 @@ var AdminSchema = new Schema({
     phone:String,
     password:String,
     email:String,
-    CreateDate:{type:Date,default:Date.now}
+    CreateDate:{type:Date,default:Date.now},
+    updateDate:{type:Date,default:Date.now}
+ 
 });
 var Admin=mongoose.model("Admin",AdminSchema);
 
