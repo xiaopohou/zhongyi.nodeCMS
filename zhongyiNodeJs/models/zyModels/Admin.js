@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 var shortid = require('shortid');
 var Schema = mongoose.Schema;
-var UserSchema = new Schema({
+var AdminSchema = new Schema({
     _id:
     {
         type: String,
@@ -9,8 +9,11 @@ var UserSchema = new Schema({
         'default': shortid.generate
     },
     name:String,
+    phone:String,
     password:String,
+    email:String,
     CreateDate:{type:Date,default:Date.now}
 });
-var User=mongoose.model("User",UserSchema);
-module.exports=User;
+var Admin=mongoose.model("Admin",AdminSchema);
+
+module.exports=Admin;

@@ -17,12 +17,8 @@ var DBHelper = {
         var currentPage = Number(params.query.currentPage);
         var limit = Number(params.query.limit);
         var startNum = (currentPage - 1) * limit + 1;
-
         var pageInfo;
         var query;
-
-      
-
         //追加查询条件
         if (where && where.length > 1) {
             query = model.find().or(where);
