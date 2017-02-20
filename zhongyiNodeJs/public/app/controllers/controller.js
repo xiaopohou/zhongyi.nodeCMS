@@ -6,22 +6,29 @@ nodeApp.controller('roleController', ['$scope', '$http', function ($scope, $http
     //分页 
     initPagination($scope, $http, '/common/getDocumentList/role', 'normalList');
 
+    
+$scope.formData.name="abc";
+    //行编辑事件
     $scope.addrole = function (id) {
- 
+
+         //赋值
+     $scope.formData.name="xxxxxxxxxxxxxxxxxxxxxxx";
 
 
- 
         //编辑1
         if (id != "") {
             var url = '/backend/role/role/' + id;
+            //ajax请求
             $http.get(url).success(function (res) {
-                //赋值
-                $scope.formData.name="xxxxxxxxxxxxxxxxxxxxxxx";
+               console.log(res.data.name+"__");
+               $scope.formData.name=res.data.name;
+               console.log($scope.formData.name);
                 //打开窗口
-                $.modalOpen({
+                $.modalOpen({  
                     id: "Form",
+                    type:1,
                     title: "编辑角色",
-                    url: "/backend/role/addrole",
+                    url: "/backend/role/addrole",//这里是用express-controller 
                     width: "550px",
                     height: "370px",
                     btn: null

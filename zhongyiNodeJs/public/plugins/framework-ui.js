@@ -95,7 +95,7 @@ $.modalOpen = function (options) {
    
     top.layer.open({
         id: options.id,
-        type: 2,
+        type: 1,
         shade: options.shade,
         title: options.title,
         fix: false,
