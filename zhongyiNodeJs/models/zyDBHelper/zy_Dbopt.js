@@ -86,23 +86,16 @@ var DBHelper = {
         }
 
     },
-    updateOndeById: function (obj, req, res) {
+    updateOndeById: function (obj, req, res,callback) {
 
         var targetId = req.body.itemId;
-        if (shortid.isValid(targetId)) {
+ 
             var conditions = {_id: targetId};
             req.body.updateDate = new Date();
             var update = {$set: req.body};
             obj.update(conditions, update, function (err, result) {
-                if (err) {
-                    res.end(err);
-                } else {
-                    res.end('success');
-                }
+               callback(err,result,res);
             })
-        } else {
-            res.end('false');
-        }
     },
     deleteOneById:function (obj,req,res) {
 

@@ -89,6 +89,7 @@ nodeApp.controller('adminController', ['$scope', '$http', function ($scope, $htt
         if (isValid) {
             if (_itemId == "") {
                     ngPost($http, isValid, "/backend/admin/addadmin", $scope.formData, function (data) {
+                 
                         top.window.location.reload();
                     });
             }else
