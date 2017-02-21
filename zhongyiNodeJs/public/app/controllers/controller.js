@@ -103,4 +103,11 @@ nodeApp.controller('adminController', ['$scope', '$http', function ($scope, $htt
     }
 }]);
 
+//菜单
+nodeApp.controller('moduleControler',['$scope','$http',function($scope,$http){
+    $scope.formData={};
+
+    //
+}]);
+
 
