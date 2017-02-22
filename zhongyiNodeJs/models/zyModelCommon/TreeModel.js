@@ -1,22 +1,22 @@
 var mongoose = require('mongoose');
 var shortid = require('shortid');
 var Schema = mongoose.Schema;
-var ModuleSchema = new Schema({
+var TreeModelSchema = new Schema({
     _id:
     {
         type: String,
         unique: true,
         'default': shortid.generate
     },
-    name:String,
     parentid:String,
-    level:String,
-    icon:String,
-    isExpand:String,
+    name:String,
+    isLeft:String,
+    expanded:String,
+    entityJson:String,
     CreateDate:{type:Date,default:Date.now},
     updateDate:{type:Date,default:Date.now}
  
 });
-var Module=mongoose.model("Module",ModuleSchema);
+var TreeModel=mongoose.model("TreeModel",TreeModelSchema);
 
-module.exports=Module;
+module.exports=TreeModel;
