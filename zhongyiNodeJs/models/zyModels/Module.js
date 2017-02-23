@@ -13,6 +13,9 @@ var ModuleSchema = new Schema({
     level:String,
     icon:String,
     isExpand:String,
+    url:String,
+    target:String,
+    sort:String,
     CreateDate:{type:Date,default:Date.now},
     updateDate:{type:Date,default:Date.now}
  

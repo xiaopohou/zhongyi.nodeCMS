@@ -54,11 +54,7 @@ module.exports = {
                 _responseData.isSuccess = 'false';
                 _responseData.errorMessage = '';
             }
-          
              res.json(_responseData);
-              //res.json('__________responseData__________');
         });
-        
     }
-
 };

@@ -2,6 +2,10 @@ var basePage = require('../../../core/baseController');
 var moduleModel= require('../../../models/zyModels/Module');
 var moduleCommon = require('../../../models/zyModelCommon/TreeModel');
 var dbOperator = require('../../../models/zyDBHelper/zy_Dbopt');
+var ResponseData= require('../../../utils/responseData');
+/**
+ * action一切都要小写
+ */
 module.exports={
     get_index:function(req,res){
        //res.send('index');
@@ -12,12 +16,30 @@ module.exports={
     {
         res.send('');
     },
-    //增加、修改菜单
-    post_addModule:function(req,res,id){
-        res.send('');
+    post_addmodule:function(req,res){
+        var _responseData= new ResponseData();
+        var ModuleModel= new moduleModel({
+            name:req.body.name,
+            parentid:req.body.parentid,
+            icon:req.body.icon,
+            url:req.body.url,
+            target:req.body.target,
+            sort:req.body.sort
+        });
+       
+        ModuleModel.save(function(err){
+            if(!err){
+                _responseData.isSuccess="success";
+            }else{
+                _responseData.isSuccess="false";
+                  _responseData.errorMessage=err;
+            }
+            res.json(_responseData);
+        });
+        
     },
     //编辑菜单
-    get_module:function(req,res,id)
+    post_updatemodule:function(req,res)
     {
         res.send('');
     }
