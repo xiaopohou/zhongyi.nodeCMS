@@ -89,6 +89,7 @@ nodeApp.controller('adminController', ['$scope', '$http', function ($scope, $htt
         if (isValid) {
             if (_itemId == "") {
                     ngPost($http, isValid, "/backend/admin/addadmin", $scope.formData, function (data) {
+                 
                         top.window.location.reload();
                     });
             }else
@@ -100,6 +101,51 @@ nodeApp.controller('adminController', ['$scope', '$http', function ($scope, $htt
             }
         }
     }
+}]);
+
+//菜单
+nodeApp.controller('moduleControler',['$scope','$http',function($scope,$http){
+    $scope.formData={};
+     $('#myModal').on('show.bs.modal', function (event) {
+        var obj = $(event.relatedTarget);
+        var oid = obj.data("whatever");
+        var modalTitle = $(this).find('.modal-title');
+
+        if (oid) {
+            modalTitle.text('修改菜单');
+            var url = '/backend/admin/admin/' + oid;
+            $http.get(url).success(function (res) {
+                $scope.formData = res.data;
+                $scope.formData.itemId = oid;
+            });
+        } else {
+            modalTitle.text('添加菜单');
+            $scope.formData = {};
+            $scope.formData.itemId = "";
+        }
+    }).on('hide.bs.modal', function () {
+        closeModal($scope, $(this));
+    });
+    //提交
+       $scope.processForm = function (isValid) {
+        var _itemId=$scope.formData.itemId;
+        if (isValid) {
+            if (_itemId == "") {
+                  
+                    ngPost($http, isValid, "/backend/module/addModule", $scope.formData, function (data) {
+              
+                        //top.window.location.reload();
+                    });
+            }else
+            {
+                 //+_itemId
+                    ngPost($http, isValid, "/backend/module/updateadmin", $scope.formData, function (data) {
+                    top.window.location.reload();
+                });
+            }
+        }
+    }
+    
 }]);
 
 
