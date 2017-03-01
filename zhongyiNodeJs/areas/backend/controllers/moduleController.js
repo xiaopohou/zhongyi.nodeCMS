@@ -4,12 +4,16 @@ var moduleCommon = require('../../../models/zyModelCommon/TreeModel');
 var dbOperator = require('../../../models/zyDBHelper/zy_Dbopt');
 var ResponseData= require('../../../utils/responseData');
 /**
- * action一切都要小写
+ * action一切都要小写,否则无法路由到
  */
 module.exports={
     get_index:function(req,res){
        //res.send('index');
        res.render('manager/module/index',basePage.setLayoutPage(req,res,'x'));
+    },
+     get_create:function(req,res){
+       //res.send('index');
+       res.render('manager/module/create',basePage.setLayoutPage(req,res,'x'));
     },
     //初始化菜单
     get_initTreeData:function(req,res)

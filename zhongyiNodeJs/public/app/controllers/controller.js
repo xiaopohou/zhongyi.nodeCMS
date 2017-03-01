@@ -126,6 +126,10 @@ nodeApp.controller('moduleControler',['$scope','$http',function($scope,$http){
     }).on('hide.bs.modal', function () {
         closeModal($scope, $(this));
     });
+    $scope.create=function()
+    {
+        window.location.href="";
+    }
     //提交
        $scope.processForm = function (isValid) {
         var _itemId=$scope.formData.itemId;
