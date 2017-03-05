@@ -1,0 +1,22 @@
+<div class="row">
+    <div class="col-sm-8 col-sm-offset-2">
+        <div class="form-container">
+            <div>
+                <h2>欢迎注册Dreamapple!</h2>
+                <div class="control">
+                    <a ui-sref-active="active" ui-sref=".required"><span>1</span> 基本信息</a>
+                    <a ui-sref-active="active" ui-sref=".optional"><span>2</span> 选填项</a>
+                    <a ui-sref-active="active" ui-sref=".confirm"><span>3</span> 确认结果</a>
+                </div>
+                <hr />
+            </div>
+            <form ng-submit="submit()">
+                <div class="form-view" ui-view></div>
+            </form>
+        </div>
+        <hr />
+        <pre>
+            {{ formData }}
+        </pre>
+    </div>
+</div>

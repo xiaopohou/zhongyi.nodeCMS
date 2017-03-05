@@ -6,7 +6,7 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-
+var ejs = require('ejs');
  
 
 //template engine
@@ -64,8 +64,10 @@ resolve
     .bind(router);
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'ejs');
+// app.set('views', path.join(__dirname, 'views'));
+// app.set('view engine', 'ejs');
+
+
 app.use(partials());
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -102,6 +104,8 @@ app.use(session({
     saveUninitialized: true
 }));
 
+app.engine('html',ejs.__express);
+app.set('view engine', 'html');
 
 //ueditor注册
 var ueditor = require('ueditor-nodejs');
