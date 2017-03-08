@@ -9,8 +9,8 @@ adminMain.config(['$stateProvider','$urlRouterProvider',function($stateProvider,
     })
     .state('role',{
         url:'/role',
-        //templateUrl:'/form/form-optional.html'
-         templateUrl:'/areas/backend/views/manager/role/index.html'
+        templateUrl:'/form/role.html'
+         //templateUrl:'/areas/form-confirm.html'
 
     })
     .state('default',{
