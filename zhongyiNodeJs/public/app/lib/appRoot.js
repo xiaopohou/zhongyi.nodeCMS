@@ -1,0 +1,1 @@
+var adminMain= angular.module('adminMain',['ui.router']);

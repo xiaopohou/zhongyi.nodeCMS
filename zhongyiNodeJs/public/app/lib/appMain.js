@@ -1,15 +1,30 @@
-var adminMain= angular.module('adminMain',['ui.router']);
-adminMain.config(['$stateProvider','$urlRouterProvider',function($stateProvider,$urlRouterProvider){
+ 
+adminMain.config(['$stateProvider','$urlRouterProvider',
+function($stateProvider,$urlRouterProvider,mainController,roleController,mainController,testController){
 
     $stateProvider
     .state('app',{
         url:'/app',
         templateUrl:'/form/form-confirm.html',
-        controller:'mainController'
+        controller:mainController
     })
     .state('role',{
         url:'/role',
-        templateUrl:'/form/role.html'
+        templateUrl:'/form/role.html',
+         controller:roleController
+         //templateUrl:'/areas/form-confirm.html'
+
+    })
+        .state('test',{
+        url:'/test',
+        templateUrl:'/form/test.html',
+         controller:mainController
+ 
+
+    })   .state('test2',{
+        url:'/test2',
+        templateUrl:'/form/test2.html'
+ 
          //templateUrl:'/areas/form-confirm.html'
 
     })
@@ -23,7 +38,4 @@ adminMain.config(['$stateProvider','$urlRouterProvider',function($stateProvider,
   
 }]);
 
-adminMain.controller('mainController',['$scope',function($scope){
-    $scope.formData={};
-    $scope.formData.name="laozhao";
-}]);
+ 
