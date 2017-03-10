@@ -30,14 +30,25 @@
 <!--load angular-->
 <script src="/plugins/angular/angular.min.js"></script>
 <script src="/plugins/angular/angular-ui-router.js"></script>
-<!--<script src="/plugins/framework-base.js"></script>-->
+ 
+ 
+<!--modal start-->
+    <script src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.6.0.js" type="text/javascript"></script>
+    <script src="http://m-e-conroy.github.io/angular-dialog-service/javascripts/dialogs.min.js" type="text/javascript"></script>
+ 
+ <link rel="stylesheet" href="/plugins//dialog/dialogs.css"/>
+
+<!--modal end-->
 <script src="/app/lib/appRoot.js"></script>
+
 <script src="/app/controllers/mainController.js"></script>
 <script src="/app/controllers/roleController.js"></script>
 <script src="/app/controllers/testController.js"></script>
 <script src="/app/lib/appMain.js"></script>
- 
- 
+
+
+
+
 
 <!--<script src="/plugins/jqgrid/jqgrid.js"></script>
 <link rel="stylesheet" href="/plugins/jqgrid/jqgrid.css"/>-->
@@ -59,7 +70,7 @@
                             </a>
                             <ul class="dropdown-menu animated fadeInRight m-t-xs">
                                 <li><a href="profile.html">个人信息</a></li>
-                      
+
                                 <li class="divider"></li>
                                 <li><a href="login.html">退出</a></li>
                             </ul>
@@ -79,36 +90,36 @@
                             <li><a href="/backend/dict">字典管理</a></li>
                         </ul>
                     </li>
-                  
+
                     <li>
                         <a href="#"><i class="fa fa-bar-chart-o"></i> <span class="nav-label">test</span><span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level collapse">
                             <li><a href="/backend/cms">分类管理</a></li>
                             <li><a href="/backend/cms">资讯管理</a></li>
                             <li><a href="/backend/cms">标签管理</a></li>
-                           
+
                         </ul>
                     </li>
-                     <!-- 
+                     <!--
                     <li>
                         <a href="mailbox.html"><i class="fa fa-envelope"></i> <span class="nav-label">消息管理 </span><span class="label label-warning pull-right">16/24</span></a>
                         <ul class="nav nav-second-level collapse">
                             <li><a href="/backend/message">发给我的</a></li>
-                            
+
                         </ul>
                     </li>
-                   
-                   
+
+
                     <li>
                         <a href="#"><i class="fa fa-edit"></i> <span class="nav-label">微信管理</span><span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level collapse">
                             <li><a href="/backend/webchat/">Basic form</a></li>
                             <li><a href="/backend/webchat/">Advanced Plugins</a></li>
                             <li><a href="/backend/webchat/">Wizard</a></li>
-    
+
                         </ul>
                     </li>
-                    
+
                     <li>
                         <a href="#"><i class="fa fa-files-o"></i> <span class="nav-label">系统设置</span><span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level collapse">
@@ -252,7 +263,7 @@
 
    <div class="wrapper wrapper-content" ng-controller="mainController" >
     <div ui-view>
-        
+
     </div>
   </div>
 
@@ -736,8 +747,8 @@
 </div>
 
 <!-- Mainly scripts -->
+
  
-<script src="/adminv3/js/bootstrap.min.js"></script>
 <script src="/adminv3/js/plugins/metisMenu/jquery.metisMenu.js"></script>
 <script src="/adminv3/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
 
@@ -770,7 +781,7 @@
 <!-- validate -->
  <script src="/plugins/validate/jquery.validate.min.js"></script>
 <script src="/plugins/validate/messages_zh.js"></script>
-   
+
 </body>
 
 </html>

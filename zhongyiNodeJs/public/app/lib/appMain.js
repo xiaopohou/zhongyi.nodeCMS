@@ -18,7 +18,7 @@ function($stateProvider,$urlRouterProvider,mainController,roleController,mainCon
         .state('test',{
         url:'/test',
         templateUrl:'/form/test.html',
-         controller:mainController
+         controller:testController
  
 
     })   .state('test2',{
