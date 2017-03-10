@@ -1,1 +1,1 @@
-var adminMain= angular.module('adminMain',['ui.router']);
+var adminMain= angular.module('adminMain',['ui.router','ui.bootstrap','dialogs']);

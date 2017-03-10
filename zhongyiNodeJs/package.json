@@ -7,8 +7,12 @@
   },
   "dependencies": {
     "angular": "^1.5.8",
+    "angular-animate": "^1.6.3",
+    "angular-bootstrap": "^0.12.2",
     "angular-route": "^1.5.8",
     "body-parser": "~1.15.1",
+    "bootstrap": "^3.3.7",
+    "bower": "^1.8.0",
     "connect-redis": "^3.2.0",
     "cookie-parser": "~1.4.3",
     "cors": "^2.8.1",
