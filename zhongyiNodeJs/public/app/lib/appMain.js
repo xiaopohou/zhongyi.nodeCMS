@@ -8,11 +8,11 @@ function($stateProvider,$urlRouterProvider,mainController,roleController,mainCon
         templateUrl:'/form/form-confirm.html',
         controller:mainController
     })
-    .state('role',{
-        url:'/role',
-        templateUrl:'/form/role.html',
+    .state('roles',{
+        url:'/roles',
+        templateUrl:'/form/roles.html',
          controller:roleController
-         //templateUrl:'/areas/form-confirm.html'
+       
 
     })
         .state('test',{
@@ -24,6 +24,55 @@ function($stateProvider,$urlRouterProvider,mainController,roleController,mainCon
     })   .state('test2',{
         url:'/test2',
         templateUrl:'/form/test2.html'
+ 
+         //templateUrl:'/areas/form-confirm.html'
+
+    })
+    .state('menus',{
+        url:'/menus',
+        templateUrl:'/form/menus.html'
+ 
+         //templateUrl:'/areas/form-confirm.html'
+
+    })
+        .state('dicts',{
+        url:'/dicts',
+        templateUrl:'/form/dicts.html'
+ 
+         //templateUrl:'/areas/form-confirm.html'
+
+    })
+        .state('users',{
+        url:'/users',
+        templateUrl:'/form/users.html'
+ 
+         //templateUrl:'/areas/form-confirm.html'
+
+    })
+            .state('perms',{
+        url:'/perms',
+        templateUrl:'/form/perms.html'
+ 
+         //templateUrl:'/areas/form-confirm.html'
+
+    })
+          .state('cates',{
+        url:'/cates',
+        templateUrl:'/form/cates.html'
+ 
+         //templateUrl:'/areas/form-confirm.html'
+
+    })
+              .state('news',{
+        url:'/news',
+        templateUrl:'/form/news.html'
+ 
+         //templateUrl:'/areas/form-confirm.html'
+
+    })
+          .state('tags',{
+        url:'/tags',
+        templateUrl:'/form/tags.html'
  
          //templateUrl:'/areas/form-confirm.html'
 

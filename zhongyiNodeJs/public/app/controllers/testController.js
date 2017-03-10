@@ -8,7 +8,7 @@
         
       // Error Dialog
       case 'error':
-        dlg = $dialogs.error('This is my error message');
+        dlg = $dialogs.error('This is my error message11111111111111');
         break;
         
       // Wait / Progress Dialog
