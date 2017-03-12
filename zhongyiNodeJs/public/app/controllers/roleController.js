@@ -3,25 +3,54 @@
   $scope.name = '';
   $scope.formData={};
   initPagination($scope, $http, '/common/getDocumentList/role', 'normalList');
+  $scope.add=function(){
+    $state.go('addrole');
+  }
+  $scope.search=function()
+  {
+ 
+      initPagination($scope, $http, '/common/getDocumentList/role', 'normalList');
+
+     
+  }
   $scope.detail=function(id){
     $state.go('addrole',{
         _id:id
     });
   }
+  $scope.remove=function(id){
+      $http.get("/backend/role/"+id+"/delete").success(function(res){
+          if(res.isSuccess)
+          {
+             $state.go('roles');
+          }
+     });
+  }
+  var _id= $stateParams._id;
+  if(_id){
+     $http.get("/backend/role/role/"+_id).success(function(res){
+          $scope.formData=res.data;
+     });
+  }
+ 
   $scope.processForm=function(isValid){
-
-   var _id= $stateParams._id;
  
     var data={
       name:$scope.formData.name
     };
- 
-
-
+   
     if(isValid){
        if(_id)
        {
-          
+            
+        $http.post('/backend/role/update',$scope.formData)
+        .success(function(res){
+          if(res.isSuccess)
+          {
+             $state.go('roles');
+          }
+        });
+         
 
        }else{
           $http({
@@ -34,7 +63,7 @@
             
                 if (res.isSuccess == 'success') {
                 
-                    alert('ok');
+                     $state.go('roles');
                 } else {
                     console.log('错误');
                 }

@@ -1,5 +1,5 @@
 var basePage = require('../../../core/baseController');
-var userLogic = require('../../../models/bizlogics/userLogic');
+ 
 module.exports=
 {
     get_index:function(req,res)

@@ -9,13 +9,18 @@ var dbAccess = require('../models/zyDBHelper/zy_Dbopt');
 router.get('/getDocumentList/:modelName', function (req, res) {
 
   var params = url.parse(req.url, true);
-  var keywords = params.query.a;
+  var keywords = params.query.searchKey;
   var area = params.query.b;
+ 
   var _modeName = req.params.modelName;
   var defaultModel;
-
+  var _where;
   if (_modeName == 'role') {
     defaultModel = Role;
+      
+    if(keywords){
+       _where={"name":keywords};
+    }
   } else if (_modeName == 'admin') {
     defaultModel = Admin;
   } else {

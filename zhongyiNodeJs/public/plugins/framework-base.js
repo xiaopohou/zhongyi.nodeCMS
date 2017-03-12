@@ -51,6 +51,7 @@ function ngGet($http, url, data, callBack) {
 }
 
 function initPagination($scope, $http, url, dataType) {
+    
     initPageInfo($scope);
     getPageInfos($scope, $http, url, dataType);
 }
@@ -108,8 +109,11 @@ function getPageInfos($scope, $http, url, reqType) {
         getPageInfos($scope, $http, url);
     };
 
-    $http.get(url + "?limit=" + $scope.limit + "&currentPage=" + $scope.currentPage + "&searchKey=" + $scope.keywords + "&area=" + $scope.area).success(function (result) {
-        console.log("getData success!");
+ 
+
+
+    $http.get(url + "?limit=" + $scope.limit + "&currentPage=" + $scope.currentPage + "&searchKey=" + $scope.formData.keywords + "&area=" + $scope.area).success(function (result) {
+        
         if (reqType == 'normalList') {
             $scope.data = result.docs;
         } else if (reqType == 'themeShop') {

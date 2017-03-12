@@ -48,10 +48,10 @@
                             <div class="input-group">
                                  
                                    
-    <button class="btn btn-primary btn-sm" ng-click="openWin('add')">添加</button>&nbsp;
- {{name}}
+    <!--<button class="btn btn-primary btn-sm" ng-click="openWin('add')">添加</button>&nbsp;-->
  
-                   <a class="btn btn-sm btn-success" href="#/addrole">添加角色</a>
+ 
+                   <a class="btn btn-sm btn-success" ng-click="add()">添加角色</a>
                             </div>
                                    
                                     <!--<select class="input-sm form-control input-s-sm inline">
@@ -66,8 +66,8 @@
                                 </div>
                                 <div class="col-sm-3">
                                     <div class="input-group">
-                                        <input type="text" placeholder="搜索" class="input-sm form-control"> <span class="input-group-btn">
-                                        <button type="button" class="btn btn-sm btn-primary"> 搜索</button> </span>
+                                        <input type="text" placeholder="搜索" class="input-sm form-control" ng-model="formData.keywords"> <span class="input-group-btn">
+                                        <button type="button" class="btn btn-sm btn-primary" ng-click="search()"> 搜索</button> </span>
 
  
                                      
@@ -94,7 +94,7 @@
                                        
                                         <td>{{role.CreateDate}}</td>
                                         <td><a type="button" class="btn btn-sm btn-success" ng-click="detail(role._id)">编辑</a>
-                                        <a type="button" class="btn btn-sm btn-success" ng-click="itemDelete(role._id)">删除</a>
+                                        <a type="button" class="btn btn-sm btn-success" ng-click="remove(role._id)">删除</a>
                                         </td>
                                            
                                     </tr>

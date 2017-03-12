@@ -16,16 +16,20 @@ var DBHelper = {
         var params = url.parse(req.url, true);
         var currentPage = Number(params.query.currentPage);
         var limit = Number(params.query.limit);
+        
         var startNum = (currentPage - 1) * limit + 1;
         var pageInfo;
         var query;
         //追加查询条件
         if (where && where.length > 1) {
+           
             query = model.find().or(where);
         } else if (where) {
+            
             query = model.find(where);
         } else {
             query = model.find({});
+            
         }
         query.sort({'createDate': -1});
 
@@ -88,7 +92,7 @@ var DBHelper = {
     },
     updateOndeById: function (obj, req, res,callback) {
 
-        var targetId = req.body.itemId;
+            var targetId = req.body._id;
  
             var conditions = {_id: targetId};
             req.body.updateDate = new Date();
