@@ -14,7 +14,13 @@ function($stateProvider,$urlRouterProvider,mainController,roleController,mainCon
          controller:roleController
        
 
-    })
+    }).state('addrole',{
+        url:'/addrole/:_id',
+        templateUrl:'/form/addrole.html'
+        
+         //templateUrl:'/areas/form-confirm.html'
+
+    })  
         .state('test',{
         url:'/test',
         templateUrl:'/form/test.html',
@@ -27,7 +33,7 @@ function($stateProvider,$urlRouterProvider,mainController,roleController,mainCon
  
          //templateUrl:'/areas/form-confirm.html'
 
-    })
+    }) 
     .state('menus',{
         url:'/menus',
         templateUrl:'/form/menus.html'

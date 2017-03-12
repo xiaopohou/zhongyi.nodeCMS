@@ -1,6 +1,6 @@
 ﻿<div class="row wrapper border-bottom white-bg page-heading" >
     <div class="col-lg-10">
-        <h2>.</h2>
+        <h2>角色管理</h2>
         <ol class="breadcrumb">
             <li>
                 <a href="index.html">首页</a>
@@ -19,10 +19,7 @@
 </div>
  
       <div class="row white-bg" style="margin-top:5px;" ng-controller="roleController">
-
-
-
-
+ 
                 <div class="col-lg-12">
                     <div class="ibox float-e-margins">
                         <div class="ibox-title" style="border-style:none;">
@@ -51,10 +48,10 @@
                             <div class="input-group">
                                  
                                    
-    <button class="btn btn-primary btn-sm" ng-click="openWin('add')">添加</button>
+    <button class="btn btn-primary btn-sm" ng-click="openWin('add')">添加</button>&nbsp;
  {{name}}
  
-                   <a class="btn btn-sm btn-success" ng-click="refresh();">刷新</a>
+                   <a class="btn btn-sm btn-success" href="#/addrole">添加角色</a>
                             </div>
                                    
                                     <!--<select class="input-sm form-control input-s-sm inline">
@@ -96,7 +93,7 @@
                                         <td>{{role.name}}</td>
                                        
                                         <td>{{role.CreateDate}}</td>
-                                        <td><a type="button" class="btn btn-sm btn-success" data-whatever="{{role._id}}" data-toggle="modal" data-target="#myModal">编辑</a>
+                                        <td><a type="button" class="btn btn-sm btn-success" ng-click="detail(role._id)">编辑</a>
                                         <a type="button" class="btn btn-sm btn-success" ng-click="itemDelete(role._id)">删除</a>
                                         </td>
                                            
@@ -105,7 +102,7 @@
                                     </tbody>
                                 </table>
                             </div>
-                            <div ng-include="pagination.html">
+                            <div ng-include="'/include/pagination.html'">
                                
                             </div>
                         </div>
@@ -116,5 +113,4 @@
 
 
             </div>
-
 
