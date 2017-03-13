@@ -3,6 +3,7 @@ var router = express.Router();
 var url = require('url');
 var Role = require('../models/zyModels/Role');
 var Admin = require('../models/zyModels/Admin');
+var Module= require('../models/zyModels/Module');
 var dbAccess = require('../models/zyDBHelper/zy_Dbopt');
 
 
@@ -23,6 +24,9 @@ router.get('/getDocumentList/:modelName', function (req, res) {
     }
   } else if (_modeName == 'admin') {
     defaultModel = Admin;
+  }
+  else if (_modeName == 'module') {
+    defaultModel = Module;
   } else {
     defaultModel = null;
   }

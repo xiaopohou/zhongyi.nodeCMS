@@ -1,6 +1,13 @@
  
 adminMain.config(['$stateProvider','$urlRouterProvider',
-function($stateProvider,$urlRouterProvider,mainController,roleController,mainController,testController){
+function($stateProvider,
+$urlRouterProvider,
+mainController,
+roleController,
+mainController,
+testController,
+adminController,
+moduleController){
 
     $stateProvider
     .state('app',{
@@ -20,7 +27,35 @@ function($stateProvider,$urlRouterProvider,mainController,roleController,mainCon
         
          //templateUrl:'/areas/form-confirm.html'
 
-    })  
+    })
+    .state('addadmin',{
+        url:'/addadmin/:_id',
+        templateUrl:'/form/admins/addadmin.html'
+        
+         //templateUrl:'/areas/form-confirm.html'
+
+    })  .state('admins',{
+        url:'/admins/index',
+        templateUrl:'/form/admins/index.html',
+        controller:adminController
+        
+         //templateUrl:'/areas/form-confirm.html'
+
+    })   
+        .state('addmodule',{
+        url:'/addmodule/:_id',
+        templateUrl:'/form/modules/addmodule.html'
+        
+         //templateUrl:'/areas/form-confirm.html'
+
+    })  .state('modules',{
+        url:'/modules/index',
+        templateUrl:'/form/modules/index.html',
+        controller:moduleController
+        
+         //templateUrl:'/areas/form-confirm.html'
+
+    }) 
         .state('test',{
         url:'/test',
         templateUrl:'/form/test.html',
@@ -48,13 +83,7 @@ function($stateProvider,$urlRouterProvider,mainController,roleController,mainCon
          //templateUrl:'/areas/form-confirm.html'
 
     })
-        .state('users',{
-        url:'/users/index',
-        templateUrl:'/form/user/index.html'
- 
-         //templateUrl:'/areas/form-confirm.html'
-
-    })
+       
             .state('perms',{
         url:'/perms',
         templateUrl:'/form/perms.html'

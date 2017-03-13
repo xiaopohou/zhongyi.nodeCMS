@@ -31,9 +31,12 @@ module.exports={
             sort:req.body.sort
         });
        
+
+console.log('_______________'+req.body.name);
+
         ModuleModel.save(function(err){
             if(!err){
-                _responseData.isSuccess="success";
+                _responseData.isSuccess="success1111";
             }else{
                 _responseData.isSuccess="false";
                   _responseData.errorMessage=err;

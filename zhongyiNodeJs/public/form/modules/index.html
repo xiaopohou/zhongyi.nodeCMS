@@ -1,6 +1,6 @@
 <div class="row wrapper border-bottom white-bg page-heading" >
     <div class="col-lg-10">
-        <h2>权限管理</h2>
+        <h2>菜单管理</h2>
         <ol class="breadcrumb">
             <li>
                 <a href="index.html">首页</a>
@@ -9,7 +9,7 @@
                 <a>权限管理</a>
             </li>
             <li class="active">
-                <strong>用户列表</strong>
+                <strong>菜单列表</strong>
             </li>
         </ol>
     </div>
@@ -18,12 +18,12 @@
     </div>
 </div>
  
-      <div class="row white-bg" style="margin-top:5px;" ng-controller="userController">
+      <div class="row white-bg" style="margin-top:5px;" ng-controller="moduleController">
  
                 <div class="col-lg-12">
                     <div class="ibox float-e-margins">
                         <div class="ibox-title" style="border-style:none;">
-                            <h5>角色列表</h5>
+                            <h5>菜单列表</h5>
                             <div class="ibox-tools">
                                 <a class="collapse-link">
                                     <i class="fa fa-chevron-up"></i>
@@ -51,7 +51,7 @@
     <!--<button class="btn btn-primary btn-sm" ng-click="openWin('add')">添加</button>&nbsp;-->
  
  
-                   <a class="btn btn-sm btn-success" ng-click="add()">添加角色</a>
+                   <a class="btn btn-sm btn-success" ng-click="add()">添加菜单</a>
                             </div>
                                    
                                     <!--<select class="input-sm form-control input-s-sm inline">
@@ -80,7 +80,7 @@
                                     <tr>
 
                                      <th>id</th>
-                                    <th>角色名称</th>
+                                    <th>菜单名称</th>
                                   
                                     <th>创建时间</th>
                                     <th>操作</th>

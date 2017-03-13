@@ -36,9 +36,9 @@ module.exports = {
 
         AdminModel.save(function (err) {
             if (!err) {
-                _responseData.isSuccess = 'success';
+                _responseData.isSuccess = true;
             } else {
-                _responseData.isSuccess = 'false';
+                _responseData.isSuccess = false;
                 _responseData.errorMessage = err;
             }
             res.json(_responseData);
@@ -48,13 +48,29 @@ module.exports = {
         var _responseData = new ResponseData();
         var _result = dbOperator.updateOndeById(adminModel, req, res, function (err, result,res) {
             if (!err) {
-                _responseData.isSuccess = 'success';
+                _responseData.isSuccess = true;
                 _responseData.errorMessage = '';
             } else {
-                _responseData.isSuccess = 'false';
+                _responseData.isSuccess = false;
                 _responseData.errorMessage = '';
             }
              res.json(_responseData);
         });
+    },
+    get_id_delete:function(req,res,id){
+        var _responseData= new ResponseData();
+        var _where = {"_id":id};
+        adminModel.remove(_where,function(err,doc){
+                if(!err)
+                {
+                    _responseData.isSuccess=true;
+                    _responseData.errorMessage='';
+                }else
+                {
+                    _responseData.isSuccess=false;
+                    _responseData.errorMessage='';
+                }
+                res.json(_responseData);
+        })
     }
 };

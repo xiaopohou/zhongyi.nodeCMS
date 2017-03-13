@@ -1,69 +1,85 @@
-  adminMain.controller('userController',function($scope,$rootScope,$timeout,$dialogs,$http, $stateParams,$state){
+  adminMain.controller('adminController',function($scope,$rootScope,$timeout,$dialogs,$http, $stateParams,$state){
    
   $scope.name = '';
   $scope.formData={};
-  initPagination($scope, $http, '/common/getDocumentList/user', 'normalList');
+  initPagination($scope, $http, '/common/getDocumentList/admin', 'normalList');
   $scope.add=function(){
-    $state.go('adduser');
+    
+    $state.go('addadmin');
   }
   $scope.search=function()
   {
  
-      initPagination($scope, $http, '/common/getDocumentList/user', 'normalList');
+      initPagination($scope, $http, '/common/getDocumentList/admin', 'normalList');
 
      
   }
   $scope.detail=function(id){
-    $state.go('adduser',{
+    $state.go('addadmin',{
         _id:id
     });
   }
   $scope.remove=function(id){
-      $http.get("/backend/user/"+id+"/delete").success(function(res){
+      $http.get("/backend/admin/"+id+"/delete").success(function(res){
           if(res.isSuccess)
           {
-             $state.go('users');
+             $state.go('admins');
           }
      });
   }
   var _id= $stateParams._id;
   if(_id){
-     $http.get("/backend/user/user/"+_id).success(function(res){
+     $http.get("/backend/admin/admin/"+_id).success(function(res){
           $scope.formData=res.data;
      });
   }
  
   $scope.processForm=function(isValid){
  
-    var data={
-      name:$scope.formData.name
-    };
+
+ 
    
     if(isValid){
+
+     
+
        if(_id)
        {
             
-        $http.post('/backend/role/update',$scope.formData)
+        $http.post('/backend/admin/updateadmin',$scope.formData)
         .success(function(res){
           if(res.isSuccess)
           {
-             $state.go('roles');
+             $state.go('admins');
           }
         });
-         
+
+        // $http({
+        //     method: 'post',
+        //     url: '/backend/admin/updateadmin',
+        //     data: $scope.formData,  // pass in data as strings
+        //     dataType: "json",
+        //     //headers: { 'Content-Type': 'application/x-www-form-urlencoded' },  // set the headers so angular passing info as form data (not request payload)
+        //     success:function(res){
+             
+           
+        //       console.log('xxxxxxxxxxxxxxxxxxxxxxxxxxxx');
+        //     }
+        //   });
+
 
        }else{
           $http({
                 method: 'POST',
-                url: '/backend/role/addrole',
-                data: $.param(data),  // pass in data as strings
+                url: '/backend/admin/addadmin',
+                data: $scope.formData,  // pass in data as strings
                 dataType: "json",
                 headers: { 'Content-Type': 'application/x-www-form-urlencoded' }  // set the headers so angular passing info as form data (not request payload)
             }).success(function (res) {
             
-                if (res.isSuccess == 'success') {
+                if (res.isSuccess) {
                 
-                     $state.go('roles');
+                     $state.go('admins');
                 } else {
                     console.log('错误');
                 }
@@ -79,7 +95,7 @@
 
       // Create Your Own Dialog
       case 'add':
-        dlg = $dialogs.create('/modals/addRole.html',
+        dlg = $dialogs.create('/modals/addadmin.html',
         'whatsYourNameCtrl',
         {},
         {key: false,back: 'static'}
