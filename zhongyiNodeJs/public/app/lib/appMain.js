@@ -49,8 +49,8 @@ function($stateProvider,$urlRouterProvider,mainController,roleController,mainCon
 
     })
         .state('users',{
-        url:'/users',
-        templateUrl:'/form/users.html'
+        url:'/users/index',
+        templateUrl:'/form/user/index.html'
  
          //templateUrl:'/areas/form-confirm.html'
 
@@ -85,7 +85,7 @@ function($stateProvider,$urlRouterProvider,mainController,roleController,mainCon
     })
     .state('default',{
         url:'/default',
-        templateUrl:'/form/form.html'
+        templateUrl:'/form/roles.html'
       
     });
 
