@@ -7,7 +7,8 @@ roleController,
 mainController,
 testController,
 adminController,
-moduleController){
+moduleController,
+permsController){
 
     $stateProvider
     .state('app',{
@@ -86,9 +87,8 @@ moduleController){
        
             .state('perms',{
         url:'/perms',
-        templateUrl:'/form/perms.html'
- 
-         //templateUrl:'/areas/form-confirm.html'
+        templateUrl:'/form/perms.html',
+         controller:permsController
 
     })
           .state('cates',{

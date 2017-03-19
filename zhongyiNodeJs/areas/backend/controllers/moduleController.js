@@ -21,6 +21,7 @@ module.exports={
         res.send('');
     },
     post_addmodule:function(req,res){
+        console.log('_______________'+req.body.name);
         var _responseData= new ResponseData();
         var ModuleModel= new moduleModel({
             name:req.body.name,
@@ -31,9 +32,7 @@ module.exports={
             sort:req.body.sort
         });
        
-
-console.log('_______________'+req.body.name);
-
+ 
         ModuleModel.save(function(err){
             if(!err){
                 _responseData.isSuccess="success1111";
@@ -48,6 +47,39 @@ console.log('_______________'+req.body.name);
     //编辑菜单
     post_updatemodule:function(req,res)
     {
-        res.send('');
+       var _responseData = new ResponseData();
+        var _result = dbOperator.updateOndeById(moduleModel, req, res, function (err, result,res) {
+            if (!err) {
+                _responseData.isSuccess = true;
+                _responseData.errorMessage = '';
+            } else {
+                _responseData.isSuccess = false;
+                _responseData.errorMessage = '';
+            }
+             res.json(_responseData);
+        });
+    },
+    get_modules:function(req,res){
+        var where = {parentid:'0'};
+        moduleModel.find(where,function(err,doc){
+           res.json(doc);
+        });
+    },
+    get_module_id:function(req,res,id)
+    {
+     
+
+        moduleModel.findOne({"_id":id},function(err,doc){
+            if(err)
+            {
+                res.end('error in get_module');
+                return;
+            }
+         var _responseData=new ResponseData();
+         _responseData.isSuccess=true;
+         _responseData.data=doc;
+         _responseData.errorMessage='';
+            res.json(_responseData);
+        });
     }
 };
