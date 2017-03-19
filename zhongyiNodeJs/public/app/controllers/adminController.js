@@ -35,14 +35,8 @@
   }
  
   $scope.processForm=function(isValid){
- 
-
- 
-   
     if(isValid){
-
-     
-
+ 
        if(_id)
        {
             
