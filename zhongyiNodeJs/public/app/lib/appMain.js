@@ -112,6 +112,22 @@ permsController){
          //templateUrl:'/areas/form-confirm.html'
 
     })
+  .state('tab1',{
+        url:'/tabs/tab1',
+        templateUrl:'/form/tabs/tab1.html'
+ 
+         //templateUrl:'/areas/form-confirm.html'
+
+    })
+  .state('tab2',{
+        url:'/tabs/tab2',
+        templateUrl:'/form/tabs/tab2.html'
+ 
+         //templateUrl:'/areas/form-confirm.html'
+
+    })
+
+
     .state('default',{
         url:'/default',
         templateUrl:'/form/roles.html'
