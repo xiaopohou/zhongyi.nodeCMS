@@ -1,0 +1,102 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>ng实现Tab</title>
+    <script src="/plugins/angular/angular.js"></script>
+
+
+    <style>
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        li {
+            float: left;
+            border: 1px solid #000;
+            border-bottom-width: 0;
+            margin: 3px 3px 0px 3px;
+            padding: 5px 5px 0px 5px;
+            background-color: #CCC;
+            color: #696969;
+        }
+        
+        #mainView {
+            border: 1px solid black;
+            clear: both;
+            padding: 0 1em;
+        }
+        
+        .active {
+            background-color: #FFF;
+            color: #000;
+        }
+    </style>
+
+
+
+
+    <script language="javascript">
+        angular.module('TabsApp', [])
+            .controller('TabsCtrl', ['$scope', function ($scope) {
+                $scope.tabs = [{
+                    title: 'One',
+                    url: 'one.tpl.html'
+                }, {
+                    title: 'Two',
+                    url: 'two.tpl.html'
+                }, {
+                    title: 'Three',
+                    url: 'three.tpl.html'
+                }];
+
+
+                 
+            }]);
+
+    </script>
+</head>
+
+<body>
+    <div ng-app="TabsApp">
+        <div id="tabs" ng-controller="TabsCtrl">
+            <ul>
+                <li ng-repeat="tab in tabs" ng-class="{active:isActiveTab(tab.url)}" ng-click="onClickTab(tab)">{{tab.title}}</li>
+            </ul>
+            <div id="mainView">
+                <div ng-include="currentTab"></div>
+            </div>
+        </div>
+
+        <script type="text/ng-template" id="one.tpl.html">
+            <div id="viewOne">
+                <h1>View One</h1>
+                <p>Praesent id metus massa, ut blandit odio. Proin quis tortor orci. Etiam at risus et justo dignissim congue.
+                    Donec congue lacinia dui, a porttitor lectus condimentum laoreet. Nunc.</p>
+            </div>
+        </script>
+
+        <script type="text/ng-template" id="two.tpl.html">
+            <div id="viewTwo">
+                <h1>View Two</h1>
+                <p>Curabitur vulputate, ligula lacinia scelerisque tempor, lacus lacus ornare ante, ac egestas est urna sit
+                    amet arcu. Class aptent taciti sociosqu.</p>
+            </div>
+        </script>
+
+
+        <script type="text/ng-template" id="three.tpl.html">
+            <div id="viewThree">
+                <h1>View Three</h1>
+                <p>In pellentesque faucibus vestibulum. Nulla at nulla justo, eget luctus tortor. Nulla facilisi. Duis aliquet
+                    egestas purus in blandit. Curabitur vulputate, ligula lacinia scelerisque tempor, lacus lacus ornare
+                    ante, ac egestas est urna sit amet arcu. Class aptent taciti sociosqu.</p>
+            </div>
+        </script>
+    </div>
+</body>
+
+</html>

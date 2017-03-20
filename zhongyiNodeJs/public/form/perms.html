@@ -1,66 +1,52 @@
-﻿<div ng-controller="permsController">
+﻿<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-10">
+        <h2>权限管理</h2>
+        <ol class="breadcrumb">
+            <li>
+                <a href="index.html">首页</a>
+            </li>
+            <li>
+                <a>权限管理</a>
+            </li>
+            <li class="active">
+                <strong>添加权限</strong>
+            </li>
+        </ol>
+    </div>
+    <div class="col-lg-2">
 
-    {{fuck}}
-         <div class="tabs-container">
-                <ul class="nav nav-tabs">
-                    <li class="active"><a data-toggle="tab" ui-sref="tab1"> This is tab</a></li>
-                    <li class=""><a data-toggle="tab" ui-sref="tab2">This is second tab</a></li>
-                </ul>
-                <div class="tab-content">
-                    <div ui-view="">
+    </div>
+</div>
 
-                    </div>
 
-                    <div id="tab-1" class="tab-pane active">
-                        <div class="panel-body">
-                            <strong>Lorem ipsum dolor sit amet, consectetuer adipiscing</strong>
+<div class="row white-bg" style="margin-top:5px;"  ng-controller="permsController">
 
-                            <p>
-                                A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart. I am alone, and feel the charm of
-                                existence in this spot, which was created for the bliss of souls like mine.
-                            </p>
+    {{formData.name+formData.age}}
+              <div class="tabs-container">
+                        <ul class="nav nav-tabs">
+                            <li ng-class="{true: 'active', false: ''}[isActive]"><a data-toggle="tab" ui-sref="perms.tab1" ng-click="isActive=true"> 111111</a></li>
+                            <li ng-class="{true: '', false: 'active'}[isActive]"><a data-toggle="tab" ui-sref="perms.tab2" ng-click="isActive=false"> 2222</a></li>
 
-                            <p>
-                                I am so happy, my dear friend, so absorbed in the exquisite sense of mere tranquil existence, that I neglect my talents. I should be incapable of drawing a single stroke at
-                                the present moment; and yet I feel that I never was a greater artist than now. When.
-                            </p>
+
+
+
+                        </ul>
+                        <div class="tab-content">
+                          <div ui-view>
+
+                         </div>
+
+                     
                         </div>
+
+
                     </div>
-                    <div id="tab-2" class="tab-pane">
-                        <div class="panel-body">
-                            <strong>Donec quam felis</strong>
 
-                            <p>
-                                Thousand unknown plants are noticed by me: when I hear the buzz of the little world among the stalks, and grow familiar with the countless indescribable forms of the insects
-                                and flies, then I feel the presence of the Almighty, who formed us in his own image, and the breath
-                            </p>
-
-                            <p>
-                                I am alone, and feel the charm of existence in this spot, which was created for the bliss of souls like mine. I am so happy, my dear friend, so absorbed in the exquisite
-                                sense of mere tranquil existence, that I neglect my talents. I should be incapable of drawing a single stroke at the present moment; and yet.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-
-            </div>
+  
 
 
 
-    <!--<uib-tabset active="active" type="tabs">
-        <uib-tab index="0" heading="标签页1">内容1</uib-tab>
-        <uib-tab index="$index + 1" ng-repeat="tab in tabs" heading="{{tab.title}}" active="tab.active" disable="tab.disabled">
-            {{tab.content}}
-        </uib-tab>
-        <uib-tab index="3" select="alertMe()">
-            <uib-tab-heading>
-                <i class="glyphicon glyphicon-bell"></i> Alert!
-            </uib-tab-heading>
-            内容部分
-        </uib-tab>
-    </uib-tabset>-->
-
+ 
 
 
 

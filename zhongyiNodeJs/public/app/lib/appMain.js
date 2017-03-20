@@ -8,7 +8,13 @@ mainController,
 testController,
 adminController,
 moduleController,
-permsController){
+permsController,
+articleController,
+userController,
+systemControll,
+askController,
+systemController
+){
 
     $stateProvider
     .state('app',{
@@ -112,22 +118,63 @@ permsController){
          //templateUrl:'/areas/form-confirm.html'
 
     })
-  .state('tab1',{
+  .state('perms.tab1',{
         url:'/tabs/tab1',
-        templateUrl:'/form/tabs/tab1.html'
- 
+        templateUrl:'/form/tabs/tab1.html',
+        controller:permsController
          //templateUrl:'/areas/form-confirm.html'
 
     })
-  .state('tab2',{
+  .state('perms.tab2',{
         url:'/tabs/tab2',
-        templateUrl:'/form/tabs/tab2.html'
- 
-         //templateUrl:'/areas/form-confirm.html'
-
+        templateUrl:'/form/tabs/tab2.html',
+        controller:permsController
     })
-
-
+//   .state('article',{
+//         url:'/articles/article',
+//         templateUrl:'/form/articles/article.html',
+//         controller:articleController
+//     })
+//       .state('addarticle',{
+//         url:'/articles/addarticle',
+//         templateUrl:'/form/articles/addarticle.html',
+//         controller:articleController
+//     })
+//   .state('articlecate',{
+//         url:'/articles/articlecate',
+//         templateUrl:'/form/articles/articlecate.html',
+//         controller:articleController
+//     })
+//       .state('addarticlecate',{
+//         url:'/articles/addarticlecate',
+//         templateUrl:'/form/articles/addarticlecate.html',
+//         controller:articleController
+//     })
+//       .state('articlecate',{
+//         url:'/articles/articlecate/add',
+//         templateUrl:'/form/articles/articlecate.html',
+//         controller:articleController
+//     })
+          .state('systems',{
+        url:'/systems/system',
+        templateUrl:'/form/systems/system.html',
+        controller:systemController
+    })
+//       .state('addsystems',{
+//         url:'/systems/system/add',
+//         templateUrl:'/form/systems/addsystem.html',
+//         controller:systemController
+//     })
+        .state('asks',{
+        url:'/articles/ask',
+        templateUrl:'/form/articles/ask.html',
+        controller:askController
+    })
+//             .state('users',{
+//         url:'/users/user',
+//         templateUrl:'/form/users/user.html',
+//         controller:userController
+//     })
     .state('default',{
         url:'/default',
         templateUrl:'/form/roles.html'
