@@ -6,7 +6,7 @@ module.exports = {
     zy_mongo_root: "",
     zy_mongo_pass: "",
     zy_mongo_port: "27017",
-    zy_sitename: "zhongyiNodeCMS",
+    zy_sitename: "laozhao",
     zy_authorName: "老赵",
     zy_appVerson: "V.0.1.0",
     zy_userSystemRoleGroupList: ['userSystemRoleGroupManager', '系统角色组管理'],

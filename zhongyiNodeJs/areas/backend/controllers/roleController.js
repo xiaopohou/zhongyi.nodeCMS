@@ -35,13 +35,14 @@ module.exports = {
             {
                 _responseData.errorMessage='';
                 _responseData.isSuccess=false;
-                res.json(_responseData);
+
             }else
             { 
                 _responseData.errorMessage='';
                 _responseData.isSuccess=true;
-                res.json(_responseData);
+               
             }
+             res.json(_responseData);
        });
     },
     get_id_delete: function (req, res,id) {

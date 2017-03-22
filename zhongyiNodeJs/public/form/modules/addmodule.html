@@ -32,7 +32,7 @@
                     <select class="form-control" name="parentid" ng-model="mycity" ng-options="city._id as city.name for city in models" ng-change="c()">
  <option value="">-请选择-</option>
 
-</select> ---{{mycity._id}}--{{filterText}}
+</select>  
 
 
                 </div>
@@ -66,7 +66,7 @@
                     <button type="submit" class="btn btn-primary" ng-click="submit()">确定</button>
                 </div>
             </div>
-            <input type="hidden" ng-model="formData.parentid" /> --- {{formData.parentid}}---
+            <input type="hidden" ng-model="formData.parentid" />  
         </form>
 
     </div>

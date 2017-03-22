@@ -1,10 +1,10 @@
-  adminMain.controller('adminController',function($scope,$rootScope,$timeout,$dialogs,$http, $stateParams,$state){
+  adminMain.controller('adminController',function($scope,$rootScope,
+  $timeout,$dialogs,$http, $stateParams,$state){
    
   $scope.name = '';
   $scope.formData={};
   initPagination($scope, $http, '/common/getDocumentList/admin', 'normalList');
   $scope.add=function(){
-    
     $state.go('addadmin');
   }
   $scope.search=function()
@@ -125,8 +125,6 @@
  
 })
 .run(['$templateCache',function($templateCache){
- 
- 
 
  $templateCache.put('/dialogs/whatsyourname.html','111111<div class="modal" id="myModal" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"><form class="form-horizontal" role="form" id="myform" name="myform" ng-submit="processForm(myform.$valid)" novalidate><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"></h4></div><div class="modal-body"><div class="form-group"><label for="firstname" class="col-sm-2 control-label">角色名称</label><div class="col-sm-10"><input type="text" class="form-control" id="name" name="name" ng-model="formData.name" placeholder="请输入名字" required><label for="name" class="control-label text-danger" ng-show="myForm.name.$invalid && !myForm.name.$pristine"><i class="fa fa-times-circle-o"></i>请输入</label></div></div></div><div class="modal-footer"><button type="submit" class="btn btn-default" ng-disabled="myForm.$invalid">提交</button></div></div></div></form></div>')
  ,

@@ -22,12 +22,14 @@ var setting = require('./public/config/zy_Config');
 
 var filter= require('./filter/filter');
 var common = require('./routes/common'); 
+var test = require('./routes/test');
 var app = express();
 //加载过滤器
  //app.use(filter);
 
 app.use(expressLayouts);
 app.use('/common',common);
+app.use('/t',test);
  
  //处理非get提交数据
 app.use(bodyParser.json());
@@ -107,7 +109,7 @@ app.use(session({
 app.engine('html',ejs.__express);
 app.set('view engine', 'html');
 
-//ueditor注册
+//ueditor register
 var ueditor = require('ueditor-nodejs');
 app.use('/ueditor/ue', ueditor({//这里的/ueditor/ue是因为文件件重命名为了ueditor,如果没改名，那么应该是/ueditor版本号/ue
     configFile: '/ueditor/jsp/config.json',//如果下载的是jsp的，就填写/ueditor/jsp/config.json
@@ -125,10 +127,13 @@ app.use('/ueditor/ue', ueditor({//这里的/ueditor/ue是因为文件件重命�
 // app.set('view engine', 'html');
 
 
-
+//setting static location path
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'uploads')));
- 
+
+
+app.use(express.static(path.join(__dirname, 'views')));
+
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
  
@@ -137,7 +142,7 @@ app.use(function (req, res, next) {
     next(err);
 });
 
-// 错误或者服务器500异常处理
+// handle server error or errorlog
 app.use(function (err, req, res, next) {
     var error = (req.app.get('env') === 'development') ? err : {};
     //写错误日志
