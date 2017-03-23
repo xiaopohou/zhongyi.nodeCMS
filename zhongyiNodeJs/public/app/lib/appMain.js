@@ -13,7 +13,8 @@ adminMain.config(['$stateProvider', '$urlRouterProvider',
         userController,
         systemControll,
         askController,
-        systemController
+        systemController,
+        loginController
     ) {
 
         $stateProvider
@@ -179,6 +180,12 @@ adminMain.config(['$stateProvider', '$urlRouterProvider',
                 url: '/users/adduser/:_id',
                 templateUrl: '/form/users/adduser.html',
                 controller: userController
+
+            })
+            .state('login', {
+                url: '/login',
+                templateUrl: '/form/login/login.html',
+                controller: loginController
 
             })
             .state('default', {
