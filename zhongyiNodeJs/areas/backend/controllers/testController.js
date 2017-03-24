@@ -8,6 +8,14 @@ module.exports =
         get_index: function (req, res) {
             res.render('test/login', basePage.setLayoutPage2(req, res, 'x'));
         },
+        get_editor:function(req,res)
+        {
+           res.render('test/editor', {layout:false});
+        },
+         get_dire:function(req,res)
+        {
+           res.render('test/testDirective', {layout:false});
+        },
         get_logined: function (req, res) {
 
             //res.send("----------->"+req.session.user.name);

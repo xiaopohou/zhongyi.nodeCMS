@@ -1,0 +1,1 @@
+var rootFuck=angular.module('rootFuck',[]);

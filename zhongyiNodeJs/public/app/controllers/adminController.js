@@ -11,8 +11,6 @@
   {
  
       initPagination($scope, $http, '/common/getDocumentList/admin', 'normalList');
-
-     
   }
   $scope.detail=function(id){
     $state.go('addadmin',{

@@ -6,10 +6,7 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-
 var ejs = require('ejs');
- 
-
 //template engine
 var expressLayouts = require('express-ejs-layouts');
 var partials = require('express-partials');
@@ -21,17 +18,17 @@ var session = require('express-session');
 var redisStorage = require('connect-redis')(session);
 var setting = require('./public/config/zy_Config');
 
-var filter= require('./filter/filter');
-var common = require('./routes/common'); 
-var test = require('./routes/test');    
+var filter = require('./filter/filter');
+var common = require('./routes/common');
+var test = require('./routes/test');
 var app = express();
 //加载过滤器
- //app.use(filter);
+//app.use(filter);
 
 app.use(expressLayouts);
-app.use('/common',common);
-app.use('/t',test);
- 
+app.use('/common', common);
+app.use('/t', test);
+
 app.use(cookieParser());
 
 //引入session并设置存储介质
@@ -45,10 +42,10 @@ app.use(session({
     }),
     resave: false,
     saveUninitialized: true
-  
+
 }));
 
- //处理非get提交数据
+//处理非get提交数据
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -69,8 +66,21 @@ router.use(function (req, res, next) {
     app.set('views', viewPath);
     next();
 });
+
+//ueditor register
+var ueditor = require('ueditor-nodejs');
+app.use('/ueditor/ue', ueditor({//这里的/ueditor/ue是因为文件件重命名为了ueditor,如果没改名，那么应该是/ueditor版本号/ue
+    configFile: '/ueditor/jsp/config.json',//如果下载的是jsp的，就填写/ueditor/jsp/config.json
+    mode: 'local', //本地存储填写local
+    accessKey: '',//本地存储不填写，bcs填写
+    secrectKey: '',//本地存储不填写，bcs填写
+    staticPath: path.join(__dirname, 'public'), //一般固定的写法，静态资源的目录，如果是bcs，可以不填
+    dynamicPath: '/upload/blogpicture' //动态目录，以/开头，bcs填写buckect名字，开头没有/.路径可以根据req动态变化，可以是一个函数，function(req) { return '/xx'} req.query.action是请求的行为，uploadimage表示上传图片，具体查看config.json.
+}));
+
+
 app.use(router);
- 
+
 // 设置控制器文件夹并绑定到路由
 resolve
     .setRouteDirectory({
@@ -91,11 +101,6 @@ app.use(partials());
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
- 
- 
-
-
- 
 
 //日志 
 // var logDir = __dirname + '/logs/access';
@@ -113,22 +118,14 @@ app.use(logger('dev'));
 
 // var errorLogStream = fs.createWriteStream(logErrorDir + '/error.txt');
 
+app.engine('html', ejs.__express);
+app.set('view engine', 'html');
+
+
 
  
 
-app.engine('html',ejs.__express);
-app.set('view engine', 'html');
 
-//ueditor register
-// var ueditor = require('ueditor-nodejs');
-// app.use('/ueditor/ue', ueditor({//这里的/ueditor/ue是因为文件件重命名为了ueditor,如果没改名，那么应该是/ueditor版本号/ue
-//     configFile: '/ueditor/jsp/config.json',//如果下载的是jsp的，就填写/ueditor/jsp/config.json
-//     mode: 'local', //本地存储填写local
-//     accessKey: '',//本地存储不填写，bcs填写
-//     secrectKey: '',//本地存储不填写，bcs填写
-//     staticPath: path.join(__dirname, 'public'), //一般固定的写法，静态资源的目录，如果是bcs，可以不填
-//     dynamicPath: '/upload/blogpicture' //动态目录，以/开头，bcs填写buckect名字，开头没有/.路径可以根据req动态变化，可以是一个函数，function(req) { return '/xx'} req.query.action是请求的行为，uploadimage表示上传图片，具体查看config.json.
-// }));
 
 // var engines = require('consolidate');
 //
@@ -151,6 +148,6 @@ app.use(function (req, res, next) {
     err.status = 404;
     next(err);
 });
- 
- 
+
+
 module.exports = app;
