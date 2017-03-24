@@ -20,24 +20,39 @@ adminMain.controller('cmsController', function ($scope, $state, $http, $rootScop
             _id: id
         });
     }
-    //select
-    // $scope.model = [{
-    //     id: 10001,
-    //     mainCategory: '男',
-    //     productName: '水洗T恤',
-    //     productColor: '白'
-    // }, {
-    //     id: 10002,
-    //     mainCategory: '女',
-    //     productName: '圆领短袖',
-    //     productColor: '黑'
-    // }, {
-    //     id: 10003,
-    //     mainCategory: '女',
-    //     productName: '短袖短袖',
-    //     productColor: '黃'
-    // }];
+    
 
+    /**
+     * 由于文章分类与文章公用一个controller,所以在编辑的时候需要根据状态参数来判定当前操作的是对应的业务模型(文章还是分类)
+     * 
+     * 此处做了一个特殊处理，通过路由参数往当前controller里传值，根据数值判断如何执行对应模型的业务逻辑
+     * 
+     */
+    var url_paramCateId = $stateParams.cateid;
+    var url_paramArticleId = $stateParams.articleid;
+    //分类操作
+    if (url_paramCateId != '') {
+          console.log("_________________________________"+url_paramCateId);
+
+        $http.get('/backend/cms/cate/'+url_paramCateId).success(function (res) {
+            if (res.isSuccess) {
+                
+                $scope.pmodel = res.data;
+            }
+        });
+    }
+
+    //文章操作
+    if (url_paramArticleId != '') {
+
+    }
+    $scope.addcate = function (v) {
+           
+        $state.go('addarticlecate',{cateid:v});
+    }
+    $scope.submitartcate = function () {
+
+    }
     $scope.remove = function (id) {
         $http.get("/backend/admin/" + id + "/delete").success(function (res) {
             if (res.isSuccess) {
@@ -84,5 +99,5 @@ adminMain.controller('cmsController', function ($scope, $state, $http, $rootScop
 
     // }
 
- 
+
 });

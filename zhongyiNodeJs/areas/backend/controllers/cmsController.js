@@ -40,7 +40,28 @@ module.exports = {
      */
     get_cate_id: function (req, res, id) {
         var _responseData = new responseData();
-        ArticleCate.findById(id).success(function (err, doc) {
+        ArticleCate.findById(id,function (err, doc) {
+            if (err) {
+                _responseData.isSuccess = false;
+                _responseData.errorMessage = '';
+                res.json(_responseData);
+            }
+            else if (!doc) {
+                _responseData.isSuccess = false;
+                _responseData.errorMessage = '';
+                res.json(_responseData);
+            }
+            _responseData.data = doc;
+            _responseData.isSuccess = false;
+            res.json(_responseData);
+        });
+    },
+    /**
+     * 根据条件获取分类集合
+     */
+    get_cates: function (req, res, id) {
+        var _responseData = new responseData();
+        ArticleCate.findById(id,function (err, doc) {
             if (err) {
                 _responseData.isSuccess = false;
                 _responseData.errorMessage = '';
@@ -115,7 +136,18 @@ module.exports = {
      */
     post_cateupdate: function (req, res) {
         var updColums = { $set: req.body };
-        ArticleCate.update({ _id: id }, )
+        var _responseData = new responseData();
+        ArticleCate.update({ _id: id }, updColums, function (err) {
+            console.log('______' + err);
+            if (err) {
+                _responseData.isSuccess = false;
+                _responseData.errorMessage = '';
+            } else {
+                _responseData.isSuccess = true;
+                _responseData.errorMessage = '';
+            }
+            res.json(_responseData);
+        });
     }
 
 

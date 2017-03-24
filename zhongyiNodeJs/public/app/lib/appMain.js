@@ -27,113 +27,72 @@ adminMain.config(['$stateProvider', '$urlRouterProvider',
                 url: '/roles',
                 templateUrl: '/form/roles.html',
                 controller: roleController
-
-
             }).state('addrole', {
                 url: '/addrole/:_id',
                 templateUrl: '/form/addrole.html'
-
-                //templateUrl:'/areas/form-confirm.html'
-
             })
             .state('addadmin', {
                 url: '/addadmin/:_id',
                 templateUrl: '/form/admins/addadmin.html'
-
-                //templateUrl:'/areas/form-confirm.html'
-
             }).state('admins', {
                 url: '/admins/index',
                 templateUrl: '/form/admins/index.html',
                 controller: adminController
-
-                //templateUrl:'/areas/form-confirm.html'
-
             })
             .state('addmodule', {
                 url: '/addmodule/:_id',
                 templateUrl: '/form/modules/addmodule.html'
-
-                //templateUrl:'/areas/form-confirm.html'
-
             }).state('modules', {
                 url: '/modules/index',
                 templateUrl: '/form/modules/index.html',
                 controller: moduleController
-
-                //templateUrl:'/areas/form-confirm.html'
-
             })
             .state('test', {
                 url: '/test',
                 templateUrl: '/form/test.html',
                 controller: testController
-
-
             }).state('test2', {
                 url: '/test2',
                 templateUrl: '/form/test2.html'
-
-                //templateUrl:'/areas/form-confirm.html'
-
             })
             .state('menus', {
                 url: '/menus',
                 templateUrl: '/form/menus.html'
-
-                //templateUrl:'/areas/form-confirm.html'
-
             })
             .state('dicts', {
                 url: '/dicts',
                 templateUrl: '/form/dicts.html'
-
-                //templateUrl:'/areas/form-confirm.html'
-
             })
 
             .state('perms', {
                 url: '/perms',
                 templateUrl: '/form/perms.html',
                 controller: permsController
-
             })
-            .state('cates', {
-                url: '/cates',
+            .state('articlecate', {
+                url: '/article/newscates',
                 templateUrl: '/form/articles/articlecate.html'
-
-                //templateUrl:'/areas/form-confirm.html'
-
             })
             .state('news', {
                 url: '/news',
                 templateUrl: '/form/articles/article.html'
-
             })    .state('addarticle', {
                 url: '/article/addarticle',
                 templateUrl: '/form/articles/addarticle.html'
-
             })
                 .state('addarticlecate', {
-                url: '/article/cates',
-                templateUrl: '/form/articles/addarticlecate.html'
-
-                //templateUrl:'/areas/form-confirm.html'
-
+                url: '/article/cates/add/:cateid',
+                templateUrl: '/form/articles/addarticlecate.html',
+                controller:cmsController
             })
             .state('tags', {
                 url: '/tags',
                 templateUrl: '/form/tags.html'
-
-                //templateUrl:'/areas/form-confirm.html'
-
             })
             .state('perms.tab1', {
                 url: '/tabs/tab1',
                 templateUrl: '/form/tabs/tab1.html',
                 controller: permsController
-                //templateUrl:'/areas/form-confirm.html'
-
             })
             .state('perms.tab2', {
                 url: '/tabs/tab2',
@@ -189,7 +148,6 @@ adminMain.config(['$stateProvider', '$urlRouterProvider',
                 url: '/users/adduser/:_id',
                 templateUrl: '/form/users/adduser.html',
                 controller: userController
-
             })
             .state('login', {
                 url: '/login',
@@ -200,10 +158,8 @@ adminMain.config(['$stateProvider', '$urlRouterProvider',
             .state('default', {
                 url: '/default',
                 templateUrl: '/form/roles.html'
-
             });
 
         $urlRouterProvider.otherwise('default');
-
     }]);
 
