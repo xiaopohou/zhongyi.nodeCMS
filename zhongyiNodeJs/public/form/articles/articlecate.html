@@ -88,13 +88,13 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr ng-repeat="role in data">
+                                    <tr ng-repeat="articlecate in data">
                                         <td><input type="checkbox"  checked class="i-checks" name="input[]"></td>
-                                        <td>{{role.name}}</td>
+                                        <td>{{articlecate.name}}</td>
                                        
-                                        <td>{{role.CreateDate}}</td>
-                                        <td><a type="button" class="btn btn-sm btn-success" ng-click="detail(role._id)">编辑</a>
-                                        <a type="button" class="btn btn-sm btn-success" ng-click="remove(role._id)">删除</a>
+                                        <td>{{articlecate.CreateDate}}</td>
+                                        <td><a type="button" class="btn btn-sm btn-success" ng-click="detail(articlecate._id)">编辑</a>
+                                        <a type="button" class="btn btn-sm btn-success" ng-click="remove(articlecate._id)">删除</a>
                                         </td>
                                            
                                     </tr>

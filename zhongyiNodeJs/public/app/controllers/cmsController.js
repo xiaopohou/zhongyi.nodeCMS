@@ -1,4 +1,34 @@
-adminMain.controller('cmsController', function ($scope, $state, $http, $rootScope, $stateParams) {
+adminMain.service('testService', function () {
+    this.fuck = function (a) {
+        return a * 7;
+    }
+});
+/**
+ * ajax post 
+ */
+adminMain.service('dataPostService', ['$http', function ($http) {
+    this.postdata = function (url, formdata) {
+        return $http.post(url, formdata);
+    }
+}]);
+
+/**
+ * ajax get 
+ */
+adminMain.factory('dataServiceFactory', ['$http', function ($http) {
+    var f = function (url) {
+        var path = url;
+        return $http.get(url);
+    };
+    return {
+        getdata: function (url) {
+            return f(url);
+        }
+    }
+}]);
+
+
+adminMain.controller('cmsController', function ($scope, $state, $http, $rootScope, $stateParams, dataServiceFactory, dataPostService) {
     $scope.cateFormData = {};
     $scope.articleFormData = {};
 
@@ -8,9 +38,12 @@ adminMain.controller('cmsController', function ($scope, $state, $http, $rootScop
     //收集分类信息
     $scope.cateformData = {};
     initPagination($scope, $http, '/common/getDocumentList/article', 'normalList');
+     
     $scope.addarticle = function () {
         $state.go('addarticle');
     }
+
+
     $scope.search = function () {
 
         initPagination($scope, $http, '/common/getDocumentList/admin', 'normalList');
@@ -20,7 +53,7 @@ adminMain.controller('cmsController', function ($scope, $state, $http, $rootScop
             _id: id
         });
     }
-    
+
 
     /**
      * 由于文章分类与文章公用一个controller,所以在编辑的时候需要根据状态参数来判定当前操作的是对应的业务模型(文章还是分类)
@@ -32,14 +65,22 @@ adminMain.controller('cmsController', function ($scope, $state, $http, $rootScop
     var url_paramArticleId = $stateParams.articleid;
     //分类操作
     if (url_paramCateId != '') {
-          console.log("_________________________________"+url_paramCateId);
+        
+        initPagination($scope, $http, '/common/getDocumentList/articlecate', 'normalList');
 
-        $http.get('/backend/cms/cate/'+url_paramCateId).success(function (res) {
-            if (res.isSuccess) {
-                
-                $scope.pmodel = res.data;
-            }
+        //console.log("_________________________________" + url_paramCateId);
+        //获取获取父类集合
+        dataServiceFactory.getdata('/backend/cms/cates/0').success(function (res) {
+
+            $scope.pmodel = res.data;
         });
+
+        // $http.get('/backend/cms/cate/' + url_paramCateId).success(function (res) {
+        //     if (res.isSuccess) {
+
+        //         $scope.pmodel = res.data;
+        //     }
+        // });
     }
 
     //文章操作
@@ -47,11 +88,24 @@ adminMain.controller('cmsController', function ($scope, $state, $http, $rootScop
 
     }
     $scope.addcate = function (v) {
-           
-        $state.go('addarticlecate',{cateid:v});
-    }
-    $scope.submitartcate = function () {
 
+        $state.go('addarticlecate', { cateid: v });
+    }
+     $scope.cateFormData.parentid=0;
+     //添加分类
+    $scope.submitartcate = function () {
+        if ($scope.cateFormData._id == null||$scope.cateFormData._id == undefined) {
+            $scope.cateFormData.parentid = 0;
+        } else {
+            $scope.cateFormData.parentid = $scope.cateFormData._id;
+        }
+        //console.log("_________________________________"+$scope.cateFormData.parentid);
+        dataPostService.postdata('/backend/cms/cate', $scope.cateFormData).success(function (res) {
+            if(res.isSuccess){
+                $state.go('/article/newscates');
+            }
+           
+        });
     }
     $scope.remove = function (id) {
         $http.get("/backend/admin/" + id + "/delete").success(function (res) {

@@ -33,11 +33,12 @@
 
                 <div class="col-sm-10">
 
-                    <select ng-model="cateFormData.id" name="parentid" class="form-control" ng-options="p._id as p.name for p in pmodel">
-                                            <option value="-1">--请选择--</option>
+                    <select ng-model="cateFormData._id" name="parentid" class="form-control" ng-options="p._id as p.name for p in pmodel">
+                                            <option value="">--请选择--</option>
                                         </select>
-
+ 
                 </div>
+                <input type="hidden" ng-model="cateFormData.parentid"/>
             </div>
             <div class="hr-line-dashed"></div>
             <div class="form-group">
@@ -50,7 +51,7 @@
             <div class="hr-line-dashed"></div>
 
 
-            <div class="hr-line-dashed"></div>
+            
             <div class="form-group">
                 <div class="col-sm-4 col-sm-offset-2">
                     <a class="btn btn-white" type="button" href="#/article/newscates">返回</a>

@@ -40,7 +40,7 @@ module.exports = {
      */
     get_cate_id: function (req, res, id) {
         var _responseData = new responseData();
-        ArticleCate.findById(id,function (err, doc) {
+        ArticleCate.findById(id, function (err, doc) {
             if (err) {
                 _responseData.isSuccess = false;
                 _responseData.errorMessage = '';
@@ -59,22 +59,27 @@ module.exports = {
     /**
      * 根据条件获取分类集合
      */
-    get_cates: function (req, res, id) {
+    get_cates_id: function (req, res, id) {
         var _responseData = new responseData();
-        ArticleCate.findById(id,function (err, doc) {
+        var _where = { parentid: id };
+        ArticleCate.find(_where, function (err, doc) {
             if (err) {
                 _responseData.isSuccess = false;
                 _responseData.errorMessage = '';
                 res.json(_responseData);
+
+
             }
             else if (!doc) {
                 _responseData.isSuccess = false;
                 _responseData.errorMessage = '';
                 res.json(_responseData);
+
             }
             _responseData.data = doc;
             _responseData.isSuccess = false;
             res.json(_responseData);
+
         });
     },
     /**
@@ -100,10 +105,17 @@ module.exports = {
      */
     post_cate: function (req, res) {
         var _responseData = new responseData();
-        ArticleCate.save(req.body, function (err, doc) {
+
+        var ArticleCateModel = new ArticleCate({
+            parentid: req.body.parentid,
+            name: req.body.name
+        });
+
+
+        ArticleCateModel.save(function (err, doc) {
             if (err) {
                 _responseData.isSuccess = false;
-                _responseData.errorMessage = '';
+                _responseData.errorMessage = err;
 
             } else {
                 _responseData.isSuccess = true;
