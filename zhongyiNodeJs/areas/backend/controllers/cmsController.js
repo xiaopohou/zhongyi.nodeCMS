@@ -149,8 +149,8 @@ module.exports = {
     post_cateupdate: function (req, res) {
         var updColums = { $set: req.body };
         var _responseData = new responseData();
-        ArticleCate.update({ _id: id }, updColums, function (err) {
-            console.log('______' + err);
+        ArticleCate.update({ _id: req.body._id }, updColums, function (err) {
+           
             if (err) {
                 _responseData.isSuccess = false;
                 _responseData.errorMessage = '';
@@ -158,6 +158,7 @@ module.exports = {
                 _responseData.isSuccess = true;
                 _responseData.errorMessage = '';
             }
+             console.log('______' + err);
             res.json(_responseData);
         });
     }

@@ -70,7 +70,7 @@ adminMain.config(['$stateProvider', '$urlRouterProvider',
                 controller: permsController
             })
             .state('articlecate', {
-                url: '/article/newscates',
+                url: '/article/articlecates',
                 templateUrl: '/form/articles/articlecate.html'
             })
             .state('news', {
