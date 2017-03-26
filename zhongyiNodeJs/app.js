@@ -1,6 +1,7 @@
 var express = require('express');
 var path = require('path');
 var fs = require('fs');
+//var _= require('lodash');
 var fileStreamRotator = require('file-stream-rotator');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
@@ -28,7 +29,7 @@ var app = express();
 app.use(expressLayouts);
 app.use('/common', common);
 app.use('/t', test);
-
+// app.use(lodash());
 app.use(cookieParser());
 
 //引入session并设置存储介质

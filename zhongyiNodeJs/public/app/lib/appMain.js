@@ -76,8 +76,9 @@ adminMain.config(['$stateProvider', '$urlRouterProvider',
             .state('news', {
                 url: '/news',
                 templateUrl: '/form/articles/article.html'
-            })    .state('addarticle', {
-                url: '/article/addarticle',
+            })  
+              .state('addarticle', {
+                url: '/article/addarticle/:articleid',
                 templateUrl: '/form/articles/addarticle.html'
             })
                 .state('addarticlecate', {

@@ -31,19 +31,15 @@ adminMain.factory('dataServiceFactory', ['$http', function ($http) {
 adminMain.controller('cmsController', function ($scope, $state, $http, $rootScope, $stateParams, dataServiceFactory, dataPostService) {
     $scope.cateFormData = {};
     $scope.articleFormData = {};
-
+    
     $scope.name = '';
-
-
     initPagination($scope, $http, '/common/getDocumentList/article', 'normalList');
 
-    $scope.addarticle = function () {
-        $state.go('addarticle');
+    $scope.addarticle = function (v) {
+        $state.go('addarticle',{articleid:v});
     }
 
-
     $scope.search = function () {
-
         initPagination($scope, $http, '/common/getDocumentList/admin', 'normalList');
     }
     $scope.detail = function (id) {
@@ -79,7 +75,7 @@ adminMain.controller('cmsController', function ($scope, $state, $http, $rootScop
             dataServiceFactory.getdata('/backend/cms/cate/' + url_paramCateId).success(function (res) {
                 var d = res.data;
                 $scope.cateFormData = d;
-                 $scope.cateFormData.pid=d.parentid;
+                $scope.cateFormData.pid = d.parentid;
 
                 // alert(d.parentid);
 
@@ -104,11 +100,44 @@ adminMain.controller('cmsController', function ($scope, $state, $http, $rootScop
         //     }
         // });
     }
+     //添加文章的一级分类
+    $scope.articlePmodel = {};
+    //添加文章的二级分类
+    $scope.articleChildmodel = {};
+
+    //测试方法--------------------
+    $scope.PmodelChanage1=function(){
+        
+    }
+         dataServiceFactory.getdata('/backend/cms/allarticlecates').success(function (res) {
+              
+                 $scope.articleFormData.dt= res.data;
+            });
+   //测试方法--------------------
+
+
+
 
     //文章操作
     if (url_paramArticleId != '') {
+          //初始化一级分类
+            dataServiceFactory.getdata('/backend/cms/cates/0').success(function (res) {
+               
+                $scope.articlePmodel = res.data;
+               
 
+                // alert(d.parentid);
+
+            });
+
+        if (url_paramArticleId == -1) {
+
+        } else {
+
+        }
+        console.log("______________url_paramArticleId___________________" + url_paramArticleId);
     }
+
     $scope.addcate = function (v) {
 
         $state.go('addarticlecate', { cateid: v });
@@ -122,8 +151,8 @@ adminMain.controller('cmsController', function ($scope, $state, $http, $rootScop
             //添加
             if (url_paramCateId == -1) {
                 //添加
-                $scope.cateFormData.parentid = $scope.cateFormData.pid==undefined?0:$scope.cateFormData.pid;
-                console.log("_________________11111111111________________"+$scope.cateFormData.pid);
+                $scope.cateFormData.parentid = $scope.cateFormData.pid == undefined ? 0 : $scope.cateFormData.pid;
+                console.log("_________________11111111111________________" + $scope.cateFormData.pid);
                 dataPostService.postdata('/backend/cms/cate', $scope.cateFormData).success(function (res) {
                     if (res.isSuccess) {
                         $state.go('articlecate');
@@ -148,44 +177,4 @@ adminMain.controller('cmsController', function ($scope, $state, $http, $rootScop
             }
         });
     }
-    // var _id = $stateParams._id;
-    // if (_id) {
-    //     $http.get("/backend/admin/admin/" + _id).success(function (res) {
-    //         $scope.formData = res.data;
-    //     });
-    // }
-
-    // $scope.submitarticle = function (isValid) {
-    //     if (isValid) {
-
-    //         if (_id) {
-
-    //             $http.post('/backend/admin/updateadmin', $scope.formData)
-    //                 .success(function (res) {
-    //                     if (res.isSuccess) {
-    //                         $state.go('admins');
-    //                     }
-    //                 });
-    //         } else {
-    //             $http({
-    //                 method: 'POST',
-    //                 url: '/backend/cms/addadmin',
-    //                 data: $scope.formData,  // pass in data as strings
-    //                 dataType: "json",
-    //                 headers: { 'Content-Type': 'application/x-www-form-urlencoded' }  // set the headers so angular passing info as form data (not request payload)
-    //             }).success(function (res) {
-
-    //                 if (res.isSuccess) {
-
-    //                     $state.go('admins');
-    //                 } else {
-    //                     console.log('错误');
-    //                 }
-    //             });
-    //         }
-    //     }
-
-    // }
-
-
 });

@@ -3,6 +3,9 @@ var Article = require('../../../models/zyModels/Article');
 var ArticleCate = require('../../../models/zyModels/ArticleCate');
 var dbOperator = require('../../../models/zyDBHelper/zy_Dbopt');
 var responseData = require('../../../utils/responseData');
+var ArticlecateVM = require('../../../models/zyModels/dtos/ArticleCateVM');
+var _ = require('lodash');
+
 module.exports = {
     /**
      * view current page
@@ -52,8 +55,52 @@ module.exports = {
                 res.json(_responseData);
             }
             _responseData.data = doc;
-            _responseData.isSuccess = false;
+            _responseData.isSuccess = true;
             res.json(_responseData);
+        });
+    },
+    get_allarticlecates: function (req, res) {
+        var _responseData = new responseData();
+        ArticleCate.find({}, function (err, doc) {
+
+            if (err) {
+                _responseData.isSuccess = false;
+                _responseData.errorMessage = '';
+                res.json(_responseData);
+            }
+            if (doc.length > 0) {
+                var articlecates = [];
+                var _ArticleCateVM = {};
+                _.map(doc, function (a) {
+                    if (a.parentid == "0") {
+                        // console.log("______________________"+item.name);
+                        _ArticleCateVM = new ArticlecateVM();
+                        _ArticleCateVM.name = a.name
+                        _ArticleCateVM.child=_.map(doc,function(item){
+                            if(item.parentid==a._id)
+                            {
+                                 console.log("____________=======================__________" + item.name);
+                                articlecates.push(item);
+                            }
+                        })
+                    
+                        articlecates.push(_ArticleCateVM);
+                        
+                    }
+                });
+              
+               console.log("____________2_________" + articlecates);
+ 
+                // doc.forEach(function(item){
+                //    
+
+                // });
+            }
+            _responseData.data = articlecates;
+            _responseData.isSuccess = true;
+            _responseData.errorMessage = '';
+            res.json(_responseData);
+
         });
     },
     /**
@@ -150,7 +197,7 @@ module.exports = {
         var updColums = { $set: req.body };
         var _responseData = new responseData();
         ArticleCate.update({ _id: req.body._id }, updColums, function (err) {
-           
+
             if (err) {
                 _responseData.isSuccess = false;
                 _responseData.errorMessage = '';
@@ -158,7 +205,7 @@ module.exports = {
                 _responseData.isSuccess = true;
                 _responseData.errorMessage = '';
             }
-             console.log('______' + err);
+            console.log('______' + err);
             res.json(_responseData);
         });
     }
