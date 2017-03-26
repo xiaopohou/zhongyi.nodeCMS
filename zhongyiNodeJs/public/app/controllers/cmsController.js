@@ -131,10 +131,7 @@ adminMain.controller('cmsController', function ($scope, $state, $http, $rootScop
 
                 });
             } else {
-             
                 $scope.cateFormData.parentid = $scope.cateFormData.pid;
-
-                    // console.log("_________________aaaaa________________"+    $scope.cateFormData.parentid);
                 dataPostService.postdata('/backend/cms/cateupdate', $scope.cateFormData).success(function (res) {
                     if (res.isSuccess) {
                         $state.go('articlecate');
