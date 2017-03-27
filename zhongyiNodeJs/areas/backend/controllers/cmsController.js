@@ -86,23 +86,19 @@ module.exports = {
    
                 _.map(parentItems, function (p) {
 
-                    _.map(allItems,function(){
+                    _.map(allItems,function(a){
 
                     });
 
                     if (a.parentid == "0") {
-                         
                         _ArticleCateVM = new ArticlecateVM();
                         _ArticleCateVM.name = a.name
                         _ArticleCateVM.child = _.map(doc, function (item) {
                             if (item.parentid == a._id) {
-
                                 articlecates.push(item);
                             }
                         })
-
                         articlecates.push(_ArticleCateVM);
-
                     }
                 });
 
