@@ -68,35 +68,52 @@ module.exports = {
                 _responseData.errorMessage = '';
                 res.json(_responseData);
             }
+           var parentItems = [];
+           var allItems=[];
+           var childItems=[];
+            var _ArticleCateVM = {};
+
             if (doc.length > 0) {
+                //查出所有父级
+                 allItems=doc;
+                _.map(doc, function (docParentItem) {
+                    if (docParentItem.parentid == "0") {
+                        parentItems.push(docParentItem);
+                    }
+                });
+ 
                 var articlecates = [];
-                var _ArticleCateVM = {};
-                _.map(doc, function (a) {
+   
+                _.map(parentItems, function (p) {
+
+                    _.map(allItems,function(){
+
+                    });
+
                     if (a.parentid == "0") {
-                        // console.log("______________________"+item.name);
+                         
                         _ArticleCateVM = new ArticlecateVM();
                         _ArticleCateVM.name = a.name
-                        _ArticleCateVM.child=_.map(doc,function(item){
-                            if(item.parentid==a._id)
-                            {
-                                 console.log("____________=======================__________" + item.name);
+                        _ArticleCateVM.child = _.map(doc, function (item) {
+                            if (item.parentid == a._id) {
+
                                 articlecates.push(item);
                             }
                         })
-                    
+
                         articlecates.push(_ArticleCateVM);
-                        
+
                     }
                 });
-              
-               console.log("____________2_________" + articlecates);
- 
+
+                //console.log("____________2_________" + articlecates);
+
                 // doc.forEach(function(item){
                 //    
 
                 // });
             }
-            _responseData.data = articlecates;
+            _responseData.data = parentItems;
             _responseData.isSuccess = true;
             _responseData.errorMessage = '';
             res.json(_responseData);
