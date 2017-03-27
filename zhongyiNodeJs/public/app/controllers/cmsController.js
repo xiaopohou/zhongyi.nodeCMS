@@ -31,12 +31,13 @@ adminMain.factory('dataServiceFactory', ['$http', function ($http) {
 adminMain.controller('cmsController', function ($scope, $state, $http, $rootScope, $stateParams, dataServiceFactory, dataPostService) {
     $scope.cateFormData = {};
     $scope.articleFormData = {};
-    
+
     $scope.name = '';
+ 
     initPagination($scope, $http, '/common/getDocumentList/article', 'normalList');
 
     $scope.addarticle = function (v) {
-        $state.go('addarticle',{articleid:v});
+        $state.go('addarticle', { articleid: v });
     }
 
     $scope.search = function () {
@@ -100,42 +101,41 @@ adminMain.controller('cmsController', function ($scope, $state, $http, $rootScop
         //     }
         // });
     }
-     //添加文章的一级分类
+    //添加文章的一级分类
     $scope.articlePmodel = {};
     //添加文章的二级分类
     $scope.articleChildmodel = {};
-
+    $scope.cateMap=[];
     //测试方法--------------------
-    $scope.PmodelChanage1=function(){
-        
+    dataServiceFactory.getdata('/backend/cms/allarticlecates').success(function (res) {
+        $scope.cateMap = res.data;
+    });
+     $scope.classidChanage = function () {
+           //$scope.classid2="";
     }
-         dataServiceFactory.getdata('/backend/cms/allarticlecates').success(function (res) {
-              
-                 $scope.articleFormData.dt= res.data;
-            });
-   //测试方法--------------------
+    //测试方法--------------------
 
 
 
 
     //文章操作
     if (url_paramArticleId != '') {
-          //初始化一级分类
-            dataServiceFactory.getdata('/backend/cms/cates/0').success(function (res) {
-               
-                $scope.articlePmodel = res.data;
-               
+        //初始化一级分类
+        dataServiceFactory.getdata('/backend/cms/cates/0').success(function (res) {
 
-                // alert(d.parentid);
+            $scope.articlePmodel = res.data;
 
-            });
+
+            // alert(d.parentid);
+
+        });
 
         if (url_paramArticleId == -1) {
 
         } else {
 
         }
-        console.log("______________url_paramArticleId___________________" + url_paramArticleId);
+        //console.log("______________url_paramArticleId___________________" + url_paramArticleId);
     }
 
     $scope.addcate = function (v) {

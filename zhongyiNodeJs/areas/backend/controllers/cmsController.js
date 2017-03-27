@@ -60,6 +60,7 @@ module.exports = {
         });
     },
     get_allarticlecates: function (req, res) {
+
         var _responseData = new responseData();
         ArticleCate.find({}, function (err, doc) {
 
@@ -68,48 +69,38 @@ module.exports = {
                 _responseData.errorMessage = '';
                 res.json(_responseData);
             }
-           var parentItems = [];
-           var allItems=[];
-           var childItems=[];
+
+            var parentItems = [];
+            var allItems = [];
+            var childItems = [];
             var _ArticleCateVM = {};
 
             if (doc.length > 0) {
                 //查出所有父级
-                 allItems=doc;
+                allItems = doc;
                 _.map(doc, function (docParentItem) {
                     if (docParentItem.parentid == "0") {
                         parentItems.push(docParentItem);
                     }
                 });
- 
+
                 var articlecates = [];
-   
                 _.map(parentItems, function (p) {
-
-                    _.map(allItems,function(a){
-
+                    _ArticleCateVM = new ArticlecateVM();
+                    _ArticleCateVM.name = p.name;
+                    _ArticleCateVM._id=p._id;
+                   _.map(allItems, function (item) 
+                    {
+                        if (item.parentid == p._id) {
+                            childItems.push(item);
+                        }
                     });
-
-                    if (a.parentid == "0") {
-                        _ArticleCateVM = new ArticlecateVM();
-                        _ArticleCateVM.name = a.name
-                        _ArticleCateVM.child = _.map(doc, function (item) {
-                            if (item.parentid == a._id) {
-                                articlecates.push(item);
-                            }
-                        })
-                        articlecates.push(_ArticleCateVM);
-                    }
+                     _ArticleCateVM.child = childItems;
+                    articlecates.push(_ArticleCateVM);
+                    childItems=[];
                 });
-
-                //console.log("____________2_________" + articlecates);
-
-                // doc.forEach(function(item){
-                //    
-
-                // });
             }
-            _responseData.data = parentItems;
+            _responseData.data = articlecates;
             _responseData.isSuccess = true;
             _responseData.errorMessage = '';
             res.json(_responseData);

@@ -1,6 +1,6 @@
 var ArticlesVM=function()
 {
-    this.id="";
+    this._id="";
     this.name="";
     this.child=[];
 }
