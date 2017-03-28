@@ -152,7 +152,7 @@ adminMain.controller('cmsController', function ($scope, $state, $http, $rootScop
             if (url_paramCateId == -1) {
                 //添加
                 $scope.cateFormData.parentid = $scope.cateFormData.pid == undefined ? 0 : $scope.cateFormData.pid;
-                console.log("_________________11111111111________________" + $scope.cateFormData.pid);
+                //console.log("_________________11111111111________________" + $scope.cateFormData.pid);
                 dataPostService.postdata('/backend/cms/cate', $scope.cateFormData).success(function (res) {
                     if (res.isSuccess) {
                         $state.go('articlecate');
@@ -170,6 +170,10 @@ adminMain.controller('cmsController', function ($scope, $state, $http, $rootScop
         }
     }
 
+    $scope.submitarticle=function()
+    {
+        alert($scope.articleformData.coverpage);
+    }
     $scope.remove = function (id) {
         $http.get("/backend/admin/" + id + "/delete").success(function (res) {
             if (res.isSuccess) {
