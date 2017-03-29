@@ -1,10 +1,16 @@
 var basePage = require('../../../core/baseController');
+var mutipart = require('connect-multiparty');
+var multipartMiddleware= mutipart();
 
 var express = require('express');
 var router = express.Router();
 
 module.exports =
     {
+        post_toupload:[multipartMiddleware,function(req,res){
+
+            res.send('ok'+res.files);
+        }],
         get_index: function (req, res) {
             res.render('test/login', basePage.setLayoutPage2(req, res, 'x'));
         },

@@ -100,6 +100,7 @@ adminMain.config(['$stateProvider', '$urlRouterProvider',
                 templateUrl: '/form/tabs/tab2.html',
                 controller: permsController
             })
+       
             //   .state('article',{
             //         url:'/articles/article',
             //         templateUrl:'/form/articles/article.html',
