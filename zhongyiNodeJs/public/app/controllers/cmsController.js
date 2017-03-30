@@ -120,6 +120,10 @@ adminMain.controller('cmsController', function ($scope, $state, $http, $rootScop
 
     //文章操作
     if (url_paramArticleId != '') {
+        //初始化上传
+        initUploadFyBtn("uploadContentImg","images","ctTopImg",function(){
+
+        });
         //初始化一级分类
         dataServiceFactory.getdata('/backend/cms/cates/0').success(function (res) {
 
