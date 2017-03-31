@@ -1,4 +1,4 @@
 var cfg={
-    imgZip:true
+    imgZip:false
 };
 module.exports=cfg;

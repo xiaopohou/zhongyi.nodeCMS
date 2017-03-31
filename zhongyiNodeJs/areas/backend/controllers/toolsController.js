@@ -68,24 +68,8 @@ module.exports={
                                         var out = smallImgPath + newFileName;
 
                                         if(fileKey == 'ctTopImg'){
-                                            console.log("88888888888888888888888888888888888888"+settings.imgZip);
+                                           // console.log("88888888888888888888888888888888888888"+settings.imgZip);
                                             gm(input).resize(270,162,'!').autoOrient().write(out, function (err) {
-                                                if (err) {
-                                                    console.log(err);
-                                                } else {
-                                                    console.log('done');
-                                                }
-                                            });
-                                        }else if(fileKey == 'plugTopImg'){ // 插件主题图片
-                                            gm(input).resize(270,162,'!').autoOrient().write(out, function (err) {
-                                                if (err) {
-                                                    console.log(err);
-                                                } else {
-                                                    console.log('done');
-                                                }
-                                            });
-                                        }else if(fileKey == 'userlogo'){ // 用户头像
-                                            gm(input).resize(100,100,'!').autoOrient().write(out, function (err) {
                                                 if (err) {
                                                     console.log(err);
                                                 } else {
@@ -97,7 +81,7 @@ module.exports={
                                 })
                             }else{
                                 fs.rename(file.path,updatePath + newFileName,function(err){
-                                   
+                                   //console.log("88888888888888888888888888888888888888"+err);
                                     if(err){
                                         console.log(err)
                                     }

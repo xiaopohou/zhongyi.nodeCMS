@@ -119,19 +119,18 @@ adminMain.controller('cmsController', function ($scope, $state, $http, $rootScop
 
 
     //文章操作
-    if (url_paramArticleId != '') {
+    if (url_paramArticleId != '') 
+    {
         //初始化上传
-        initUploadFyBtn("uploadContentImg","images","ctTopImg",function(){
-
+        initUploadFyBtn("uploadContentImg","images","ctTopImg",function(data){
+            alert(data);
+            //$("#myImg").val(data);
         });
         //初始化一级分类
         dataServiceFactory.getdata('/backend/cms/cates/0').success(function (res) {
-
             $scope.articlePmodel = res.data;
-
-
+ 
             // alert(d.parentid);
-
         });
 
         if (url_paramArticleId == -1) {
@@ -176,7 +175,7 @@ adminMain.controller('cmsController', function ($scope, $state, $http, $rootScop
 
     $scope.submitarticle=function()
     {
-        alert($scope.articleformData.coverpage);
+        
     }
     $scope.remove = function (id) {
         $http.get("/backend/admin/" + id + "/delete").success(function (res) {
