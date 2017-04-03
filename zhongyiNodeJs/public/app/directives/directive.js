@@ -12,7 +12,7 @@ adminMain.directive('ueditor', ['$timeout',function ($timeout) { //angular绑定
             element[0].id = id;
             var ue = UE.getEditor(id, {
                 initialFrameWidth: '100%',
-                initialFrameHeight: '500',
+                initialFrameHeight: '200',
                 autoHeightEnabled: true
             });
             ue.ready(function () {

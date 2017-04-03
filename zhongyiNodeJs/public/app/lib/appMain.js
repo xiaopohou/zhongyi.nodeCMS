@@ -9,12 +9,13 @@ adminMain.config(['$stateProvider', '$urlRouterProvider',
         adminController,
         moduleController,
         permsController,
-        cmsController,
+        //cmsController,
         userController,
         systemControll,
         askController,
         systemController,
-        loginController
+        loginController,
+        articleController
     ) {
 
         $stateProvider
@@ -73,19 +74,21 @@ adminMain.config(['$stateProvider', '$urlRouterProvider',
                 url: '/article/articlecates',
                 templateUrl: '/form/articles/articlecate.html'
             })
-            .state('news', {
-                url: '/news',
-                templateUrl: '/form/articles/article.html'
+            .state('article', {
+                url: '/article',
+                templateUrl: '/form/articles/article.html',
+                controller:articleController
             })  
               .state('addarticle', {
                 url: '/article/addarticle/:articleid',
                 templateUrl: '/form/articles/addarticle.html'
+               
             })
-                .state('addarticlecate', {
-                url: '/article/cates/add/:cateid',
-                templateUrl: '/form/articles/addarticlecate.html',
-                controller:cmsController
-            })
+            //     .state('addarticlecate', {
+            //     url: '/article/cates/add/:cateid',
+            //     templateUrl: '/form/articles/addarticlecate.html',
+            //     controller:cmsController
+            // })
             .state('tags', {
                 url: '/tags',
                 templateUrl: '/form/tags.html'

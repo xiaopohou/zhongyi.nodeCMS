@@ -17,14 +17,41 @@ module.exports = {
     /**
      * get single model by id
      */
-    get_article_id: function (req, res) {
-
+    get_article_id: function (req, res,id) {
+           var _responseData=new responseData();
+           Article.findOne({"_id":id},function(err,doc){
+               if(err)
+               {
+                    _responseData.isSuccess=false;
+               }else
+               {
+                   _responseData.isSuccess=true;
+                   _responseData.data=doc;
+               }
+               res.json(_responseData);
+           });
     },
     /**
      * insert article by model
      */
     post_article: function (req, res) {
-
+ 
+        var _responseData=new responseData();
+        var articleModel=new Article({
+            name:req.body.name,
+            classid:req.body.kid1,
+            classid2:req.body.kid2,
+            coverpage:req.body.coverpage,
+            content:req.body.content
+        });
+        articleModel.save(function(err,doc){
+            if(err){
+                _responseData.isSuccess=false;
+            }else{
+                 _responseData.isSuccess=true;
+            }
+            res.json(_responseData);
+        });
     },
     /**
      * remove single data by id
@@ -36,7 +63,18 @@ module.exports = {
      * modify article model by model
      */
     post_articleupdate: function (req, res) {
-
+        var _condition = {_id:req.body._id};
+         var _responseData = new responseData();
+        var _update= {$set:req.body};
+        Article.update(_condition,_update,function(err,result){
+            if(err)
+            {
+                _responseData.isSuccess=false;
+            }else{
+                  _responseData.isSuccess=true;
+            }
+            res.json(_responseData);
+        })
     },
     /**
      * get single cate by id

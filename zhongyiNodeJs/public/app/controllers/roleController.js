@@ -1,6 +1,6 @@
 adminMain.controller('roleController', function ($scope, $rootScope, $timeout, $dialogs, $http, $stateParams, $state) {
 
-  $scope.name = '';
+  //$scope.name = '';
   $scope.formData = {};
   initPagination($scope, $http, '/common/getDocumentList/role', 'normalList');
   $scope.add = function () {
@@ -36,9 +36,7 @@ adminMain.controller('roleController', function ($scope, $rootScope, $timeout, $
     var data = {
       name: $scope.formData.name
     };
-
-    console.log("++++++++++++++++++"+_id);
-    
+ 
     if (isValid) {
       if (_id) {
 
@@ -51,6 +49,7 @@ adminMain.controller('roleController', function ($scope, $rootScope, $timeout, $
 
 
       } else {
+ 
         $http({
           method: 'POST',
           url: '/backend/role/addrole',

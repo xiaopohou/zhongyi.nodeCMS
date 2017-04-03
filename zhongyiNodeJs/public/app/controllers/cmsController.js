@@ -114,10 +114,7 @@ adminMain.controller('cmsController', function ($scope, $state, $http, $rootScop
            //$scope.classid2="";
     }
     //测试方法--------------------
-
-
-
-
+ 
     //文章操作
     if (url_paramArticleId != '') 
     {

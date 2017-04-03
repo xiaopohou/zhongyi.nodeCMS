@@ -19,24 +19,29 @@
 </div>
 
 
-<div class="row white-bg" style="margin-top:5px;" ng-controller="cmsController">
+<div class="row white-bg" style="margin-top:5px;" ng-controller="articleController">
     <div class="ibox-content">
-        <form method="get" class="form-horizontal" id="myform" name="myform" ng-submit="processForm(myform.$valid)" enctype="multipart/form-data">
+        <form method="get" class="form-horizontal" id="myform" name="myform" ng-submit="processForm(myform.$valid)">
             <div class="hr-line-dashed"></div>
             <div class="form-group">
                 <label class="col-sm-2 control-label">标题:</label>
+ 
 
-                <div class="col-sm-10"><input type="text" class="form-control" ng-model="articleformData.name" required></div>
+                <div class="col-sm-10">
+
+                    <input type="text" class="form-control" ng-model="formData.name" required>
+               
+                    </div>
             </div>
             <div class="hr-line-dashed"></div>
             <div class="form-group">
                 <label class="col-sm-2 control-label">大分类:</label>
 
                 <div class="col-sm-10">
-                    <select ng-model="articleformData.classid" ng-change="classidChanage()" ng-options="c.name for c in cateMap" class="form-control">
+                    <select ng-model="formData.classid" ng-change="classidChanage()" ng-options="c.name for c in cateMap" class="form-control">
                          <option value="">-- 请选择 --</option>
                     </select>
- 
+ {{formData.classid}}
 
                 </div>
             </div>
@@ -44,11 +49,12 @@
             <div class="form-group">
                 <label class="col-sm-2 control-label">小分类:</label>
 
-                <div class="col-sm-10"> <select ng-model="articleformData.classid2" class="form-control" ng-options="c2.name for c2 in articleformData.classid.child">
-<option value="" >--请选择--</option>
-</select>
--- {{articleformData.classid2._id}} ---
-</div>
+                <div class="col-sm-10"> 
+                    <select ng-model="formData.classid2" ng-change="classid2Chanage()" class="form-control" ng-options="c2.name for c2 in formData.classid.child">
+                <option value="" >--请选择--</option>
+                </select>
+                
+                </div>
             </div>
             <div class="hr-line-dashed"></div>
             <div class="form-group">
@@ -56,22 +62,27 @@
 
                 <div class="col-sm-10">
 
-                            <input type="file" name="uploadify" id="uploadContentImg" />
-                            <img src="" alt="" width="120" height="120" class="img-thumbnail" id="myImg">
-
-                    
-                    
+                     <input type="text" ng-model="formData.coverpage" class="form-control" />
+                            <!--<img src="" alt="" width="120" height="120" class="img-thumbnail" id="myImg">-->
                     </div>
- 
-
             </div>
+            <div class="hr-line-dashed"></div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">URL:</label>
 
+                <div class="col-sm-10">
+
+                            <input type="text" ng-model="formData.url" class="form-control" />
+                             
+                    </div>
+            </div>
             <div class="hr-line-dashed"></div>
             <div class="form-group">
                 <label class="col-sm-2 control-label">内容:</label>
 
                 <div class="col-sm-10">
-                    <textarea cols="30" ng-minlength="50" ng-model="articleformData.content" ueditor required>  {{articleformData.content}}</textarea>
+
+                    <textarea cols="30"  ng-model="formData.content" name="content" placeholder="请输入公告详情" ueditor>{{formData.content}}</textarea>
                 </div>
             </div>
 
@@ -79,11 +90,13 @@
             <div class="hr-line-dashed"></div>
             <div class="form-group">
                 <div class="col-sm-4 col-sm-offset-2">
-                    <a class="btn btn-white" type="button" href="#/news">返回</a>
+                    <a class="btn btn-white" type="button" href="#/article">返回</a>
                     <button type="submit" class="btn btn-primary" ng-click="submitarticle()">确定</button>
                 </div>
             </div>
             <input type="hidden" ng-model="formData._id">
+          <input type="hidden" name="hidclassid" id="classid">
+          <input type="hidden" name="hidclassid2" id="classid2">
         </form>
 
     </div>

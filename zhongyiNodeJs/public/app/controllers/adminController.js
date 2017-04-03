@@ -68,9 +68,7 @@
                 dataType: "json",
                 headers: { 'Content-Type': 'application/x-www-form-urlencoded' }  // set the headers so angular passing info as form data (not request payload)
             }).success(function (res) {
-            
                 if (res.isSuccess) {
-                
                      $state.go('admins');
                 } else {
                     console.log('错误');

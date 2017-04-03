@@ -18,7 +18,7 @@
     </div>
 </div>
 
-<div class="row white-bg" style="margin-top:5px;" ng-controller="cmsController">
+<div class="row white-bg" style="margin-top:5px;" ng-controller="articleController">
 
     <div class="col-lg-12">
         <div class="ibox float-e-margins">
@@ -51,7 +51,7 @@
                             <!--<button class="btn btn-primary btn-sm" ng-click="openWin('add')">添加</button>&nbsp;-->
 
 
-                            <a class="btn btn-sm btn-success" ng-click="addarticle(-1)">添加文章</a>
+                            <a class="btn btn-sm btn-success" ng-click="addarticle()">添加文章</a>
                         </div>
 
                         <!--<select class="input-sm form-control input-s-sm inline">
@@ -104,8 +104,8 @@
                                 <td>{{article.editorid}}</td>
                                 <td>{{article.CreateDate}}</td>
                                 <td>{{article.updateDate}}</td>
-                                <td><a type="button" class="btn btn-sm btn-success" ng-click="detailarticle(user._id)">编辑</a>
-                                    <a type="button" class="btn btn-sm btn-success" ng-click="removearticle(user._id)">删除</a>
+                                <td><a type="button" class="btn btn-sm btn-success" ng-click="detail(article._id)">编辑</a>
+                                    <a type="button" class="btn btn-sm btn-success" ng-click="remove(article._id)">删除</a>
                                 </td>
 
                             </tr>
