@@ -15,7 +15,8 @@ adminMain.config(['$stateProvider', '$urlRouterProvider',
         askController,
         systemController,
         loginController,
-        articleController
+        articleController,
+        adsController
     ) {
 
         $stateProvider
@@ -47,6 +48,17 @@ adminMain.config(['$stateProvider', '$urlRouterProvider',
                 url: '/modules/index',
                 templateUrl: '/form/modules/index.html',
                 controller: moduleController
+            })
+            .state('ads',{
+                  url: '/cms/ads',
+                templateUrl: '/form/ads/ads.html',
+                 controller: adsController
+               
+            })
+                   .state('addad',{
+                  url: '/cms/ads/addad/:_id',
+                templateUrl: '/form/ads/addad.html',
+                controller: adsController
             })
             .state('test', {
                 url: '/test',

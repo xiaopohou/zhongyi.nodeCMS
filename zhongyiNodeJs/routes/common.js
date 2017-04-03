@@ -8,6 +8,7 @@ var Module = require('../models/zyModels/Module');
 var dbAccess = require('../models/zyDBHelper/zy_Dbopt');
 var Article = require('../models/zyModels/Article');
 var Articlecate = require('../models/zyModels/ArticleCate');
+var Ad = require('../models/zyModels/Ad');
 router.get('/getDocumentList/:modelName', function (req, res) {
 
   var params = url.parse(req.url, true);
@@ -35,6 +36,9 @@ router.get('/getDocumentList/:modelName', function (req, res) {
   }
   else if (_modeName == 'articlecate') {
     defaultModel = Articlecate;
+  }
+    else if (_modeName == 'ad') {
+    defaultModel = Ad;
   }
   else {
     defaultModel = null;
