@@ -1,0 +1,144 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-10">
+        <h2>CMS管理</h2>
+        <ol class="breadcrumb">
+            <li>
+                <a href="index.html">首页</a>
+            </li>
+            <li>
+                <a>广告管理</a>
+            </li>
+            <li class="active">
+                <strong>添加图片广告</strong>
+            </li>
+        </ol>
+    </div>
+    <div class="col-lg-2">
+
+    </div>
+</div>
+ 
+<div class="row white-bg" style="margin-top:5px;" ng-controller="adsController">
+
+
+    <input type="file" name="uploadify" id="uploadAdsImg2" />
+
+    <script type="text/ng-template" id="modal.html">
+        <!-- 模态框（Modal） -->
+        <div class="modal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true" ng-click="cancel()">
+					&times;
+				</button>
+                        <h4 class="modal-title" id="myModalLabel">
+                            {{modalTitle}}
+                        </h4>
+                    </div>
+                    <div class="modal-body">
+                        <form role="form" class="form-horizontal" ng-submit="processImgForm()">
+                            <div class="form-group">
+                                <lable class="control-label col-sm-2">图片链接</lable>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control input-sm" name="link" ng-pattern="/[a-zA-z]+://[^\s]*/" ng-model="itemsFormData.link"
+                                        required/>
+
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <lable class="control-label col-sm-2">宽(px)</lable>
+                                <div class="col-sm-3">
+                                    <input type="text" class="form-control input-sm" name="link" ng-pattern="/[a-zA-z]+://[^\s]*/" ng-model="itemsFormData.link"
+                                        required/>
+
+                                </div>
+                                <lable class="control-label col-sm-2">宽(px)</lable>
+                                <div class="col-sm-3">
+                                    <input type="text" class="form-control input-sm" name="link" ng-pattern="/[a-zA-z]+://[^\s]*/" ng-model="itemsFormData.link"
+                                        required/>
+
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <lable class="control-label col-sm-2">打开方式</lable>
+                                <div class="col-sm-3">
+                                    <input type="text" class="form-control input-sm" name="link" ng-pattern="/[a-zA-z]+://[^\s]*/" ng-model="itemsFormData.link"
+                                        required/>
+
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <lable class="control-label col-sm-2">上传</lable>
+                                <div class="col-sm-9">
+                                    <input type="file" name="uploadify" id="uploadAdsImg" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <lable class="control-label col-sm-2">图片预览</lable>
+                                <div class="col-sm-9">
+
+
+
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="cancel()">关闭
+				</button>
+                        <button type="button" class="btn btn-primary" ng-click="ok()">
+					确定
+				</button>
+                    </div>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal -->
+        </div>
+    </script>
+
+
+
+    <div class="ibox-content">
+        <form method="get" class="form-horizontal" id="myform" name="myform" ng-submit="processForm(myform.$valid)">
+            <div class="hr-line-dashed"></div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">广告标题:</label>
+
+                <div class="col-sm-10">
+
+                    <input type="text" class="form-control" ng-model="formData.name" required>
+
+                </div>
+            </div>
+            <div class="hr-line-dashed"></div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label"></label>
+
+                <div class="col-sm-10">
+                    <button type="button" class="btn btn-primary" ng-click="popuAddImgAd()">添加图片</button>
+
+                </div>
+            </div>
+
+
+
+
+            <div class="hr-line-dashed"></div>
+            <div class="form-group">
+                <div class="col-sm-4 col-sm-offset-2">
+                    <a class="btn btn-white" type="button" href="#/cms/ads">返回</a>
+                    <button type="submit" class="btn btn-primary">确定</button>
+                </div>
+            </div>
+            <input type="hidden" ng-model="formData._id">
+
+        </form>
+
+    </div>
+
+
+</div>

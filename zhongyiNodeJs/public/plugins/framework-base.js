@@ -148,7 +148,8 @@ function getPageInfos($scope, $http, url, reqType) {
 * key 上传对象是所属 管理员头像、用户头像、文档首图等，后台根据key来进行不同规格的图片压缩
 * */
 function initUploadFyBtn(id,type,key,callBack){
-
+ 
+ 
     var typedes = 'Image Files';
     var filtertype = '*.gif; *.jpg; *.png';
     var buttonText = '上传图片';
@@ -158,15 +159,7 @@ function initUploadFyBtn(id,type,key,callBack){
     var adminId = $('#adminId').val();
     var buttonWidth = 100;
     var buttonStyle = 'uploadify-btn-default';
-    if(type == 'zip'){
-        typedes = 'Zip Files';
-        filtertype = '*.zip';
-        buttonText = '安装本地模板(*.zip)';
-        uploadApi = '/admin/manage/updateCMSTemplate';
-        sizeLimit = 1024 * 1024 * 3;
-        buttonWidth = 130;
-        buttonStyle = 'uploadify-btn-primary';
-    }
+ 
     $("#"+id).uploadify({
         //指定swf文件
         'swf': '/plugins/uploadify/uploadify.swf',

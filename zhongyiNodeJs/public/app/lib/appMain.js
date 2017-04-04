@@ -56,7 +56,7 @@ adminMain.config(['$stateProvider', '$urlRouterProvider',
                
             })
                    .state('addad',{
-                  url: '/cms/ads/addad/:_id',
+                  url: '/cms/ads/addad/:_id/:isimg',
                 templateUrl: '/form/ads/addad.html',
                 controller: adsController
             })
@@ -116,11 +116,11 @@ adminMain.config(['$stateProvider', '$urlRouterProvider',
                 controller: permsController
             })
        
-            //   .state('article',{
-            //         url:'/articles/article',
-            //         templateUrl:'/form/articles/article.html',
-            //         controller:articleController
-            //     })
+              .state('addimgad',{
+                    url:'/cms/ads/addimgad/:_id',
+                    templateUrl:'/form/ads/addimgad.html',
+                    controller:articleController
+                })
             //       .state('addarticle',{
             //         url:'/articles/addarticle',
             //         templateUrl:'/form/articles/addarticle.html',

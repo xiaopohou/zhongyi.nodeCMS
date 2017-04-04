@@ -51,8 +51,26 @@
                             <!--<button class="btn btn-primary btn-sm" ng-click="openWin('add')">添加</button>&nbsp;-->
 
 
-                            <a class="btn btn-sm btn-success" ng-click="addad()">添加广告</a>
+
+                            <div class="btn-group dropdown" uib-dropdown="">
+                                <button type="button" class="btn btn-primary dropdown-toggle" uib-dropdown-toggle="" aria-haspopup="true" aria-expanded="false">
+                        添加广告 <span class="caret"></span>
+                    </button>
+                                <ul role="menu" uib-dropdown-menu="" class="dropdown-menu">
+                                    <li><a href="javascript:;" ng-click="addad()">文字广告</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="javascript:;" ng-click="addimgad()">图片广告</a></li>
+
+                                    <li class="divider"></li>
+                                    <li><a href="">Separated link</a></li>
+                                </ul>
+                            </div>
                         </div>
+
+
+
+
+
                     </div>
                     <div class="col-sm-4 m-b-xs">
 
@@ -80,7 +98,12 @@
                             <tr ng-repeat="ad in data">
                                 <td><input type="checkbox" checked class="i-checks" name="input[]"></td>
                                 <td>{{ad.name}}</td>
-                                <td>{{ad.type}}</td>
+                                <td ng-switch on="ad.type">
+                                    <span ng-switch-when="1"><a href="" class="label label-success">图片</a></span>
+                                    <span ng-switch-when="0"><a href="" class="label label-success">文字</a></span>
+                                    <span ng-switch-when="-1">未选择</span>
+
+                                </td>
                                 <td>{{ad.status}}</td>
                                 <td>{{ad.updateDate}}</td>
                                 <td>{{ad.CreateDate}}</td>
