@@ -10,7 +10,6 @@ var AdSchema = new Schema({
         'default': shortid.generate
     },
     name:String,
-    coverimage:String,
     url:String,
     status:{type:Number,default:0},//默认否
     type:{type:Number,default:0},//1：为图片，0：为文字广告类型

@@ -19,17 +19,8 @@
 </div>
  
  
-
-
 <div class="row white-bg" style="margin-top:5px;" ng-controller="adsController">
-
- 
   
------------{{msg}}-----------
- 
- 
-
-
     <script type="text/ng-template" id="modal.html">
         <!-- 模态框（Modal） -->
         <div class="modal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -41,7 +32,7 @@
 					&times;
 				</button>
                         <h4 class="modal-title" id="myModalLabel">
-                            {{modalTitle}} {{data}}
+                            {{modalTitle}} 
                         </h4>
                     </div>
                     <div class="modal-body">
@@ -49,34 +40,34 @@
                             <div class="form-group">
                                 <lable class="control-label col-sm-2">图片链接</lable>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control input-sm" name="link" ng-pattern="/[a-zA-z]+://[^\s]*/" ng-model="itemsFormData.link"
-                                        required/>
-
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <lable class="control-label col-sm-2">宽(px)</lable>
-                                <div class="col-sm-3">
-                                    <input type="text" class="form-control input-sm" name="link" ng-pattern="/[a-zA-z]+://[^\s]*/" ng-model="itemsFormData.link"
-                                        required/>
-
-                                </div>
-                                <lable class="control-label col-sm-2">宽(px)</lable>
-                                <div class="col-sm-3">
-                                    <input type="text" class="form-control input-sm" name="link" ng-pattern="/[a-zA-z]+://[^\s]*/" ng-model="itemsFormData.link"
+                                    <input type="text" class="form-control input-sm" name="link"  ng-model="itemsFormData.url"
                                         required/>
 
                                 </div>
                             </div>
                             <div class="form-group">
-                                <lable class="control-label col-sm-2">打开方式</lable>
+                                <lable class="control-label col-sm-2">名称</lable>
                                 <div class="col-sm-3">
-                                    <input type="text" class="form-control input-sm" name="link" ng-pattern="/[a-zA-z]+://[^\s]*/" ng-model="itemsFormData.link"
+                                    <input type="text" class="form-control input-sm" name="link"  ng-model="itemsFormData.name"
                                         required/>
 
                                 </div>
                             </div>
+                            <div class="form-group">
+                                <lable class="control-label col-sm-2">宽(px)</lable>
+                                <div class="col-sm-3">
+                                    <input type="text" class="form-control input-sm" name="link"  ng-model="itemsFormData.width"
+                                        required/>
+
+                                </div>
+                                <lable class="control-label col-sm-2">宽(px)</lable>
+                                <div class="col-sm-3">
+                                    <input type="text" class="form-control input-sm" name="link"  ng-model="itemsFormData.height"
+                                        required/>
+
+                                </div>
+                            </div>
+                           
                             <div class="form-group">
                                 <lable class="control-label col-sm-2">上传</lable>
                                 <div class="col-sm-9">
@@ -87,18 +78,16 @@
                                 <lable class="control-label col-sm-2">图片预览</lable>
                                 <div class="col-sm-9">
 
-
+                                    <img src="" alt="" id="tempImg" style="width:80px;height:80px;"/>
 
                                 </div>
                             </div>
                         </form>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="cancel()">关闭
-				</button>
-                        <button type="button" class="btn btn-primary" ng-click="ok()">
-					确定
-				</button>
+                        <button type="button" class="btn btn-primary" ng-click="initFile()">初始化</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="cancel()">关闭</button>
+                        <button type="button" class="btn btn-primary" ng-click="ok()">确定</button>
                     </div>
                 </div>
                 <!-- /.modal-content -->
@@ -121,6 +110,17 @@
 
                 </div>
             </div>
+                 <div class="hr-line-dashed"></div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">状态:</label>
+
+                <div class="col-sm-10">
+ 
+             <input type="radio" name="status" ng-model="formData.status" value="1"/>是
+              <input type="radio" name="status" ng-model="formData.status" value="0"/>否
+
+                </div>
+            </div>
             <div class="hr-line-dashed"></div>
             <div class="form-group">
                 <label class="col-sm-2 control-label"></label>
@@ -131,6 +131,67 @@
                 </div>
             </div>
 
+            <div class="form-group">
+ 
+
+ <form role="form" class="form-horizontal" name="myForm">
+                        <div class="form-group">
+                            <label class="control-label col-sm-3"></label>
+                            <div class="col-sm-8">
+                                <!-- Custom Tabs -->
+                                
+                                <div class="box box-primary">
+                                    <div class="box-header with-border">
+                                        <h2 class="box-title">图片列表</h2>
+                                    </div><!-- /.box-header -->
+                                    <div class="box-body">
+                                        <p class="text-warning"><i class="fa fa-fw fa-info-circle"></i>点击上传添加广告图片，单张图默认不轮播，多图为轮播显示。最多4张图</p>
+                                        <div id="imgInfolist">
+                                            <div id="imgInfo_60" class="alert alert-info fade in" ng-repeat="ad in itemlist">
+                                                <button class="close" type="button" ng-click="delAdsItem(ad._id)"><span aria-hidden="true">×</span></button>
+
+                                                <div class="col-sm-3">
+                                                    <img class="img-thumbnail" alt="" ng-src="{{ad.coverimage}}">
+                                                </div>
+                                                <div class="col-sm-8">
+                                                    <div class="form-group">
+                                                        <label class="col-sm-4 control-label">图片链接</label>
+                                                        <div class="col-sm-8">
+                                                            <p class="form-control-static">{{ad.url}}</p>
+                                                        </div>
+                                                        <label class="col-sm-4 control-label">图片宽高</label>
+                                                        <div class="col-sm-8">
+                                                            <p class="form-control-static">{{ad.width}}*{{ad.height}}</p>
+                                                        </div>
+                                                        <label class="col-sm-4 control-label">图片名称</label>
+                                                        <div class="col-sm-8">
+                                                            <p class="form-control-static" ng-bind="ad.name"></p>
+                                                        </div>
+                                                        <label class="col-sm-4 control-label">&nbsp;</label>
+                                                        <div class="col-sm-8">
+                                                            <button class="btn btn-primary" ng-click="editAdsItem({{ad._id}})">编辑</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="clearfix"></div>
+                                            </div>
+                                        </div>
+                                    </div><!-- /.box-body -->
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+
+
+
+
+              
+
+                
+
+
+
+            </div>
 
 
 

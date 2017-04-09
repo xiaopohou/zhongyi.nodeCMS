@@ -23,17 +23,14 @@ adminMain.factory('dataServiceFactory', ['$http', function ($http) {
     }
 }]);
 
-adminMain.controller('adsController', function ($scope, $rootScope, $timeout,  $http, $stateParams, $state, dataPostService, $modal,dataServiceFactory) {
+adminMain.controller('adsImgController', function ($scope, $rootScope, $timeout, $dialogs, $http, $stateParams, $state, dataPostService, $modal) {
     $scope.formData = {};
-    $scope.itemlist={};//图片列表
-
     $scope.adTypes = [
         { name: "-请选择-", value: -1 },
         { name: "图片", value: 1 },
         { name: "文字", value: 0 }
     ];
-  
-    
+ 
     initPagination($scope, $http, '/common/getDocumentList/ad', 'normalList');
     $scope.addad = function () {
 
@@ -49,34 +46,38 @@ adminMain.controller('adsController', function ($scope, $rootScope, $timeout,  $
             isimg: 1
         });
     }
-    $scope.modalTitle ="添加图片";
-    $scope.itemsFormData={};
+        
+
+ 
+
     $scope.popuAddImgAd = function () {
         var data = "通过modal传递的数据";
         var modalInstance = $modal.open({
             templateUrl: 'modal.html',
             controller: 'modalCtrl',
-            scope:$scope
-            // resolve: {
-            //     data: function () {
-            //         return data;
-            //     },
-            //      modalTitle: function () {
-            //         return "添加图片";
-            //     },
-            //      adId: function () {
-            //         return _outId;
-            //     }
-            // }
-
+            resolve: {
+                data: function () {
+                    return data;
+                },
+                 modalTitle: function () {
+                    return "添加图片";
+                }
+            }
         })
+        modalInstance.opened.then(function() {// 模态窗口打开之后执行的函数  
+                     // 初始化上传按钮
+
+                    //alert('xx');
+         });  
     }
 
+ 
     $scope.detail = function (id) {
         $state.go('addad', {
             _id: id
         });
     }
+    $scope.formData.type = -1;
  
     $scope.remove = function (id) {
         $http.get("/backend/ad/" + id + "/delete").success(function (res) {
@@ -85,55 +86,23 @@ adminMain.controller('adsController', function ($scope, $rootScope, $timeout,  $
             }
         });
     }
-
-    //当前页面传入2个参数
     var _id = $stateParams._id;
     var _isimg = $stateParams.isimg;//广告类型
-    
-    if(_isimg==undefined)
-    {
-      //默认添加图片标题
- 
-            $scope.formData.name="1";
-            $scope.formData.status=1;
-            dataPostService.postdata('/backend/ad/addad', $scope.formData).success(function (res) {
-            if (res.isSuccess) {
-                $scope.adId=res.data;
-                
-            }
+
+
+    $scope.formData.type = -1;
+    if (_id) {
+
+        $http.get("/backend/ad/" + _id).success(function (res) {
+            $scope.formData = res.data;
+
+            //$scope.formData.type=res.data.type;
         });
     }
- 
-    // $scope.processForm = function (isValid) {
-    //     if (isValid) {
-    //         $scope.formData.type = 0;
-    //         if (_id != 0) {
-    //             $http.post('/backend/ad/adupdate', $scope.formData)
-    //                 .success(function (res) {
-    //                     if (res.isSuccess) {
-    //                         $state.go('ads');
-    //                     }
-    //                 });
-    //         } else {
 
-    //             dataPostService.postdata('/backend/ad/addad', $scope.formData).success(function (res) {
-    //                 if (res.isSuccess) {
-    //                     $state.go('ads');
-    //                 }
-    //             });
-    //         }
-    //     }
-    // }
-    
-    $scope.delAdsItem=function(id){
-
-    }
-    $scope.editAdsItem=function(id){
-
-    }
-    $scope.processImgForm = function (isValid) {
+    $scope.processForm = function (isValid) {
         if (isValid) {
-            $scope.formData.type = 1;
+            $scope.formData.type = 0;
             if (_id != 0) {
                 $http.post('/backend/ad/adupdate', $scope.formData)
                     .success(function (res) {
@@ -151,42 +120,49 @@ adminMain.controller('adsController', function ($scope, $rootScope, $timeout,  $
             }
         }
     }
-    $scope.itemlist={};
-    //刷新图片列表
-    $scope.initAdItems=function()
-    {
-        dataServiceFactory.getdata('/backend/ad/oneads?id='+$scope.adId).success(function(res){
-            if(res.isSuccess)
-            {
-                var data=res.data;
-                $scope.formData=data;
-                $scope.itemlist=data.items;
+
+    $scope.processImgForm = function (isValid) {
+        if (isValid) {
+            $scope.formData.type = 1;
+            if (_id != 0) {
+                $http.post('/backend/ad/adupdate', $scope.formData)
+                    .success(function (res) {
+                        if (res.isSuccess) {
+                            $state.go('ads');
+                        }
+                    });
+            } else {
+
+                dataPostService.postdata('/backend/ad/addad', $scope.formData).success(function (res) {
+                    if (res.isSuccess) {
+                        $state.go('ads');
+                    }
+                });
+
             }
-        });
+        }
     }
 })
-.controller('modalCtrl', function ($scope,  dataPostService,  $modalInstance) {
+
+.controller('modalCtrl', function ($scope,  $rootScope, $timeout, $dialogs, $http, $stateParams, $state, dataPostService,  $modalInstance, data,modalTitle) {
  
-    var adId=$scope.adId;
+    $scope.data = data;
+    $scope.modalTitle =modalTitle;
+ 
+    $scope.msg='111';
     $scope.initFile=function(){
         initUploadFyBtn('uploadAdsImg','images','',function(data){ 
             $("#tempImg").attr("src",data);
-            $scope.itemsFormData.coverimage=data;
+
         });
     }
-    
     //在这里处理要进行的操作   
     $scope.ok = function () {
- 
-        //创建子项
-        dataPostService.postdata('/backend/ad/addaditems?adId='+adId,$scope.itemsFormData).success(function(res){
-             $scope.initAdItems();
-        });
-        $modalInstance.dismiss('cancel');
+          
+        $scope.msg=data;
+        //$modalInstance.close();
     };
     $scope.cancel = function () {
         $modalInstance.dismiss('cancel');
     }
-   
 });
-
