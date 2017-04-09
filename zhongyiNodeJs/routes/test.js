@@ -1,17 +1,39 @@
 var express = require('express');
  
-var encryptHelper= require('../utils/encrypt');
-var router = express.Router();
+var encryptHelper = require('../utils/encrypt');
+var app = express.Router();
+ 
 
+
+ 
 /* GET users listing. */
-router.get('/', function (req, res, next) {
-    res.send(encryptHelper.encrypt("laozhao"));
+// app.get('/', function (req, res, next) {
+//     res.send(encryptHelper.encrypt("laozhao"));
+// });
+// app.get('/lg', function (req, res) {
+//     res.render('test/login', { layout: false });
+// });
+// app.post('/lg1', function (req, res) {
+//     res.redirect('/backend/test/index');
+     
+// });
+ 
+
+
+app.get('/b',function(req,res,next){
+    console.log('1 ...');
+    next();
+},function(req,res,next){
+  console.log('2 ...');
+    next();
+},function(req,res){
+  res.end('2');
 });
-router.get('/lg', function (req, res) {
-     res.render('test/login',{layout:false});
+ 
+
+
+ app.get('/c',function(req,res){
+    res.end('c');
+   
 });
-router.post('/lg1', function (req, res) {
- res.redirect('/backend/test/index');
-    // res.render('test/login',{layout:false});
-});
-module.exports = router;
+module.exports = app;

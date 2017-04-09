@@ -55,6 +55,7 @@
       <script src="/app/controllers/articleController.js"></script>
       <script src="/app/controllers/adsController.js"></script>
     <script src="/app/directives/directive.js"></script>
+   <script src="/app/controllers/loginController.js"></script>
     <script src="/app/lib/appMain.js"></script>
 
  
@@ -65,7 +66,7 @@
 
 <body ng-app="adminMain">
     <div id="wrapper">
-        <nav class="navbar-default navbar-static-side" role="navigation">
+        <nav class="navbar-default navbar-static-side" role="navigation" ng-controller="loginController">
             <div class="sidebar-collapse">
                 <ul class="nav metismenu" id="side-menu">
                     <li class="nav-header">
@@ -80,7 +81,7 @@
                                 <li><a href="profile.html">个人信息</a></li>
 
                                 <li class="divider"></li>
-                                <li><a href="login.html">退出</a></li>
+                                <li><a ng-click="loginout()">退出</a></li>
                             </ul>
                         </div>
                         <div class="logo-element">
@@ -167,7 +168,7 @@
         </nav>
 
         <div id="page-wrapper" class="gray-bg dashbard-1">
-            <div class="row border-bottom">
+            <div class="row border-bottom" ng-controller="loginController">
                 <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
                     <div class="navbar-header">
                         <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i> </a>
@@ -281,7 +282,7 @@
 
 
                         <li>
-                            <a href="login.html">
+                            <a ng-click="loginout()">
                                 <i class="fa fa-sign-out"></i> 退出
                             </a>
                         </li>

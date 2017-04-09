@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>反派路障后台登陆</title>
+    <title>欢迎来到某某后台</title>
 
     <link href="/adminv3/css/bootstrap.min.css" rel="stylesheet">
     <link href="/adminv3/font-awesome/css/font-awesome.css" rel="stylesheet">
@@ -22,7 +22,7 @@
     <div class="middle-box text-center loginscreen animated">
         <div>
 
-            <h3>欢迎来到CodingPaPaPa后台</h3>
+            <h3>欢迎来到某某后台</h3>
 
 
             <form class="m-t" role="form" name="loginform" ng-submit="processform(loginform.$valid)">
@@ -43,7 +43,7 @@
 
 
     <!-- Mainly scripts -->
-    <script src="/js/jquery-2.1.1.min.js"></script>
+ 
     <script src="/plugins/angular/angular.min.js"></script>
     <script src="/plugins/angular/angular-ui-router.js"></script>
     <script src="/plugins/angular/angular-animate.min.js"></script>
@@ -51,33 +51,9 @@
     <!--modal start-->
     <script src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.6.0.js" type="text/javascript"></script>
     <script src="http://m-e-conroy.github.io/angular-dialog-service/javascripts/dialogs.min.js" type="text/javascript"></script>
-    <link rel="stylesheet" href="/plugins//dialog/dialogs.css" />
+ 
     <script src="/app/lib/appRoot.js"></script>
-    <script>
-        adminMain.controller('loginController', function ($scope, $http,$state) {
-            $scope.formData = {};
-            //console.log( $scope.formData);
-            $scope.processform = function (isvalid) {
-                //if (isvalid) {
-                // $http({
-                //     method: 'POST',
-                //     url: "/backend/login/dologin",
-                //     data: $.param($scope.formData),  // pass in data as strings
-                //     headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
-                // }).success(function (res) {
-
-                // });
-
-                $http.post("/backend/login/dologin", $scope.formData).success(function (res) {
-                    if (res.isSuccess) {
-                       window.location.href="/backend/default/";
-                       // console.log(res.errorMessage);
-                    }
-                });
-                // }
-            }
-        });
-    </script>
+    <script src="/app/controllers/loginController.js"></script>
 
 </body>
 

@@ -29,6 +29,9 @@ var app = express();
 app.use(expressLayouts);
 app.use('/common', common);
 app.use('/t', test);
+
+
+ 
 // app.use(lodash());
 app.use(cookieParser());
 
