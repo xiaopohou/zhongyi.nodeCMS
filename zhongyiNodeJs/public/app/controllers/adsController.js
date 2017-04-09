@@ -49,10 +49,7 @@ adminMain.controller('adsController', function ($scope, $rootScope, $timeout, $d
     }
         
 
-    // 初始化上传按钮
-    initUploadFyBtn('uploadAdsImg','images','',function(data){
-            
-    });
+ 
 
     $scope.popuAddImgAd = function () {
         var data = "通过modal传递的数据";
@@ -69,7 +66,8 @@ adminMain.controller('adsController', function ($scope, $rootScope, $timeout, $d
             }
         })
         modalInstance.opened.then(function() {// 模态窗口打开之后执行的函数  
-            
+                     // 初始化上传按钮
+
                     //alert('xx');
          });  
     }
@@ -145,17 +143,21 @@ adminMain.controller('adsController', function ($scope, $rootScope, $timeout, $d
             }
         }
     }
-}).controller('modalCtrl', function ($scope, $modalInstance, data,modalTitle) {
+})
 
- 
-
+.controller('modalCtrl', function ($scope,  $rootScope, $timeout, $dialogs, $http, $stateParams, $state, dataPostService,  $modalInstance, data,modalTitle) {
  
     $scope.data = data;
     $scope.modalTitle =modalTitle;
+ 
+    $scope.msg='111';
     //在这里处理要进行的操作   
     $scope.ok = function () {
-        alert('xxx');
-        $modalInstance.close();
+           initUploadFyBtn('uploadAdsImg','images','',function(data){
+            
+    });
+        $scope.msg=data;
+        //$modalInstance.close();
     };
     $scope.cancel = function () {
         $modalInstance.dismiss('cancel');

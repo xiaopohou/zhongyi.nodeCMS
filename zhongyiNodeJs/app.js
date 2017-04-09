@@ -121,12 +121,7 @@ app.use(logger('dev'));
 
 app.engine('html', ejs.__express);
 app.set('view engine', 'html');
-
-
-
  
-
-
 
 // var engines = require('consolidate');
 //
@@ -138,8 +133,6 @@ app.set('view engine', 'html');
 //setting static location path
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'uploads')));
-
-
 app.use(express.static(path.join(__dirname, 'views')));
 
 // catch 404 and forward to error handler

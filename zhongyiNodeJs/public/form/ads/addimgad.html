@@ -18,10 +18,17 @@
     </div>
 </div>
  
+ 
+
+
 <div class="row white-bg" style="margin-top:5px;" ng-controller="adsController">
 
+ 
+  
+-----------{{msg}}-----------
+ 
+ 
 
-    <input type="file" name="uploadify" id="uploadAdsImg2" />
 
     <script type="text/ng-template" id="modal.html">
         <!-- 模态框（Modal） -->
@@ -34,7 +41,7 @@
 					&times;
 				</button>
                         <h4 class="modal-title" id="myModalLabel">
-                            {{modalTitle}}
+                            {{modalTitle}} {{data}}
                         </h4>
                     </div>
                     <div class="modal-body">
