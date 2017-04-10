@@ -12,7 +12,7 @@ var AdItemsSchema = new Schema({
     coverimage:String,
     width:{type:Number,default:0},
     height:{type:Number,default:0},
-    url:{type:Number,default:0},
+    url:String,
     createDate:{type:Date,default:Date.now}
 
  

@@ -119,7 +119,7 @@ adminMain.config(['$stateProvider', '$urlRouterProvider',
             })
        
               .state('addimgad',{
-                    url:'/cms/ads/addimgad/:_id',
+                    url:'/cms/ads/addimgad/:_id/:isimg',
                     templateUrl:'/form/ads/addimgad.html',
                     controller:articleController
                 })

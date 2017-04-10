@@ -59,7 +59,7 @@
                                 <ul role="menu" uib-dropdown-menu="" class="dropdown-menu">
                                     <li><a href="javascript:;" ng-click="addad()">文字广告</a></li>
                                     <li class="divider"></li>
-                                    <li><a href="javascript:;" ng-click="addimgad()">图片广告</a></li>
+                                    <li><a href="javascript:;" ng-click="addimgad(0,-1)">图片广告</a></li>
 
                                     <li class="divider"></li>
                                     <li><a href="">Separated link</a></li>
@@ -107,7 +107,7 @@
                                 <td>{{ad.status}}</td>
                                 <td>{{ad.updateDate}}</td>
                                 <td>{{ad.CreateDate}}</td>
-                                <td><a type="button" class="btn btn-sm btn-success" ng-click="detail(ad._id)">编辑</a>
+                                <td><a type="button" class="btn btn-sm btn-success" ng-click="addimgad(ad._id,0)">编辑</a>
                                     <a type="button" class="btn btn-sm btn-success" ng-click="remove(ad._id)">删除</a>
                                 </td>
 

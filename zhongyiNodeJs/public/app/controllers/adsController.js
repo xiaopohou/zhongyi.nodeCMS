@@ -25,7 +25,7 @@ adminMain.factory('dataServiceFactory', ['$http', function ($http) {
 
 adminMain.controller('adsController', function ($scope, $rootScope, $timeout,  $http, $stateParams, $state, dataPostService, $modal,dataServiceFactory) {
     $scope.formData = {};
-    $scope.itemlist={};//图片列表
+    $scope.itemlist={};
 
     $scope.adTypes = [
         { name: "-请选择-", value: -1 },
@@ -43,10 +43,11 @@ adminMain.controller('adsController', function ($scope, $rootScope, $timeout,  $
         });
     }
     //图片广告
-    $scope.addimgad = function () {
+    $scope.addimgad = function (id,isimg) {
+         
         $state.go('addimgad', {
-            _id: 0,
-            isimg: 1
+            _id: id,
+            isimg: isimg
         });
     }
     $scope.modalTitle ="添加图片";
@@ -90,7 +91,7 @@ adminMain.controller('adsController', function ($scope, $rootScope, $timeout,  $
     var _id = $stateParams._id;
     var _isimg = $stateParams.isimg;//广告类型
     
-    if(_isimg==undefined)
+    if(_isimg==-1)
     {
       //默认添加图片标题
  
@@ -103,27 +104,56 @@ adminMain.controller('adsController', function ($scope, $rootScope, $timeout,  $
             }
         });
     }
- 
-    // $scope.processForm = function (isValid) {
-    //     if (isValid) {
-    //         $scope.formData.type = 0;
-    //         if (_id != 0) {
-    //             $http.post('/backend/ad/adupdate', $scope.formData)
-    //                 .success(function (res) {
-    //                     if (res.isSuccess) {
-    //                         $state.go('ads');
-    //                     }
-    //                 });
-    //         } else {
+    if(_id)
+    {
+        $scope.adId=_id;
+        dataServiceFactory.getdata('/backend/ad/oneads?id='+_id).success(function(res){
+            if(res.isSuccess)
+            {
+               $scope.formData= res.data;
+               $scope.itemlist=res.data.items;
+            }
+        });
+    }
+    $scope.submitAd=function()
+    {
+         if (_id != 0) {
+                $http.post('/backend/ad/adupdate', $scope.formData)
+                    .success(function (res) {
+                        if (res.isSuccess) {
+                            $state.go('ads');
+                        }
+                    });
+            } else {
 
-    //             dataPostService.postdata('/backend/ad/addad', $scope.formData).success(function (res) {
-    //                 if (res.isSuccess) {
-    //                     $state.go('ads');
-    //                 }
-    //             });
-    //         }
-    //     }
-    // }
+                dataPostService.postdata('/backend/ad/addad', $scope.formData).success(function (res) {
+                    if (res.isSuccess) {
+                        $state.go('ads');
+                    }
+                });
+            }
+    }
+    $scope.processForm = function (isValid) {
+         
+        if (isValid) {
+            $scope.formData.type = 0;
+            if (_id != 0) {
+                $http.post('/backend/ad/adupdate', $scope.formData)
+                    .success(function (res) {
+                        if (res.isSuccess) {
+                            $state.go('ads');
+                        }
+                    });
+            } else {
+
+                dataPostService.postdata('/backend/ad/addad', $scope.formData).success(function (res) {
+                    if (res.isSuccess) {
+                        $state.go('ads');
+                    }
+                });
+            }
+        }
+    }
     
     $scope.delAdsItem=function(id){
 
@@ -151,7 +181,7 @@ adminMain.controller('adsController', function ($scope, $rootScope, $timeout,  $
             }
         }
     }
-    $scope.itemlist={};
+
     //刷新图片列表
     $scope.initAdItems=function()
     {

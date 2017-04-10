@@ -169,7 +169,7 @@
                                                         </div>
                                                         <label class="col-sm-4 control-label">&nbsp;</label>
                                                         <div class="col-sm-8">
-                                                            <button class="btn btn-primary" ng-click="editAdsItem({{ad._id}})">编辑</button>
+                                                            <button class="btn btn-primary" ng-click="editAdsItem(ad._id)">编辑</button>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -199,7 +199,7 @@
             <div class="form-group">
                 <div class="col-sm-4 col-sm-offset-2">
                     <a class="btn btn-white" type="button" href="#/cms/ads">返回</a>
-                    <button type="submit" class="btn btn-primary">确定</button>
+                    <button type="submit" class="btn btn-primary" ng-click="submitAd()">确定</button>
                 </div>
             </div>
             <input type="hidden" ng-model="formData._id">

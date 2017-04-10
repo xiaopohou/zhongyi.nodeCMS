@@ -23,20 +23,20 @@ module.exports = {
     get_oneads: function (req, res) {
         var params = url.parse(req.url, true);
         var _res = new ResponseData();
-               
+
         adModel.findOne({ '_id': params.query.id }).populate('items').exec(function (err, doc) {
-        
+
             if (err) {
                 _res.isSuccess = false;
             } else {
-                
+
                 if (doc) {
-                  
+
                     _res.isSuccess = true;
                     _res.data = doc;
                 }
                 else {
-                     _res.isSuccess = false;
+                    _res.isSuccess = false;
                     _res.data = doc;
                 }
             }
@@ -71,8 +71,12 @@ module.exports = {
         adModel.findOne({ '_id': _adId }, function (err, doc) {
             if (doc) {
 
-                var _AdItems = new AdItems(req.body);
-                //_AdItems.coverimage = req.body.coverimage;
+                var _AdItems = new AdItems();
+                _AdItems.coverimage = req.body.coverimage;
+                _AdItems.name = req.body.name;
+                _AdItems.width = req.body.width;
+                _AdItems.height = req.body.height;
+                _AdItems.url = req.body.url;
                 _AdItems.save(function (err2) {
                     if (err2) {
 
