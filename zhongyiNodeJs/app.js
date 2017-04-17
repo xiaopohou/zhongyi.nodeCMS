@@ -114,14 +114,16 @@ fs.existsSync(logDir) || fs.mkdirSync(logDir);
 var errorLogDir = __dirname + '/logs/errorLog'
 fs.existsSync(errorLogDir) || fs.mkdirSync(errorLogDir);
 
-//访问日志 
+ 
 var accessStream = fileStreamRotator.getStream({
     filename: logDir + '/access-%DATE%.txt',
     frequency: 'daily',
     verbose: false,
     date_format: "YYYY-MM-DD"
 });
+//访问日志
 app.use(logger('combined', { stream: accessStream }));
+
 //错误日志
 var errorLogStream = fs.createWriteStream(errorLogDir + '/error.txt');
 
