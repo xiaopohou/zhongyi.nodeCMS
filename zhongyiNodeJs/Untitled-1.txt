@@ -1,0 +1,24 @@
+基本操作命令：
+
+
+
+clone远程资源
+
+切换分支
+git checkout 切换git版本 如：dev,master,myDev等分支目录
+
+
+提交本地修改
+
+git add .
+
+git commit -m '提交备注'  
+
+git checkout 切换分支
+
+合并分支，注意执行此操作时要切换到待合并的分支上执行此命令
+git merge   
+
+git push 推送分支
+
+git pull 拉取最新修改
