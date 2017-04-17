@@ -1,7 +1,0 @@
-::ffff:127.0.0.1 - - [01/Feb/2017:14:25:01 +0000] "GET / HTTP/1.1" 500 2111 "-" "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36"
-::ffff:127.0.0.1 - - [01/Feb/2017:14:25:01 +0000] "GET /favicon.ico HTTP/1.1" 404 1822 "http://localhost:3000/" "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36"
-::ffff:127.0.0.1 - - [01/Feb/2017:14:25:05 +0000] "GET /admin HTTP/1.1" 500 1909 "-" "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36"
-::ffff:127.0.0.1 - - [01/Feb/2017:14:25:08 +0000] "GET /adminv3 HTTP/1.1" 303 49 "-" "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36"
-::ffff:127.0.0.1 - - [01/Feb/2017:14:25:08 +0000] "GET /adminv3/ HTTP/1.1" 404 1819 "-" "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36"
-::ffff:127.0.0.1 - - [01/Feb/2017:14:25:11 +0000] "GET /adminv2 HTTP/1.1" 500 2145 "-" "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36"
-::ffff:127.0.0.1 - - [01/Feb/2017:14:25:18 +0000] "GET /adminv3/login HTTP/1.1" 404 1824 "-" "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36"

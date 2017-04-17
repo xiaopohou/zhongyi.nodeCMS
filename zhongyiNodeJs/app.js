@@ -31,7 +31,7 @@ app.use('/common', common);
 app.use('/t', test);
 
 
- 
+
 // app.use(lodash());
 app.use(cookieParser());
 
@@ -104,27 +104,30 @@ resolve
 app.use(partials());
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
-//app.use(logger('dev'));
 
-//日志 
-// var logDir = __dirname + '/logs/access';
-// fs.existsSync(logDir) || fs.mkdirSync(logDir);
-// var logErrorDir = __dirname + '/logs/error'
-// fs.existsSync(logErrorDir) || fs.mkdirSync(logErrorDir);
-// //保存日志
-// var accessStream = fileStreamRotator.getStream({
-//     filename: logDir + '/access-%DATE%.txt',
-//     frequency: 'daily',
-//     verbose: false,
-//     date_format: "YYYY-MM-DD"
-// });
-// app.use(logger('combined', { stream: accessStream }));
+app.use(logger('dev'));
 
-// var errorLogStream = fs.createWriteStream(logErrorDir + '/error.txt');
+
+//log
+var logDir = __dirname + '/logs/accessLog';
+fs.existsSync(logDir) || fs.mkdirSync(logDir);
+var errorLogDir = __dirname + '/logs/errorLog'
+fs.existsSync(errorLogDir) || fs.mkdirSync(errorLogDir);
+
+//访问日志 
+var accessStream = fileStreamRotator.getStream({
+    filename: logDir + '/access-%DATE%.txt',
+    frequency: 'daily',
+    verbose: false,
+    date_format: "YYYY-MM-DD"
+});
+app.use(logger('combined', { stream: accessStream }));
+//错误日志
+var errorLogStream = fs.createWriteStream(errorLogDir + '/error.txt');
 
 app.engine('html', ejs.__express);
 app.set('view engine', 'html');
- 
+
 
 // var engines = require('consolidate');
 //
@@ -146,5 +149,13 @@ app.use(function (req, res, next) {
     next(err);
 });
 
+app.use(function (err, req, res, next) {
+    var error = (req.app.get('dev') === 'development') ? err : {};
+    var errorMessage = '[' + Data() + ']' + req.url + '\n' + '[' + error.stack + ']\n';
+    errorLogStream.write(errorMessage);
+    var status = error.status || 500;
+    res.status(status);
+    res.send('<pre>' + error.message + '</pre>');
+});
 
 module.exports = app;
