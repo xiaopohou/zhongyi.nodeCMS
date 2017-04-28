@@ -19,12 +19,17 @@ var session = require('express-session');
 var redisStorage = require('connect-redis')(session);
 var setting = require('./public/config/zy_Config');
 
-var filter = require('./filter/filter');
+var filter1 = require('./filter/filter1');
+var filter2 = require('./filter/filter2');
+var filter3 = require('./filter/filter3');
+
 var common = require('./routes/common');
 var test = require('./routes/test');
 var app = express();
 //加载过滤器
-//app.use(filter);
+// app.use(filter1);
+// app.use(filter2);
+// app.use(filter3);
 
 app.use(expressLayouts);
 app.use('/common', common);
