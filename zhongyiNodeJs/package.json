@@ -1,6 +1,7 @@
 {
   "name": "zhongyiNodeJs",
-  "version": "0.0.0",
+  "version": "2.2.0",
+  "author": "老赵",
   "private": true,
   "scripts": {
     "start": "supervisor ./bin/www"
@@ -49,5 +50,6 @@
     "typescript": "^2.2.1",
     "ueditor": "^1.2.1",
     "ueditor-nodejs": "^0.1.4"
-  }
+  },
+  "devDependencies": {}
 }

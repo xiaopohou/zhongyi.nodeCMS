@@ -19,19 +19,24 @@ var session = require('express-session');
 var redisStorage = require('connect-redis')(session);
 var setting = require('./public/config/zy_Config');
 
-var filter = require('./filter/filter');
+var filter1 = require('./filter/filter1');
+var filter2 = require('./filter/filter2');
+var filter3 = require('./filter/filter3');
+
 var common = require('./routes/common');
 var test = require('./routes/test');
 var app = express();
 //加载过滤器
-//app.use(filter);
+// app.use(filter1);
+// app.use(filter2);
+// app.use(filter3);
 
 app.use(expressLayouts);
 app.use('/common', common);
 app.use('/t', test);
 
 
- 
+
 // app.use(lodash());
 app.use(cookieParser());
 
@@ -104,27 +109,32 @@ resolve
 app.use(partials());
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+
 app.use(logger('dev'));
 
-//日志 
-// var logDir = __dirname + '/logs/access';
-// fs.existsSync(logDir) || fs.mkdirSync(logDir);
-// var logErrorDir = __dirname + '/logs/error'
-// fs.existsSync(logErrorDir) || fs.mkdirSync(logErrorDir);
-// //保存日志
-// var accessStream = fileStreamRotator.getStream({
-//     filename: logDir + '/access-%DATE%.txt',
-//     frequency: 'daily',
-//     verbose: false,
-//     date_format: "YYYY-MM-DD"
-// });
-// app.use(logger('combined', { stream: accessStream }));
 
-// var errorLogStream = fs.createWriteStream(logErrorDir + '/error.txt');
+//log
+var logDir = __dirname + '/logs/accessLog';
+fs.existsSync(logDir) || fs.mkdirSync(logDir);
+var errorLogDir = __dirname + '/logs/errorLog'
+fs.existsSync(errorLogDir) || fs.mkdirSync(errorLogDir);
+
+ 
+var accessStream = fileStreamRotator.getStream({
+    filename: logDir + '/access-%DATE%.txt',
+    frequency: 'daily',
+    verbose: false,
+    date_format: "YYYY-MM-DD"
+});
+//访问日志
+app.use(logger('combined', { stream: accessStream }));
+
+//错误日志
+var errorLogStream = fs.createWriteStream(errorLogDir + '/error.txt');
 
 app.engine('html', ejs.__express);
 app.set('view engine', 'html');
- 
+
 
 // var engines = require('consolidate');
 //
@@ -146,5 +156,13 @@ app.use(function (req, res, next) {
     next(err);
 });
 
+app.use(function (err, req, res, next) {
+    var error = (req.app.get('dev') === 'development') ? err : {};
+    var errorMessage = '[' + Data() + ']' + req.url + '\n' + '[' + error.stack + ']\n';
+    errorLogStream.write(errorMessage);
+    var status = error.status || 500;
+    res.status(status);
+    res.send('<pre>' + error.message + '</pre>');
+});
 
 module.exports = app;
