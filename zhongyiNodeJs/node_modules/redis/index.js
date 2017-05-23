@@ -172,7 +172,7 @@ function RedisClient (options, stream) {
         } else if ((event === 'message_buffer' || event === 'pmessage_buffer' || event === 'messageBuffer' || event === 'pmessageBuffer') && !this.buffers && !this.message_buffers) {
             if (this.reply_parser.name !== 'javascript') {
                 return this.warn(
-                    'You attached the ' + event + ' without the hiredis parser without the returnBuffers option set to true.\n' +
+                    'You attached the "' + event + '" listener without the returnBuffers option set to true.\n' +
                     'Please use the JavaScript parser or set the returnBuffers option to true to return buffers.'
                 );
             }
@@ -931,7 +931,7 @@ RedisClient.prototype.internal_send_command = function (command_obj) {
             args_copy[i] = this.options.prefix + args_copy[i];
         }
     }
-    if (typeof this.options.rename_commands !== 'undefined' && this.options.rename_commands[command]) {
+    if (this.options.rename_commands && this.options.rename_commands[command]) {
         command = this.options.rename_commands[command];
     }
     // Always use 'Multi bulk commands', but if passed any Buffer args, then do multiple writes, one for each arg.
@@ -1087,6 +1087,8 @@ exports.RedisClient = RedisClient;
 exports.print = utils.print;
 exports.Multi = require('./lib/multi');
 exports.AbortError = errorClasses.AbortError;
+exports.RedisError = Parser.RedisError;
+exports.ParserError = Parser.ParserError;
 exports.ReplyError = Parser.ReplyError;
 exports.AggregateError = errorClasses.AggregateError;
 

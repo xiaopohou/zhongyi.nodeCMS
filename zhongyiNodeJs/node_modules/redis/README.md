@@ -197,7 +197,7 @@ __Tip:__ If the Redis server runs on the same machine as the client consider usi
 | db | null | If set, client will run Redis `select` command on connect. |
 | family | IPv4 | You can force using IPv6 if you set the family to 'IPv6'. See Node.js [net](https://nodejs.org/api/net.html) or [dns](https://nodejs.org/api/dns.html) modules on how to use the family type. |
 | disable_resubscribing | false | If set to `true`, a client won't resubscribe after disconnecting. |
-| rename_commands | null | Passing an object with renamed commands to use instead of the original functions. See the [Redis security topics](http://redis.io/topics/security) for more info. |
+| rename_commands | null | Passing an object with renamed commands to use instead of the original functions. For example, if you renamed the command KEYS to "DO-NOT-USE" then the rename_commands object would be: `{ KEYS : "DO-NOT-USE" }` . See the [Redis security topics](http://redis.io/topics/security) for more info. |
 | tls | null | An object containing options to pass to [tls.connect](http://nodejs.org/api/tls.html#tls_tls_connect_port_host_options_callback) to set up a TLS connection to Redis (if, for example, it is set up to be accessible via a tunnel). |
 | prefix | null | A string used to prefix all used keys (e.g. `namespace:test`). Please be aware that the `keys` command will not be prefixed. The `keys` command has a "pattern" as argument and no key and it would be impossible to determine the existing keys in Redis if this would be prefixed. |
 | retry_strategy | function | A function that receives an options object as parameter including the retry `attempt`, the `total_retry_time` indicating how much time passed since the last time connected, the `error` why the connection was lost and the number of `times_connected` in total. If you return a number from this function, the retry will happen exactly after that time in milliseconds. If you return a non-number, no further retry will happen and all offline commands are flushed with errors. Return an error to return that specific error to all offline commands. Example below. |
@@ -296,10 +296,15 @@ client.get("foo_rand000000000000", function (err, reply) {
 
 ## Error handling (>= v.2.6)
 
-All redis errors are returned as `ReplyError`.
-All unresolved commands that get rejected due to what ever reason return a `AbortError`.
-As subclass of the `AbortError` a `AggregateError` exists. This is emitted in case multiple unresolved commands without callback got rejected in debug_mode.
-They are all aggregated and a single error is emitted in that case.
+Currently the following error subclasses exist:
+
+* `RedisError`: _All errors_ returned by the client
+* `ReplyError` subclass of `RedisError`: All errors returned by __Redis__ itself
+* `AbortError` subclass of `RedisError`: All commands that could not finish due to what ever reason
+* `ParserError` subclass of `RedisError`: Returned in case of a parser error (this should not happen)
+* `AggregateError` subclass of `AbortError`: Emitted in case multiple unresolved commands without callback got rejected in debug_mode instead of lots of `AbortError`s.
+
+All error classes are exported by the module.
 
 Example:
 ```js

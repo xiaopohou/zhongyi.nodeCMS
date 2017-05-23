@@ -19,9 +19,9 @@ var session = require('express-session');
 var redisStorage = require('connect-redis')(session);
 var setting = require('./public/config/zy_Config');
 
-var filter1 = require('./filter/filter1');
-var filter2 = require('./filter/filter2');
-var filter3 = require('./filter/filter3');
+// var filter1 = require('./filter/filter1');
+// var filter2 = require('./filter/filter2');
+// var filter3 = require('./filter/filter3');
 
 var common = require('./routes/common');
 var test = require('./routes/test');
@@ -156,13 +156,13 @@ app.use(function (req, res, next) {
     next(err);
 });
 
-app.use(function (err, req, res, next) {
-    var error = (req.app.get('dev') === 'development') ? err : {};
-    var errorMessage = '[' + Data() + ']' + req.url + '\n' + '[' + error.stack + ']\n';
-    errorLogStream.write(errorMessage);
-    var status = error.status || 500;
-    res.status(status);
-    res.send('<pre>' + error.message + '</pre>');
-});
+// app.use(function (err, req, res, next) {
+//     var error = (req.app.get('dev') === 'development') ? err : {};
+//     var errorMessage = '[' + Data() + ']' + req.url + '\n' + '[' + error.stack + ']\n';
+//     errorLogStream.write(errorMessage);
+//     var status = error.status || 500;
+//     res.status(status);
+//     res.send('<pre>' + error.message + '</pre>');
+// });
 
 module.exports = app;

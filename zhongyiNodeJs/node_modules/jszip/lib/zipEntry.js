@@ -3,6 +3,10 @@ var StringReader = require('./stringReader');
 var utils = require('./utils');
 var CompressedObject = require('./compressedObject');
 var jszipProto = require('./object');
+
+var MADE_BY_DOS = 0x00;
+var MADE_BY_UNIX = 0x03;
+
 // class ZipEntry {{{
 /**
  * An entry in the zip file.
@@ -129,7 +133,7 @@ ZipEntry.prototype = {
      * @param {DataReader} reader the reader to use.
      */
     readCentralPart: function(reader) {
-        this.versionMadeBy = reader.readString(2);
+        this.versionMadeBy = reader.readInt(2);
         this.versionNeeded = reader.readInt(2);
         this.bitFlag = reader.readInt(2);
         this.compressionMethod = reader.readString(2);
@@ -153,10 +157,37 @@ ZipEntry.prototype = {
         this.readExtraFields(reader);
         this.parseZIP64ExtraField(reader);
         this.fileComment = reader.readString(this.fileCommentLength);
-
-        // warning, this is true only for zip with madeBy == DOS (plateform dependent feature)
-        this.dir = this.externalFileAttributes & 0x00000010 ? true : false;
     },
+
+    /**
+     * Parse the external file attributes and get the unix/dos permissions.
+     */
+    processAttributes: function () {
+        this.unixPermissions = null;
+        this.dosPermissions = null;
+        var madeBy = this.versionMadeBy >> 8;
+
+        // Check if we have the DOS directory flag set.
+        // We look for it in the DOS and UNIX permissions
+        // but some unknown platform could set it as a compatibility flag.
+        this.dir = this.externalFileAttributes & 0x0010 ? true : false;
+
+        if(madeBy === MADE_BY_DOS) {
+            // first 6 bits (0 to 5)
+            this.dosPermissions = this.externalFileAttributes & 0x3F;
+        }
+
+        if(madeBy === MADE_BY_UNIX) {
+            this.unixPermissions = (this.externalFileAttributes >> 16) & 0xFFFF;
+            // the octal permissions are in (this.unixPermissions & 0x01FF).toString(8);
+        }
+
+        // fail safe : if the name ends with a / it probably means a folder
+        if (!this.dir && this.fileName.slice(-1) === '/') {
+            this.dir = true;
+        }
+    },
+
     /**
      * Parse the ZIP64 extra field and merge the info in the current ZipEntry.
      * @param {DataReader} reader the reader to use.
